@@ -5,7 +5,8 @@
 ## Features
 ### v1.0 made at November 2021 SwiftUI Jam https://www.swiftuijam.com
 * Swift package
-* 100% Swift & SwiftUI
+* 100% Swift
+* 99% SwiftUI
 * Simple design
 * Lightweight
 * Customizable

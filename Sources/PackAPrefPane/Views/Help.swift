@@ -18,7 +18,7 @@ struct Help: View {
     var body: some View {
         Section(header: Text("⛑ Help")) { // Customize this view
             Button(action: {
-                // Helper.requestAppFeedback()
+                PrefPaneHelper.appFeedback()
             }, label: {
                 HStack {
                     Text("Feedback")

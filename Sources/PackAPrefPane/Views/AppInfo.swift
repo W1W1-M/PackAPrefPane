@@ -31,12 +31,7 @@ struct AppInfo: View {
                     Spacer()
                 }
             }.padding(3)
-                .font(.callout)
-            HStack {
-                Spacer()
-                Text("Font & Emoji by Apple Inc.")
-                Spacer()
-            }.font(.callout)
+            .font(.callout)
             HStack {
                 Spacer()
                 Text("Copyright © 2021-2022")
@@ -46,23 +41,34 @@ struct AppInfo: View {
         DisclosureGroup("Third-Party Code", isExpanded: $thirdPartyCodeExpanded) {
             VStack {
                 HStack {
-                    Text("PackAPrefPane v1.0").font(.headline)
+                    Text("PackAPrefPane by W1W1-M").font(.headline)
                     Spacer()
                 }
                 Spacer()
                 HStack {
-                    Link("Github source code link", destination: URL(string: "https://github.com/W1W1-M/PackAPrefPane")!).foregroundColor(.accentColor)
+                    Link("github.com/W1W1-M/PackAPrefPane", destination: URL(string: "https://github.com/W1W1-M/PackAPrefPane")!).foregroundColor(.accentColor)
                     Spacer()
                 }
             }
             VStack {
                 HStack {
-                    Text("Some third party software vX.x").font(.headline)
+                    Text("Font & Emoji by Apple Inc.").font(.headline)
                     Spacer()
                 }
                 Spacer()
                 HStack {
-                    Link("Source code link", destination: URL(string: "https://github.com")!).foregroundColor(.accentColor)
+                    Link("developer.apple.com/fonts", destination: URL(string: "https://developer.apple.com/fonts")!).foregroundColor(.accentColor)
+                    Spacer()
+                }
+            }
+            VStack {
+                HStack {
+                    Text("Some Third-Party software").font(.headline)
+                    Spacer()
+                }
+                Spacer()
+                HStack {
+                    Link("github.com", destination: URL(string: "https://github.com")!).foregroundColor(.accentColor)
                     Spacer()
                 }
             }

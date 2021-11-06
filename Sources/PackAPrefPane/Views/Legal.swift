@@ -21,11 +21,7 @@ struct Legal: View {
                 HStack {
                     Text("Legal disclaimer")
                     Spacer()
-                    if(UserDefaults.standard.bool(forKey: "DisclaimerAccepted") == true) {
-                        Image(systemName: "checkmark.shield.fill").imageScale(.large)
-                    } else if(UserDefaults.standard.bool(forKey: "DisclaimerAccepted") == false) {
-                        Image(systemName: "checkmark.shield").imageScale(.large)
-                    }
+                    Image(systemName: "checkmark.shield.fill").imageScale(.large)
                 }
             })
             Button(action: {
