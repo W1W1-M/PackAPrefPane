@@ -13,7 +13,7 @@ struct Legal: View {
     @Binding var alertPresented: Bool
     // UI
     var body: some View {
-        Section(header: Text("❗️ Legal")) {
+        Section(header: Text("❗️ Legal")) { // Customize this view
             Button(action: {
                 alert = PackAPrefPane.alerts.disclaimerAlert
                 alertPresented.toggle()

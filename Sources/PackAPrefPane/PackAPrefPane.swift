@@ -7,22 +7,16 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+@available(iOS 14, *)
 public struct PackAPrefPane: View {
     // MARK: -  Variables
     public init(settingsSheetPresented: Binding<Bool>) {
         self._settingsSheetPresented = settingsSheetPresented
     }
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.locale) var locale: Locale
     @Binding var settingsSheetPresented: Bool
     @State private var alertPresented: Bool = false
-    @State private var disclaimerAlert: Bool = false
-    @State private var privacyAlert: Bool = false
-    @State private var supportAlert: Bool = false
-    @State private var metricSystem: Bool = true
     @State private var alert: alerts = .disclaimerAlert
-    @State private var decimalFuelQuantity: Bool = false
-    @AppStorage("MeasurementSystemSymbol") var measurementSystemSymbol: String?
     enum alerts {
         case disclaimerAlert
         case privacyAlert
@@ -34,13 +28,7 @@ public struct PackAPrefPane: View {
         NavigationView {
             Form {
                 // Primary parameters for app settings
-                Section(header: Text("🎛 App settings")) {
-                    HStack() {
-                        Toggle(isOn: $alertPresented) {
-                            Text("Some very important app setting")
-                        }
-                    }
-                }
+                AppSettings()
                 // Secondary parameters for user preferences
                 UserPreferences()
                 // Help section
@@ -60,7 +48,7 @@ public struct PackAPrefPane: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
                         // Cancel and rollback settings
-                        // viewContext.rollback()
+                        // Helper.rollbackSettings()
                         // Close settings sheet
                         settingsSheetPresented.toggle()
                     }, label: {Text("Cancel")})
@@ -68,7 +56,7 @@ public struct PackAPrefPane: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: {
                         // Save Settings
-                        // Helper.saveContext(viewContext: viewContext)
+                        // Helper.saveSomeSettings()
                         // Set new app settings & user preferences
                         // Helper.setSomeAppSettings()
                         // Helper.setSomeUserPreferences()

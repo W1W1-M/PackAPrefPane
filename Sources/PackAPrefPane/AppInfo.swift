@@ -14,7 +14,7 @@ struct AppInfo: View {
     let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
     // UI
     var body: some View {
-        Section(header: HStack {
+        Section(header: HStack { // Customize this view
             Text("⚠️ Version \(appVersion)")
             Spacer()
             Text("\(buildVersion) Build ⚒")
@@ -54,7 +54,7 @@ struct AppInfo: View {
                     Link("Github source code link", destination: URL(string: "https://github.com/W1W1-M/PackAPrefPane")!).foregroundColor(.accentColor)
                     Spacer()
                 }
-            }.foregroundColor(.primary)
+            }
             VStack {
                 HStack {
                     Text("Some third party software vX.x").font(.headline)
@@ -65,8 +65,8 @@ struct AppInfo: View {
                     Link("Source code link", destination: URL(string: "https://github.com")!).foregroundColor(.accentColor)
                     Spacer()
                 }
-            }.foregroundColor(.primary)
-        }.foregroundColor(.accentColor)
+            }
+        }
     }
 }
 // MARK: - Previews

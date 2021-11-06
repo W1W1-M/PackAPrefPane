@@ -12,7 +12,7 @@ struct AppSettings: View {
     @State var someUserPreference: Bool = false
     // UI
     var body: some View {
-        Section(header: Text("🎚 User Preferences")) {
+        Section(header: Text("🎚 User Preferences")) { // Customize this view
             HStack() {
                 Toggle(isOn: $someUserPreference) {
                     Text("An important user preference")

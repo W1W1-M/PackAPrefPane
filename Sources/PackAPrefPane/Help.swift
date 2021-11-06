@@ -16,7 +16,7 @@ struct Help: View {
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     // UI
     var body: some View {
-        Section(header: Text("⛑ Help")) {
+        Section(header: Text("⛑ Help")) { // Customize this view
             Button(action: {
                 // Helper.requestAppFeedback()
             }, label: {
@@ -49,8 +49,8 @@ struct Help: View {
                         Text("- New Feature \n- Upgraded feature \n- Bug fixed")
                         Spacer()
                     }
-                }.foregroundColor(.primary)
-            }.foregroundColor(.accentColor)
+                }
+            }
             DisclosureGroup("FAQ", isExpanded: $faqExpanded) {
                 VStack {
                     HStack {
@@ -62,7 +62,7 @@ struct Help: View {
                         Text("A.1: The thing's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those.")
                         Spacer()
                     }
-                }.foregroundColor(.primary)
+                }
                 VStack {
                     HStack {
                         Text("Q.2: What % of this can I use ?").font(.headline)
@@ -73,7 +73,7 @@ struct Help: View {
                         Text("A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand.")
                         Spacer()
                     }
-                }.foregroundColor(.primary)
+                }
                 VStack {
                     HStack {
                         Text("Q.3: How are those calculated ?").font(.headline)
@@ -84,8 +84,8 @@ struct Help: View {
                         Text("A.3: Things are the difference between the total amount of the that using this and the same if only this was used.")
                         Spacer()
                     }
-                }.foregroundColor(.primary)
-            }.foregroundColor(.accentColor)
+                }
+            }
         }
     }
 }
