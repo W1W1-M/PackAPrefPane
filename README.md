@@ -11,6 +11,7 @@
 * Customizable
 * Nothing exotic
 * Open source
+* Target: iOS 14 >
 
 ## Project resources
 * Mind map in MindNode format

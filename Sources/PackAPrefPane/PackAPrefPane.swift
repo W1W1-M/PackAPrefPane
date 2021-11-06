@@ -33,6 +33,7 @@ public struct PackAPrefPane: View {
     public var body: some View {
         NavigationView {
             Form {
+                // Primary parameters for app settings
                 Section(header: Text("🎛 App settings")) {
                     HStack() {
                         Toggle(isOn: $alertPresented) {
@@ -40,19 +41,17 @@ public struct PackAPrefPane: View {
                         }
                     }
                 }
-                Section(header: Text("🎚 User Preferences")) {
-                    HStack() {
-                        Toggle(isOn: $alertPresented) {
-                            Text("An important user preference")
-                        }
-                    }
-                }
-                HelpSection(
+                // Secondary parameters for user preferences
+                UserPreferences()
+                // Help section
+                Help(
                     alert: $alert,
                     alertPresented: $alertPresented
                 )
+                // App information section
                 AppInfo()
-                LegalSection(
+                // Legal section
+                Legal(
                     alert: $alert,
                     alertPresented: $alertPresented
                 )
@@ -114,133 +113,12 @@ public struct PackAPrefPane: View {
                 )
             case .supportAlert:
                 return Alert(
-                    title: Text("Send me an email"),
+                    title: Text("Send us an email"),
                     message: Text("w1w1_m@icloud.com"),
                     dismissButton: .default(Text("OK"))
                 )
             }
         })
-    }
-}
-// MARK: - Help Section
-struct HelpSection: View {
-    // Variables
-    @Binding var alert: PackAPrefPane.alerts
-    @Binding var alertPresented: Bool
-    @State private var faqExpanded: Bool = false
-    // UI
-    var body: some View {
-        Section(header: Text("⛑ Help")) {
-            Button(action: {
-                // Helper.requestAppFeedback()
-            }, label: {
-                HStack {
-                    Text("Feedback")
-                    Spacer()
-                    Image(systemName: "plus.bubble.fill").imageScale(.large)
-                }
-            })
-            Button(action: {
-                alert = PackAPrefPane.alerts.supportAlert
-                alertPresented.toggle()
-            }, label: {
-                HStack {
-                    Text("Support")
-                    Spacer()
-                    Image(systemName: "cross.case.fill").imageScale(.large)
-                }
-            })
-            Button(action: {
-                alert = PackAPrefPane.alerts.supportAlert
-                alertPresented.toggle()
-            }, label: {
-                HStack {
-                    Text("What's new ?")
-                    Spacer()
-                    Image(systemName: "newspaper.fill").imageScale(.large)
-                }
-            })
-            DisclosureGroup("FAQ", isExpanded: $faqExpanded) {
-                VStack {
-                    HStack {
-                        Text("Q.1: How is the thing calculated ?").font(.headline)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("A.1: The thing's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those.")
-                        Spacer()
-                    }
-                }.foregroundColor(.primary)
-                VStack {
-                    HStack {
-                        Text("Q.2: What % of this can I use ?").font(.headline)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand.")
-                        Spacer()
-                    }
-                }.foregroundColor(.primary)
-                VStack {
-                    HStack {
-                        Text("Q.3: How are those calculated ?").font(.headline)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("A.3: Things are the difference between the total amount of the that using this and the same if only this was used.")
-                        Spacer()
-                    }
-                }.foregroundColor(.primary)
-            }.foregroundColor(.accentColor)
-        }
-    }
-}
-// MARK: - Legal Section
-struct LegalSection: View {
-    // Variables
-    @Binding var alert: PackAPrefPane.alerts
-    @Binding var alertPresented: Bool
-    // UI
-    var body: some View {
-        Section(header: Text("❗️ Legal")) {
-            Button(action: {
-                alert = PackAPrefPane.alerts.disclaimerAlert
-                alertPresented.toggle()
-            }, label: {
-                HStack {
-                    Text("Legal disclaimer")
-                    Spacer()
-                    if(UserDefaults.standard.bool(forKey: "DisclaimerAccepted") == true) {
-                        Image(systemName: "checkmark.shield.fill").imageScale(.large)
-                    } else if(UserDefaults.standard.bool(forKey: "DisclaimerAccepted") == false) {
-                        Image(systemName: "checkmark.shield").imageScale(.large)
-                    }
-                }
-            })
-            Button(action: {
-                alert = PackAPrefPane.alerts.privacyAlert
-                alertPresented.toggle()
-            }, label: {
-                HStack {
-                    Text("Privacy policy")
-                    Spacer()
-                    Image(systemName: "lock.shield.fill").imageScale(.large)
-                }
-            })
-            Button(action: {
-                alert = PackAPrefPane.alerts.specialThanksAlert
-                alertPresented.toggle()
-            }, label: {
-                HStack {
-                    Text("Special Thanks")
-                    Spacer()
-                    Image(systemName: "figure.wave").imageScale(.large)
-                }
-            })
-        }
     }
 }
 // MARK: - Previews
