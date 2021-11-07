@@ -1,5 +1,5 @@
 //
-//  AppSettings.swift
+//  UserPreferences.swift
 //  
 //
 //  Created by William Mead on 06/11/2021.
@@ -7,7 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
-struct AppSettings: View {
+struct UserPreferences: View {
     // Variables
     @State var someUserPreference: Bool = false
     // UI
@@ -22,8 +22,8 @@ struct AppSettings: View {
     }
 }
 // MARK: - Previews
-struct AppSettings_Previews: PreviewProvider {
+struct UserPreferences_Previews: PreviewProvider {
     static var previews: some View {
-        Form{AppSettings()}.previewLayout(.sizeThatFits)
+        Form{UserPreferences()}.previewLayout(.sizeThatFits)
     }
 }

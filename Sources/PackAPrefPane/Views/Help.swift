@@ -16,7 +16,7 @@ struct Help: View {
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     // UI
     var body: some View {
-        Section(header: Text("⛑ Help")) { // Customize this view
+        Section(header: Text("🆘 Help")) { // Customize this view
             Button(action: {
                 PrefPaneHelper.appFeedback()
             }, label: {
@@ -54,12 +54,12 @@ struct Help: View {
             DisclosureGroup("FAQ", isExpanded: $faqExpanded) {
                 VStack {
                     HStack {
-                        Text("Q.1: How is the thing calculated ?").font(.headline)
+                        Text("Q.1: How is this example calculated ?").font(.headline)
                         Spacer()
                     }
                     Spacer()
                     HStack {
-                        Text("A.1: The thing's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those.")
+                        Text("A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those.")
                         Spacer()
                     }
                 }

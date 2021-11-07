@@ -1,9 +1,9 @@
-# PackAPrefPane
+# **PackAPrefPane**
 
-## Reusable & customizable SwiftUI settings sheet as a Swift package
+## *Reusable & customizable SwiftUI settings sheet as a Swift package*
 
 ## Features
-### v1.0 made at November 2021 SwiftUI Jam https://www.swiftuijam.com
+
 * Swift package
 * 100% Swift
 * 99% SwiftUI
@@ -11,8 +11,10 @@
 * Lightweight
 * Customizable
 * Nothing exotic
-* Open source
+* Open source MIT license
 * Target: iOS 14 >
 
 ## Project resources
 * Mind map in MindNode format
+
+### Initial version made at November 2021 SwiftUI Jam https://www.swiftuijam.com

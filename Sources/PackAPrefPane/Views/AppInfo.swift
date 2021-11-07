@@ -22,19 +22,19 @@ struct AppInfo: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("Designed & Developped in 🇫🇷")
+                    Text("Designed & Developped in 🏴‍☠️")
                     Spacer()
                 }
                 HStack {
                     Spacer()
-                    Text("by William Mead")
+                    Text("by a super dev")
                     Spacer()
                 }
             }.padding(3)
             .font(.callout)
             HStack {
                 Spacer()
-                Text("Copyright © 2021-2022")
+                Text("Your app Copyright © 2021-2022")
                 Spacer()
             }.font(.callout)
         }
@@ -46,8 +46,15 @@ struct AppInfo: View {
                 }
                 Spacer()
                 HStack {
-                    Link("github.com/W1W1-M/PackAPrefPane", destination: URL(string: "https://github.com/W1W1-M/PackAPrefPane")!).foregroundColor(.accentColor)
+                    Link("github.com/W1W1-M/PackAPrefPane", destination: URL(string: "https://github.com/W1W1-M/PackAPrefPane")!)
+                        .font(.callout)
+                        .foregroundColor(.accentColor)
                     Spacer()
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("MIT license").font(.subheadline)
                 }
             }
             VStack {
@@ -57,8 +64,15 @@ struct AppInfo: View {
                 }
                 Spacer()
                 HStack {
-                    Link("developer.apple.com/fonts", destination: URL(string: "https://developer.apple.com/fonts")!).foregroundColor(.accentColor)
+                    Link("developer.apple.com/fonts", destination: URL(string: "https://developer.apple.com/fonts")!)
+                        .font(.callout)
+                        .foregroundColor(.accentColor)
                     Spacer()
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("Copyright © All rights reserved").font(.subheadline)
                 }
             }
             VStack {
@@ -68,8 +82,15 @@ struct AppInfo: View {
                 }
                 Spacer()
                 HStack {
-                    Link("github.com", destination: URL(string: "https://github.com")!).foregroundColor(.accentColor)
+                    Link("github.com", destination: URL(string: "https://github.com")!)
+                        .font(.callout)
+                        .foregroundColor(.accentColor)
                     Spacer()
+                }
+                Spacer()
+                HStack {
+                    Spacer()
+                    Text("some license").font(.subheadline)
                 }
             }
         }
