@@ -7,23 +7,28 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
-struct AppSettings: View {
+struct AppSettings<Content: View>: View {
     // Variables
-    @State var someAppSetting: Bool = false
+    let nestedView: Content // Declare nestedView var with Content type
+    init(@ViewBuilder nestedView: () -> Content) { // Custom init with @ViewBuilder
+        self.nestedView = nestedView()
+    }
     // UI
     var body: some View {
         Section(header: Text("🎛 App settings")) { // Customize this view
-            HStack() {
-                Toggle(isOn: $someAppSetting) {
-                    Text("Some very important app setting")
-                }
-            }
+            self.nestedView
         }
     }
 }
 // MARK: - Previews
 struct AppSettings_Previews: PreviewProvider {
     static var previews: some View {
-        Form{AppSettings()}.previewLayout(.sizeThatFits)
+        Form {
+            AppSettings {
+                Toggle(isOn: .constant(true)) {
+                    Text("Some very important app setting")
+                }
+            }
+        }.previewLayout(.sizeThatFits)
     }
 }
