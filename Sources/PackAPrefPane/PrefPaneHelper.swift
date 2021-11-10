@@ -7,6 +7,27 @@
 // MARK: - Modules
 import Foundation
 import UIKit
+// MARK: - Struct
+/// Custom type for third party code information
+public struct ThirdPartyCode: Identifiable {
+    public let id = UUID()
+    let sourceNameText: String
+    let sourceURLText: String
+    let sourceLicenseText: String
+}
+/// Custom type to group custom input data
+public struct PackAPrefPaneData {
+    // Help constants from parent view
+    
+    // AppInfo constants from parent view
+    let developerInfoText: String
+    let appCopyrightText: String
+    let thirdPartyCode: [ThirdPartyCode]
+    // Legal constant from parent view
+    let disclaimerText: String
+    let privacyPolicyText: String
+    let specialThanksText: String
+}
 // MARK: - Class
 class PrefPaneHelper {
     // MARK: - Functions

@@ -16,6 +16,9 @@ struct Legal: View {
         case privacyAlert
         case specialThanksAlert
     }
+    let disclaimerText: String
+    let privacyPolicyText: String
+    let specialThanksText: String
     // UI
     var body: some View {
         Section(header: Text("❗️ Legal")) { // Customize this view
@@ -55,7 +58,7 @@ struct Legal: View {
             case .disclaimerAlert:
                 return Alert(
                     title: Text("Legal disclaimer"),
-                    message: Text("Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app."),
+                    message: Text(disclaimerText),
                     dismissButton: .default(Text("OK")) {
                         // Legal disclaimer accepted
                         // PrefPaneHelper.disclaimerAccepted()
@@ -64,13 +67,13 @@ struct Legal: View {
             case .privacyAlert:
                 return Alert(
                     title: Text("Privacy policy"),
-                    message: Text("We don't store your data."),
+                    message: Text(privacyPolicyText),
                     dismissButton: .default(Text("OK"))
                 )
             case .specialThanksAlert:
                 return Alert(
                     title: Text("Special Thanks"),
-                    message: Text("Thanks to SwiftUI Jam"),
+                    message: Text(specialThanksText),
                     dismissButton: .default(Text("OK"))
                 )
             }
@@ -81,7 +84,10 @@ struct Legal: View {
 struct Legal_Previews: PreviewProvider {
     static var previews: some View {
         Form{
-            Legal()
+            Legal(
+                disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
+                privacyPolicyText: "We don't store your data.",
+                specialThanksText: "Thanks to SwiftUI Jam")
         }.previewLayout(.sizeThatFits)
     }
 }
