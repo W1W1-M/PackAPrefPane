@@ -15,57 +15,40 @@ public struct ThirdPartyCode: Identifiable {
 }
 // MARK: - Views
 @available(iOS 14, *)
-public struct PackAPrefPane: View {
+public struct PackAPrefPane<Content: View>: View {
     // Variables
     public init( // public init for public struct
         settingsSheetPresented: Binding<Bool>,
         developerInfoText: String,
         appCopyrightText: String,
-        thirdPartyCode: [ThirdPartyCode]
+        thirdPartyCode: [ThirdPartyCode],
+        @ViewBuilder appSettingsView: () -> Content // @ViewBuilder to pass in your app setting view
     ) {
         self._settingsSheetPresented = settingsSheetPresented
         self.developerInfoText = developerInfoText
         self.appCopyrightText = appCopyrightText
         self.thirdPartyCode = thirdPartyCode
+        self.appSettingsView = appSettingsView()
     }
     @Environment(\.managedObjectContext) private var viewContext
     @Binding var settingsSheetPresented: Bool // Bool to control sheet presentation
-    @State private var alertPresented: Bool = false
-    @State private var alert: alerts = .disclaimerAlert
-    @State var someAppSetting: Bool = false
+    
+    // App settings view from parent view
+    let appSettingsView: Content
     // Help constants from parent view
     
     // AppInfo constants from parent view
     let developerInfoText: String
     let appCopyrightText: String
     let thirdPartyCode: [ThirdPartyCode]
-    //
-    enum alerts {
-        case disclaimerAlert
-        case privacyAlert
-        case specialThanksAlert
-        case supportAlert
-    }
     // UI
     public var body: some View {
         NavigationView {
             Form {
-                // Primary parameters for app settings
-                AppSettings {
-                    Toggle(isOn: $someAppSetting) {
-                        Text("Some important app setting 1")
-                    }
-                    Toggle(isOn: $someAppSetting) {
-                        Text("Some important app setting 2")
-                    }
-                }
-                // Secondary parameters for user preferences
-                UserPreferences()
+                // Your nested app settings view
+                appSettingsView
                 // Help section
-                Help(
-                    alert: $alert,
-                    alertPresented: $alertPresented
-                )
+                Help()
                 // App information section
                 AppInfo(
                     developerInfoText: developerInfoText,
@@ -73,10 +56,7 @@ public struct PackAPrefPane: View {
                     thirdPartyCode: thirdPartyCode
                 )
                 // Legal section
-                Legal(
-                    alert: $alert,
-                    alertPresented: $alertPresented
-                )
+                Legal()
             }.navigationTitle("Settings ⚙️")
             .toolbar { // Toolbar with cancel & save buttons
                 ToolbarItem(placement: .cancellationAction) {
@@ -106,38 +86,6 @@ public struct PackAPrefPane: View {
             // Check if legal disclaimer accepted else show disclaimer alert
             // PrefPaneHelper.checkLegalDisclaimer()
         })
-        // alert switch cases
-        .alert(isPresented: $alertPresented, content: {
-            switch alert {
-            case .disclaimerAlert:
-                return Alert(
-                    title: Text("Legal disclaimer"),
-                    message: Text("Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app."),
-                    dismissButton: .default(Text("OK")) {
-                        // Legal disclaimer accepted
-                        // PrefPaneHelper.disclaimerAccepted()
-                    }
-                )
-            case .privacyAlert:
-                return Alert(
-                    title: Text("Privacy policy"),
-                    message: Text("We don't store your data."),
-                    dismissButton: .default(Text("OK"))
-                )
-            case .specialThanksAlert:
-                return Alert(
-                    title: Text("Special Thanks"),
-                    message: Text("Thanks to SwiftUI Jam"),
-                    dismissButton: .default(Text("OK"))
-                )
-            case .supportAlert:
-                return Alert(
-                    title: Text("Send us an email"),
-                    message: Text("youremail@someappdeveloper.com"),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
-        })
     }
 }
 // MARK: - Previews
@@ -159,6 +107,10 @@ struct PackAPrefPane_Previews: PreviewProvider {
                     sourceLicenseText: "Copyright © All rights reserved"
                 )
             ]
-        )
+        ) {
+            Section(header: Text("🎛 App settings")) {
+                Text("Some important app setting")
+            }
+        }
     }
 }

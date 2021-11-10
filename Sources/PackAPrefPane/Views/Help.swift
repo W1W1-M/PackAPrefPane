@@ -9,8 +9,6 @@ import SwiftUI
 // MARK: - Views
 struct Help: View {
     // Variables
-    @Binding var alert: PackAPrefPane.alerts
-    @Binding var alertPresented: Bool
     @State private var faqExpanded: Bool = false
     @State private var whatsNewExpanded: Bool = false
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
@@ -27,8 +25,7 @@ struct Help: View {
                 }
             })
             Button(action: {
-                alert = PackAPrefPane.alerts.supportAlert
-                alertPresented.toggle()
+                //
             }, label: {
                 HStack {
                     Text("Support")
@@ -94,10 +91,7 @@ struct Help_Previews: PreviewProvider {
     @State var alertPresented: Bool = false
     static var previews: some View {
         Form{
-            Help(
-                alert: .constant(PackAPrefPane.alerts.supportAlert),
-                alertPresented: .constant(false)
-            )
+            Help()
         }.previewLayout(.sizeThatFits)
     }
 }
