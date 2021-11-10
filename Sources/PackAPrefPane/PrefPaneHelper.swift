@@ -7,7 +7,7 @@
 // MARK: - Modules
 import Foundation
 import UIKit
-// MARK: - Struct
+// MARK: - Structs
 /// Custom type for third party code information
 public struct ThirdPartyCode: Identifiable {
     public let id = UUID()
@@ -15,10 +15,17 @@ public struct ThirdPartyCode: Identifiable {
     let sourceURLText: String
     let sourceLicenseText: String
 }
+/// Custom type for FAQ information
+public struct FrequentlyAskedQuestions: Identifiable {
+    public let id = UUID()
+    let question: String
+    let answer: String
+}
 /// Custom type to group custom input data
 public struct PackAPrefPaneData {
     // Help constants from parent view
-    
+    let changelogText: String
+    let faq: [FrequentlyAskedQuestions]
     // AppInfo constants from parent view
     let developerInfoText: String
     let appCopyrightText: String
@@ -28,7 +35,7 @@ public struct PackAPrefPaneData {
     let privacyPolicyText: String
     let specialThanksText: String
 }
-// MARK: - Class
+// MARK: - Classes
 class PrefPaneHelper {
     // MARK: - Functions
     /// Function that opens App store review page

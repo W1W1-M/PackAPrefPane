@@ -12,6 +12,8 @@ struct Help: View {
     @State private var faqExpanded: Bool = false
     @State private var whatsNewExpanded: Bool = false
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    let changelogText: String
+    let faq: [FrequentlyAskedQuestions]
     // UI
     var body: some View {
         Section(header: Text("🆘 Help")) { // Customize this view
@@ -43,43 +45,23 @@ struct Help: View {
                     }
                     Spacer()
                     HStack {
-                        Text("- New Feature \n- Upgraded feature \n- Bug fixed")
+                        Text(changelogText)
                         Spacer()
                     }
                 }
             }
             DisclosureGroup("FAQ", isExpanded: $faqExpanded) {
-                VStack {
-                    HStack {
-                        Text("Q.1: How is this example calculated ?").font(.headline)
+                ForEach(faq) { FrequentlyAskedQuestions in
+                    VStack {
+                        HStack {
+                            Text(FrequentlyAskedQuestions.question).font(.headline)
+                            Spacer()
+                        }
                         Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those.")
-                        Spacer()
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Q.2: What % of this can I use ?").font(.headline)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand.")
-                        Spacer()
-                    }
-                }
-                VStack {
-                    HStack {
-                        Text("Q.3: How are those calculated ?").font(.headline)
-                        Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Text("A.3: Things are the difference between the total amount of the that using this and the same if only this was used.")
-                        Spacer()
+                        HStack {
+                            Text(FrequentlyAskedQuestions.answer)
+                            Spacer()
+                        }
                     }
                 }
             }
@@ -91,7 +73,19 @@ struct Help_Previews: PreviewProvider {
     @State var alertPresented: Bool = false
     static var previews: some View {
         Form{
-            Help()
+            Help(
+                changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
+                faq: [
+                    FrequentlyAskedQuestions(
+                        question: "Q.1: How is this example calculated ?",
+                        answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
+                    ),
+                    FrequentlyAskedQuestions(
+                        question: "Q.2: What % of this can I use ?",
+                        answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
+                    )
+                ]
+            )
         }.previewLayout(.sizeThatFits)
     }
 }

@@ -30,7 +30,10 @@ public struct PackAPrefPane<Content: View>: View {
                 // Your nested app settings view
                 appSettingsView
                 // Help section
-                Help()
+                Help(
+                    changelogText: packAPrefPaneData.changelogText,
+                    faq: packAPrefPaneData.faq
+                )
                 // App information section
                 AppInfo(
                     developerInfoText: packAPrefPaneData.developerInfoText,
@@ -79,6 +82,17 @@ struct PackAPrefPane_Previews: PreviewProvider {
         PackAPrefPane(
             settingsSheetPresented: .constant(true),
             packAPrefPaneData: PackAPrefPaneData(
+                changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
+                faq: [
+                    FrequentlyAskedQuestions(
+                        question: "Q.1: How is this example calculated ?",
+                        answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
+                    ),
+                    FrequentlyAskedQuestions(
+                        question: "Q.2: What % of this can I use ?",
+                        answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
+                    )
+                ],
                 developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
                 appCopyrightText: "Your app Copyright © 2021-2022",
                 thirdPartyCode: [
