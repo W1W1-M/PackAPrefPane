@@ -19,46 +19,46 @@
 * Setup your custom `appSettingsView`
 * Setup a var to show sheet `settingsSheetPresented`
 * Use PackAPrefPane view, example:
-`PackAPrefPane(`
-`    settingsSheetPresented: yourSheetbool,`
-`    packAPrefPaneData:  yourPrefPaneData`
-`) {`
-`    Section(header: Text("Example settings view")) {`
-`    Text("Some important app setting")`
-`   }`
-`}`
+`PackAPrefPane(`  
+`    settingsSheetPresented: yourSheetbool,`  
+`    packAPrefPaneData:  yourPrefPaneData`  
+`) {`  
+`    Section(header: Text("Example settings view")) {`  
+`    Text("Some important app setting")`  
+`   }`  
+`}`  
 
 ### PackAPrefPaneData type
 #### Help section
-`showFeedbackLink: Bool`
-`showSupportLink: Bool`
-`showWhatsNew: Bool`
-`showFAQ: Bool`
-`appID: String`
-`changelogText: String`
-`faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions
+`showFeedbackLink: Bool`  
+`showSupportLink: Bool`  
+`showWhatsNew: Bool`  
+`showFAQ: Bool`  
+`appID: String`  
+`changelogText: String`  
+`faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions  
 #### AppInfo section
-`developerInfoText: String`
-`appCopyrightText: String`
-`thirdPartyCode: [ThirdPartyCode]` // Array of ThirdPartyCode
+`developerInfoText: String`  
+`appCopyrightText: String`  
+`thirdPartyCode: [ThirdPartyCode]` // Array of ThirdPartyCode  
 #### Legal section
-`showDisclaimer: Bool`
-`showPrivacyPolicy: Bool`
-`showSpecialThanks: Bool`
-`disclaimerText: String`
-`privacyPolicyText: String`
-`specialThanksText: String`
+`showDisclaimer: Bool`  
+`showPrivacyPolicy: Bool`  
+`showSpecialThanks: Bool`  
+`disclaimerText: String`  
+`privacyPolicyText: String`  
+`specialThanksText: String`  
 
 ### FrequentlyAskedQuestions type
-`id = UUID()` // Identifiable for ForEach
-`question: String`
-`answer: String`
+`id = UUID()` // Identifiable for ForEach  
+`question: String`  
+`answer: String`  
 
 ### ThirdPartyCode type
-`id = UUID()`// Identifiable for ForEach
-`sourceNameText: String` // Third party code name and developer
-`sourceURLText: String` // Full URL to code web page
-`sourceLicenseText: String`// Source code license name
+`id = UUID()`// Identifiable for ForEach  
+`sourceNameText: String` // Third party code name and developer  
+`sourceURLText: String` // Full URL to code web page  
+`sourceLicenseText: String`// Source code license name  
 
 ## Project resources
 * Mind map in MindNode format
