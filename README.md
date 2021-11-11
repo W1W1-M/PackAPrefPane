@@ -20,12 +20,12 @@
 * Setup a var to show sheet `settingsSheetPresented`
 * Use PackAPrefPane view, example:
 `PackAPrefPane(`  
-`    settingsSheetPresented: yourSheetbool,`  
-`    packAPrefPaneData:  yourPrefPaneData`  
+    `settingsSheetPresented: yourSheetbool,`  
+    `packAPrefPaneData:  yourPrefPaneData`  
 `) {`  
-`    Section(header: Text("Example settings view")) {`  
-`    Text("Some important app setting")`  
-`   }`  
+    `Section(header: Text("Example settings view")) {`  
+        `Text("Some important app setting")`  
+    `}`  
 `}`  
 
 ### PackAPrefPaneData type
