@@ -10,6 +10,15 @@ import UIKit
 // MARK: - Structs
 /// Custom type for third party code information
 public struct ThirdPartyCode: Identifiable {
+    public init( // public init for public struct
+        sourceNameText: String,
+        sourceURLText: String,
+        sourceLicenseText: String
+    ) {
+        self.sourceNameText = sourceNameText
+        self.sourceURLText = sourceURLText
+        self.sourceLicenseText = sourceLicenseText
+    }
     public let id = UUID()
     let sourceNameText: String
     let sourceURLText: String
@@ -17,12 +26,54 @@ public struct ThirdPartyCode: Identifiable {
 }
 /// Custom type for FAQ information
 public struct FrequentlyAskedQuestions: Identifiable {
+    public init( // public init for public struct
+        question: String,
+        answer: String
+    ) {
+        self.question = question
+        self.answer = answer
+    }
     public let id = UUID()
     let question: String
     let answer: String
 }
 /// Custom type to group custom input data
 public struct PackAPrefPaneData {
+    public init( // public init for public struct
+        showFeedbackLink: Bool,
+        showSupportLink: Bool,
+        showWhatsNew: Bool,
+        showFAQ: Bool,
+        appID: String,
+        changelogText: String,
+        faq: [FrequentlyAskedQuestions],
+        developerInfoText: String,
+        appCopyrightText: String,
+        thirdPartyCode: [ThirdPartyCode],
+        showDisclaimer: Bool,
+        showPrivacyPolicy: Bool,
+        showSpecialThanks: Bool,
+        disclaimerText: String,
+        privacyPolicyText: String,
+        specialThanksText: String
+    ) {
+        self.showFeedbackLink = showFeedbackLink
+        self.showSupportLink = showSupportLink
+        self.showWhatsNew = showWhatsNew
+        self.showFAQ = showFAQ
+        self.appID = appID
+        self.changelogText = changelogText
+        self.faq = faq
+        self.developerInfoText = developerInfoText
+        self.appCopyrightText = appCopyrightText
+        self.thirdPartyCode = thirdPartyCode
+        self.showDisclaimer = showDisclaimer
+        self.showPrivacyPolicy = showPrivacyPolicy
+        self.showSpecialThanks = showSpecialThanks
+        self.disclaimerText = disclaimerText
+        self.privacyPolicyText = privacyPolicyText
+        self.specialThanksText = specialThanksText
+    }
     // Help constants from parent view
     let showFeedbackLink: Bool
     let showSupportLink: Bool

@@ -55,10 +55,10 @@
 `answer: String`  
 
 ### ThirdPartyCode type
-`id = UUID()`// Identifiable for ForEach  
+`id = UUID()` // Identifiable for ForEach  
 `sourceNameText: String` // Third party code name and developer  
 `sourceURLText: String` // Full URL to code web page  
-`sourceLicenseText: String`// Source code license name  
+`sourceLicenseText: String` // Source code license name  
 
 ## Project resources
 * Mind map in MindNode format
