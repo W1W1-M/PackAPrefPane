@@ -24,6 +24,10 @@ public struct FrequentlyAskedQuestions: Identifiable {
 /// Custom type to group custom input data
 public struct PackAPrefPaneData {
     // Help constants from parent view
+    let showFeedbackLink: Bool
+    let showSupportLink: Bool
+    let showWhatsNew: Bool
+    let showFAQ: Bool
     let appID: String
     let changelogText: String
     let faq: [FrequentlyAskedQuestions]
@@ -32,6 +36,9 @@ public struct PackAPrefPaneData {
     let appCopyrightText: String
     let thirdPartyCode: [ThirdPartyCode]
     // Legal constant from parent view
+    let showDisclaimer: Bool
+    let showPrivacyPolicy: Bool
+    let showSpecialThanks: Bool
     let disclaimerText: String
     let privacyPolicyText: String
     let specialThanksText: String

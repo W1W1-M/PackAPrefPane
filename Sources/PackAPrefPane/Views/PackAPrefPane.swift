@@ -27,25 +27,14 @@ public struct PackAPrefPane<Content: View>: View {
     public var body: some View {
         NavigationView {
             Form {
-                // Your nested app settings view
+                // Your nested app settings view section
                 appSettingsView
                 // Help section
-                Help(
-                    appID: packAPrefPaneData.appID,
-                    changelogText: packAPrefPaneData.changelogText,
-                    faq: packAPrefPaneData.faq
-                )
+                Help(packAPrefPaneData: packAPrefPaneData)
                 // App information section
-                AppInfo(
-                    developerInfoText: packAPrefPaneData.developerInfoText,
-                    appCopyrightText: packAPrefPaneData.appCopyrightText,
-                    thirdPartyCode: packAPrefPaneData.thirdPartyCode
-                )
+                AppInfo(packAPrefPaneData: packAPrefPaneData)
                 // Legal section
-                Legal(
-                    disclaimerText: packAPrefPaneData.disclaimerText,
-                    privacyPolicyText: packAPrefPaneData.privacyPolicyText,
-                    specialThanksText: packAPrefPaneData.specialThanksText)
+                Legal(packAPrefPaneData: packAPrefPaneData)
             }.navigationTitle("Settings ⚙️")
             .toolbar { // Toolbar with cancel & save buttons
                 ToolbarItem(placement: .cancellationAction) {
@@ -83,6 +72,10 @@ struct PackAPrefPane_Previews: PreviewProvider {
         PackAPrefPane(
             settingsSheetPresented: .constant(true),
             packAPrefPaneData: PackAPrefPaneData(
+                showFeedbackLink: true,
+                showSupportLink: true,
+                showWhatsNew: true,
+                showFAQ: true,
                 appID: "1564978634",
                 changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
                 faq: [
@@ -109,6 +102,9 @@ struct PackAPrefPane_Previews: PreviewProvider {
                         sourceLicenseText: "Copyright © All rights reserved"
                     )
                 ],
+                showDisclaimer: true,
+                showPrivacyPolicy: true,
+                showSpecialThanks: true,
                 disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
                 privacyPolicyText: "We don't store your data.",
                 specialThanksText: "Thanks to SwiftUI Jam"
