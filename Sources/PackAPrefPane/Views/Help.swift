@@ -12,13 +12,14 @@ struct Help: View {
     @State private var faqExpanded: Bool = false
     @State private var whatsNewExpanded: Bool = false
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    let appID: String
     let changelogText: String
     let faq: [FrequentlyAskedQuestions]
     // UI
     var body: some View {
-        Section(header: Text("🆘 Help")) { // Customize this view
+        Section(header: Text("🆘 Help")) {
             Button(action: {
-                PrefPaneHelper.appFeedback()
+                PrefPaneHelper.appFeedback(appID: appID)
             }, label: {
                 HStack {
                     Text("Feedback")
@@ -74,6 +75,7 @@ struct Help_Previews: PreviewProvider {
     static var previews: some View {
         Form{
             Help(
+                appID: "1564978634",
                 changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
                 faq: [
                     FrequentlyAskedQuestions(

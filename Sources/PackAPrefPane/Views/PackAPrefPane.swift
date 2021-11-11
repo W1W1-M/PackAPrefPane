@@ -31,6 +31,7 @@ public struct PackAPrefPane<Content: View>: View {
                 appSettingsView
                 // Help section
                 Help(
+                    appID: packAPrefPaneData.appID,
                     changelogText: packAPrefPaneData.changelogText,
                     faq: packAPrefPaneData.faq
                 )
@@ -82,6 +83,7 @@ struct PackAPrefPane_Previews: PreviewProvider {
         PackAPrefPane(
             settingsSheetPresented: .constant(true),
             packAPrefPaneData: PackAPrefPaneData(
+                appID: "1564978634",
                 changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
                 faq: [
                     FrequentlyAskedQuestions(

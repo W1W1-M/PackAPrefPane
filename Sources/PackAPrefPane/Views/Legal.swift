@@ -21,7 +21,7 @@ struct Legal: View {
     let specialThanksText: String
     // UI
     var body: some View {
-        Section(header: Text("❗️ Legal")) { // Customize this view
+        Section(header: Text("❗️ Legal")) {
             Button(action: {
                 alert = alerts.disclaimerAlert
                 alertPresented.toggle()

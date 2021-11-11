@@ -17,7 +17,7 @@ struct AppInfo: View {
     let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
     // UI
     var body: some View {
-        Section(header: HStack { // Customize this view
+        Section(header: HStack {
             Text("⚠️ Version \(appVersion)")
             Spacer()
             Text("\(buildVersion) Build ⚒")

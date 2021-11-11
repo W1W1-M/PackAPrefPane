@@ -24,6 +24,7 @@ public struct FrequentlyAskedQuestions: Identifiable {
 /// Custom type to group custom input data
 public struct PackAPrefPaneData {
     // Help constants from parent view
+    let appID: String
     let changelogText: String
     let faq: [FrequentlyAskedQuestions]
     // AppInfo constants from parent view
@@ -38,9 +39,9 @@ public struct PackAPrefPaneData {
 // MARK: - Classes
 class PrefPaneHelper {
     // MARK: - Functions
-    /// Function that opens App store review page
-    static func appFeedback() { // Replace the XXXXXXXXXX below with the App Store ID for your app
-        let reviewURL = "https://apps.apple.com/app/idXXXXXXXXXX?action=write-review"
+    /// Function that opens App store review page using your apps App store ID XXXXXXXXXX
+    static func appFeedback(appID: String) {
+        let reviewURL = "https://apps.apple.com/app/id"+appID+"?action=write-review"
         guard let writeReviewURL = URL(string: reviewURL) else { fatalError("Expected a valid URL") }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
