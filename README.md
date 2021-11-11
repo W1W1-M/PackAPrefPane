@@ -14,9 +14,19 @@
 * Target: iOS 14 >
 
 ## Usage
-* Import PackAPrefPane Swift package
-* Create a var with PackAPrefPaneData type
-* Pass PackAPrefPaneData var into PackAPrefPane view
+* Import `PackAPrefPane` Swift package
+* Setup a var with `PackAPrefPaneData` type
+* Setup your custom `appSettingsView`
+* Setup a var to show sheet `settingsSheetPresented`
+* Use PackAPrefPane view, example:
+`PackAPrefPane(`
+`    settingsSheetPresented: yourSheetbool,`
+`    packAPrefPaneData:  yourPrefPaneData`
+`) {`
+`    Section(header: Text("Example settings view")) {`
+`    Text("Some important app setting")`
+`   }`
+`}`
 
 ### PackAPrefPaneData type
 #### Help section
@@ -41,8 +51,8 @@
 
 ### FrequentlyAskedQuestions type
 `id = UUID()` // Identifiable for ForEach
-`question: String
-`answer: String
+`question: String`
+`answer: String`
 
 ### ThirdPartyCode type
 `id = UUID()`// Identifiable for ForEach
