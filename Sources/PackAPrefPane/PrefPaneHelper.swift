@@ -107,10 +107,12 @@ public struct PackAPrefPaneData {
 class PrefPaneHelper {
     // MARK: - Functions
     /// Function that opens App store review page using your apps App store ID XXXXXXXXXX
-    static func appFeedback(appID: String) {
-        let reviewURL = "https://apps.apple.com/app/id\(appID)?action=write-review"
-        guard let writeReviewURL = URL(string: reviewURL) else { fatalError("Expected a valid URL") }
-        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+    static func appFeedback(appID: String) -> URL {
+        if let appStoreURL = URL(string: "https://apps.apple.com/app/id\(appID)?action=write-review".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            return appStoreURL
+        } else {
+            return URL(string: "")!
+        }
     }
     /// Function to setup support email URL
     static func setSupportEmailURL(supportEmailAddress: String, supportEmailSubject: String, supportEmailBody: String) -> URL {

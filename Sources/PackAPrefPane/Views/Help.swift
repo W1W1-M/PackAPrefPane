@@ -17,15 +17,13 @@ struct Help: View {
     var body: some View {
         Section(header: Text("🆘 Help")) {
             if packAPrefPaneData.showFeedbackLink {
-                Button(action: {
-                    PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)
-                }, label: {
+                Link(destination: PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)) {
                     HStack {
                         Text("Feedback")
                         Spacer()
                         Image(systemName: "plus.bubble.fill").imageScale(.large)
                     }
-                })
+                }
             }
             if packAPrefPaneData.showSupportLink {
                 Link(destination: PrefPaneHelper.setSupportEmailURL(
