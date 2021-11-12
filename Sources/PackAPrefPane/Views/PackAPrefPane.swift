@@ -77,6 +77,9 @@ struct PackAPrefPane_Previews: PreviewProvider {
                 showWhatsNew: true,
                 showFAQ: true,
                 appID: "1564978634",
+                supportEmailAddress: "support@super85.fr",
+                supportEmailSubject: "PackAPrefPane Test",
+                supportEmailBody: "Testing PackAPrefPane",
                 changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
                 faq: [
                     FrequentlyAskedQuestions(

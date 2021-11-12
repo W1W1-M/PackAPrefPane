@@ -45,6 +45,9 @@ public struct PackAPrefPaneData {
         showWhatsNew: Bool,
         showFAQ: Bool,
         appID: String,
+        supportEmailAddress: String,
+        supportEmailSubject: String,
+        supportEmailBody: String,
         changelogText: String,
         faq: [FrequentlyAskedQuestions],
         developerInfoText: String,
@@ -62,6 +65,9 @@ public struct PackAPrefPaneData {
         self.showWhatsNew = showWhatsNew
         self.showFAQ = showFAQ
         self.appID = appID
+        self.supportEmailAddress = supportEmailAddress
+        self.supportEmailSubject = supportEmailSubject
+        self.supportEmailBody = supportEmailBody
         self.changelogText = changelogText
         self.faq = faq
         self.developerInfoText = developerInfoText
@@ -80,6 +86,9 @@ public struct PackAPrefPaneData {
     let showWhatsNew: Bool
     let showFAQ: Bool
     let appID: String
+    let supportEmailAddress: String
+    let supportEmailSubject: String
+    let supportEmailBody: String
     let changelogText: String
     let faq: [FrequentlyAskedQuestions]
     // AppInfo constants from parent view
@@ -99,8 +108,32 @@ class PrefPaneHelper {
     // MARK: - Functions
     /// Function that opens App store review page using your apps App store ID XXXXXXXXXX
     static func appFeedback(appID: String) {
-        let reviewURL = "https://apps.apple.com/app/id"+appID+"?action=write-review"
+        let reviewURL = "https://apps.apple.com/app/id\(appID)?action=write-review"
         guard let writeReviewURL = URL(string: reviewURL) else { fatalError("Expected a valid URL") }
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+    }
+    /// Function to setup support email URL
+    static func setSupportEmailURL(supportEmailAddress: String, supportEmailSubject: String, supportEmailBody: String) -> URL {
+        if let supportEmailURL = URL(string: "mailto:\(supportEmailAddress)?subject=\(supportEmailSubject)&body=\(supportEmailBody)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            return supportEmailURL
+        } else {
+            return URL(string: "")!
+        }
+    }
+    /// Function that checks if disclaimer accepted else shows disclaimer
+    static func checkLegalDisclaimer() {
+        
+    }
+    /// Function that checks if disclaimer accepted else shows disclaimer
+    static func acceptLegalDisclaimer() {
+        
+    }
+    /// Function that checks if privacy policy read else shows privacy policy
+    static func checkLegalPrivacyPolicy() {
+        
+    }
+    /// Function that checks if privacy policy read else shows privacy policy
+    static func acceptLegalPrivacyPolicy() {
+        
     }
 }

@@ -1,6 +1,7 @@
 # **PackAPrefPane**
 
 ### *Reusable & customizable SwiftUI settings sheet as a Swift package*
+### Initial version made at November 2021 SwiftUI Jam https://www.swiftuijam.com
 
 ## Features
 * Swift package
@@ -16,8 +17,8 @@
 ## Usage
 * Import `PackAPrefPane` Swift package
 * Setup a var with `PackAPrefPaneData` type
-* Setup your custom `appSettingsView`
-* Setup a var to show sheet `settingsSheetPresented`
+* Setup your custom `appSettingsView` in a SwiftUI `Section` view
+* Make sure you have a var for showing sheets `settingsSheetPresented: Bool`
 * Use PackAPrefPane view, example:
 `PackAPrefPane(`  
     `settingsSheetPresented: yourSheetbool,`  
@@ -62,8 +63,6 @@
 
 ## Project resources
 * Mind map in MindNode format
-
-### Initial version made at November 2021 SwiftUI Jam https://www.swiftuijam.com
 
 ## License
 PackAPrefPane is designed and coded by W1W1-M and released under MIT license

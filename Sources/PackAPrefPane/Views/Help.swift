@@ -28,15 +28,18 @@ struct Help: View {
                 })
             }
             if packAPrefPaneData.showSupportLink {
-                Button(action: {
-                    //
-                }, label: {
+                Link(destination: PrefPaneHelper.setSupportEmailURL(
+                        supportEmailAddress: packAPrefPaneData.supportEmailAddress,
+                        supportEmailSubject: packAPrefPaneData.supportEmailSubject,
+                        supportEmailBody: packAPrefPaneData.supportEmailBody
+                    )
+                ) {
                     HStack {
                         Text("Support")
                         Spacer()
                         Image(systemName: "cross.case.fill").imageScale(.large)
                     }
-                })
+                }
             }
             if packAPrefPaneData.showWhatsNew {
                 DisclosureGroup("What's new ?", isExpanded: $whatsNewExpanded) {
@@ -87,6 +90,9 @@ struct Help_Previews: PreviewProvider {
                     showWhatsNew: true,
                     showFAQ: true,
                     appID: "1564978634",
+                    supportEmailAddress: "support@super85.fr",
+                    supportEmailSubject: "PackAPrefPane Test",
+                    supportEmailBody: "Testing PackAPrefPane",
                     changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
                     faq: [
                         FrequentlyAskedQuestions(
