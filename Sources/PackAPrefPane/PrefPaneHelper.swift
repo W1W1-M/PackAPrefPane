@@ -55,10 +55,12 @@ public struct PackAPrefPaneData {
         thirdPartyCode: [ThirdPartyCode],
         showDisclaimer: Bool,
         showPrivacyPolicy: Bool,
-        showSpecialThanks: Bool,
+        showAcknowledgments: Bool,
+        showTOS: Bool,
         disclaimerText: String,
         privacyPolicyText: String,
-        specialThanksText: String
+        acknowledgmentsText: String,
+        termsOfServiceText: String
     ) {
         self.showFeedbackLink = showFeedbackLink
         self.showSupportLink = showSupportLink
@@ -75,10 +77,12 @@ public struct PackAPrefPaneData {
         self.thirdPartyCode = thirdPartyCode
         self.showDisclaimer = showDisclaimer
         self.showPrivacyPolicy = showPrivacyPolicy
-        self.showSpecialThanks = showSpecialThanks
+        self.showAcknowledgments = showAcknowledgments
+        self.showTOS = showTOS
         self.disclaimerText = disclaimerText
         self.privacyPolicyText = privacyPolicyText
-        self.specialThanksText = specialThanksText
+        self.acknowledgmentsText = acknowledgmentsText
+        self.termsOfServiceText = termsOfServiceText
     }
     // Help constants from parent view
     let showFeedbackLink: Bool
@@ -98,10 +102,12 @@ public struct PackAPrefPaneData {
     // Legal constant from parent view
     let showDisclaimer: Bool
     let showPrivacyPolicy: Bool
-    let showSpecialThanks: Bool
+    let showAcknowledgments: Bool
+    let showTOS: Bool
     let disclaimerText: String
     let privacyPolicyText: String
-    let specialThanksText: String
+    let acknowledgmentsText: String
+    let termsOfServiceText: String
 }
 // MARK: - Classes
 class PrefPaneHelper {

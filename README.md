@@ -15,6 +15,8 @@
 * Open source
 * Target: iOS 14 >
 
+![PackAPrefPane preview](Preview.png)
+
 ## Usage
 * Import `PackAPrefPane` Swift package
 * Setup a var with `PackAPrefPaneData` type

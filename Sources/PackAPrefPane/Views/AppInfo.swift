@@ -102,10 +102,12 @@ struct AppInfo_Previews: PreviewProvider {
                     ],
                     showDisclaimer: true,
                     showPrivacyPolicy: true,
-                    showSpecialThanks: true,
+                    showAcknowledgments: true,
+                    showTOS: true,
                     disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
                     privacyPolicyText: "We don't store your data.",
-                    specialThanksText: "Thanks to SwiftUI Jam"
+                    acknowledgmentsText: "Thanks to SwiftUI Jam",
+                    termsOfServiceText: "Some terms of service that should be read by users."
                 )
             )
         }.previewLayout(.sizeThatFits)

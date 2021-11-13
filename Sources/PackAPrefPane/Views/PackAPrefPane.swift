@@ -35,7 +35,7 @@ public struct PackAPrefPane<Content: View>: View {
                 AppInfo(packAPrefPaneData: packAPrefPaneData)
                 // Legal section
                 Legal(packAPrefPaneData: packAPrefPaneData)
-            }.navigationTitle("Settings ⚙️")
+            }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
             .toolbar { // Toolbar with cancel & save buttons
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
@@ -107,14 +107,21 @@ struct PackAPrefPane_Previews: PreviewProvider {
                 ],
                 showDisclaimer: true,
                 showPrivacyPolicy: true,
-                showSpecialThanks: true,
+                showAcknowledgments: true,
+                showTOS: true,
                 disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
                 privacyPolicyText: "We don't store your data.",
-                specialThanksText: "Thanks to SwiftUI Jam"
+                acknowledgmentsText: "Thanks to SwiftUI Jam",
+                termsOfServiceText: "Some terms of service that should be read by users."
             )
         ) {
             Section(header: Text("🎛 App settings")) {
-                Text("Some important app setting")
+                Toggle(isOn: .constant(true)) {
+                    Text("Some important app setting")
+                }
+                Toggle(isOn: .constant(false)) {
+                    Text("Some other app setting")
+                }
             }
         }
     }

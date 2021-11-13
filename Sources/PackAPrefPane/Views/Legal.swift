@@ -9,6 +9,7 @@ import SwiftUI
 // MARK: - Views
 struct Legal: View {
     // Variables
+    @State private var tosExpanded: Bool = false
     @State private var alertPresented: Bool = false
     @State private var alert: alerts = .disclaimerAlert
     let packAPrefPaneData: PackAPrefPaneData
@@ -19,14 +20,14 @@ struct Legal: View {
     }
     // UI
     var body: some View {
-        Section(header: Text("❗️ Legal")) {
+        Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
             if packAPrefPaneData.showDisclaimer {
                 Button(action: {
                     alert = alerts.disclaimerAlert
                     alertPresented.toggle()
                 }, label: {
                     HStack {
-                        Text("Legal disclaimer")
+                        Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                         Spacer()
                         Image(systemName: "checkmark.shield.fill").imageScale(.large)
                     }
@@ -38,30 +39,35 @@ struct Legal: View {
                     alertPresented.toggle()
                 }, label: {
                     HStack {
-                        Text("Privacy policy")
+                        Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                         Spacer()
                         Image(systemName: "lock.shield.fill").imageScale(.large)
                     }
                 })
             }
-            if packAPrefPaneData.showSpecialThanks {
+            if packAPrefPaneData.showAcknowledgments {
                 Button(action: {
                     alert = alerts.specialThanksAlert
                     alertPresented.toggle()
                 }, label: {
                     HStack {
-                        Text("Special Thanks")
+                        Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                         Spacer()
                         Image(systemName: "figure.wave").imageScale(.large)
                     }
                 })
+            }
+            if packAPrefPaneData.showTOS {
+                DisclosureGroup(NSLocalizedString("Terms of Service", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $tosExpanded) {
+                    Text(packAPrefPaneData.termsOfServiceText)
+                }
             }
         }
         .alert(isPresented: $alertPresented, content: { // alert switch cases
             switch alert {
             case .disclaimerAlert:
                 return Alert(
-                    title: Text("Legal disclaimer"),
+                    title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
                     message: Text(packAPrefPaneData.disclaimerText),
                     dismissButton: .default(Text("OK")) {
                         // Legal disclaimer accepted
@@ -70,14 +76,14 @@ struct Legal: View {
                 )
             case .privacyAlert:
                 return Alert(
-                    title: Text("Privacy policy"),
+                    title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
                     message: Text(packAPrefPaneData.privacyPolicyText),
                     dismissButton: .default(Text("OK"))
                 )
             case .specialThanksAlert:
                 return Alert(
-                    title: Text("Special Thanks"),
-                    message: Text(packAPrefPaneData.specialThanksText),
+                    title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                    message: Text(packAPrefPaneData.acknowledgmentsText),
                     dismissButton: .default(Text("OK"))
                 )
             }
@@ -125,10 +131,12 @@ struct Legal_Previews: PreviewProvider {
                     ],
                     showDisclaimer: true,
                     showPrivacyPolicy: true,
-                    showSpecialThanks: true,
+                    showAcknowledgments: true,
+                    showTOS: true,
                     disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
                     privacyPolicyText: "We don't store your data.",
-                    specialThanksText: "Thanks to SwiftUI Jam"
+                    acknowledgmentsText: "Thanks to SwiftUI Jam",
+                    termsOfServiceText: "Some terms of service that should be read by users."
                 )
             )
         }.previewLayout(.sizeThatFits)

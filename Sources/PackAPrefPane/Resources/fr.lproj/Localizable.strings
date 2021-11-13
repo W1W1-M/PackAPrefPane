@@ -1,4 +1,7 @@
 /* No comment provided by engineer. */
+"Settings ⚙️" = "Paramètres ⚙️";
+
+/* No comment provided by engineer. */
 "Cancel" = "Annuler";
 
 /* No comment provided by engineer. */
@@ -11,13 +14,31 @@
 "Feedback" = "Commentaires";
 
 /* No comment provided by engineer. */
-"Support" = "Support";
+"Support" = "Assistance";
 
 /* No comment provided by engineer. */
 "What's New" = "Nouveautés";
+
+/* No comment provided by engineer. */
+"Release Notes v%@" = "Notes de version v%@";
 
 /* No comment provided by engineer. */
 "FAQ" = "FAQ";
 
 /* No comment provided by engineer. */
 "Third-Party Code" = "Code Tiers";
+
+/* No comment provided by engineer. */
+"❗️ Legal" = "❗️ Légal";
+
+/* No comment provided by engineer. */
+"Legal disclaimer" = "Mentions légales";
+
+/* No comment provided by engineer. */
+"Privacy policy" = "Politique de confidentialité";
+
+/* No comment provided by engineer. */
+"Acknowledgments" = "Remerciements";
+
+/* No comment provided by engineer. */
+"Terms of Service" = "Conditions d'utilisation";
