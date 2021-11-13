@@ -19,7 +19,7 @@ struct Help: View {
             if packAPrefPaneData.showFeedbackLink {
                 Link(destination: PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)) {
                     HStack {
-                        Text("Feedback")
+                        Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                         Spacer()
                         Image(systemName: "plus.bubble.fill").imageScale(.large)
                     }
@@ -33,14 +33,14 @@ struct Help: View {
                     )
                 ) {
                     HStack {
-                        Text("Support")
+                        Text(NSLocalizedString("Support", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                         Spacer()
                         Image(systemName: "cross.case.fill").imageScale(.large)
                     }
                 }
             }
             if packAPrefPaneData.showWhatsNew {
-                DisclosureGroup("What's new ?", isExpanded: $whatsNewExpanded) {
+                DisclosureGroup("What's new", isExpanded: $whatsNewExpanded) {
                     VStack {
                         HStack {
                             Text("Changelog for v\(appVersion)")
@@ -57,7 +57,7 @@ struct Help: View {
                 }
             }
             if packAPrefPaneData.showFAQ {
-                DisclosureGroup("FAQ", isExpanded: $faqExpanded) {
+                DisclosureGroup(NSLocalizedString("FAQ", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $faqExpanded) {
                     ForEach(packAPrefPaneData.faq) { FrequentlyAskedQuestions in
                         VStack {
                             HStack {

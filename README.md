@@ -6,10 +6,11 @@
 ## Features
 * Swift package
 * 100% Swift
-* 99% SwiftUI
+* 100% SwiftUI
 * Simple design
 * Lightweight
 * Customizable
+* Localized for EN & FR
 * Nothing exotic
 * Open source
 * Target: iOS 14 >
@@ -19,7 +20,7 @@
 * Setup a var with `PackAPrefPaneData` type
 * Setup your custom `appSettingsView` in a SwiftUI `Section` view
 * Make sure you have a var for showing sheets `settingsSheetPresented: Bool`
-* Use PackAPrefPane view, example:
+* Use PackAPrefPane view, example:  
 `PackAPrefPane(`  
     `settingsSheetPresented: yourSheetbool,`  
     `packAPrefPaneData:  yourPrefPaneData`  
@@ -31,10 +32,10 @@
 
 ### PackAPrefPaneData type
 #### Help section
-`showFeedbackLink: Bool` // Show or drop feedback link
-`showSupportLink: Bool` // Show or drop support link
-`showWhatsNew: Bool` // Show or drop changelog text
-`showFAQ: Bool` // Show or drop frequently asked questions disclosure group
+`showFeedbackLink: Bool` // Show or drop feedback link  
+`showSupportLink: Bool` // Show or drop support link  
+`showWhatsNew: Bool` // Show or drop changelog text  
+`showFAQ: Bool` // Show or drop frequently asked questions disclosure group  
 `appID: String`  
 `changelogText: String`  
 `faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions  
@@ -43,9 +44,9 @@
 `appCopyrightText: String`  
 `thirdPartyCode: [ThirdPartyCode]` // Array of ThirdPartyCode  
 #### Legal section
-`showDisclaimer: Bool` // Show or drop disclaimer button
-`showPrivacyPolicy: Bool` // Show or drop privacy policy button
-`showSpecialThanks: Bool` // Show or drop special thanks button
+`showDisclaimer: Bool` // Show or drop disclaimer button  
+`showPrivacyPolicy: Bool` // Show or drop privacy policy button  
+`showSpecialThanks: Bool` // Show or drop special thanks button  
 `disclaimerText: String`  
 `privacyPolicyText: String`  
 `specialThanksText: String`  
