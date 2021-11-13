@@ -15,7 +15,7 @@ struct Help: View {
     let packAPrefPaneData: PackAPrefPaneData
     // UI
     var body: some View {
-        Section(header: Text("🆘 Help")) {
+        Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
             if packAPrefPaneData.showFeedbackLink {
                 Link(destination: PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)) {
                     HStack {

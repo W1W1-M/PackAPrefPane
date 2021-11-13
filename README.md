@@ -31,10 +31,10 @@
 
 ### PackAPrefPaneData type
 #### Help section
-`showFeedbackLink: Bool`  
-`showSupportLink: Bool`  
-`showWhatsNew: Bool`  
-`showFAQ: Bool`  
+`showFeedbackLink: Bool` // Show or drop feedback link
+`showSupportLink: Bool` // Show or drop support link
+`showWhatsNew: Bool` // Show or drop changelog text
+`showFAQ: Bool` // Show or drop frequently asked questions disclosure group
 `appID: String`  
 `changelogText: String`  
 `faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions  
@@ -43,9 +43,9 @@
 `appCopyrightText: String`  
 `thirdPartyCode: [ThirdPartyCode]` // Array of ThirdPartyCode  
 #### Legal section
-`showDisclaimer: Bool`  
-`showPrivacyPolicy: Bool`  
-`showSpecialThanks: Bool`  
+`showDisclaimer: Bool` // Show or drop disclaimer button
+`showPrivacyPolicy: Bool` // Show or drop privacy policy button
+`showSpecialThanks: Bool` // Show or drop special thanks button
 `disclaimerText: String`  
 `privacyPolicyText: String`  
 `specialThanksText: String`  
