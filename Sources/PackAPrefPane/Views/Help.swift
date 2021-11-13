@@ -40,7 +40,7 @@ struct Help: View {
                 }
             }
             if packAPrefPaneData.showWhatsNew {
-                DisclosureGroup("What's new", isExpanded: $whatsNewExpanded) {
+                DisclosureGroup(NSLocalizedString("What's new", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $whatsNewExpanded) {
                     VStack {
                         HStack {
                             Text("Changelog for v\(appVersion)")

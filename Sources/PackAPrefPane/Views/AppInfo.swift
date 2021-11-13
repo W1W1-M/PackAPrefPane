@@ -34,7 +34,7 @@ struct AppInfo: View {
                 Spacer()
             }.font(.callout)
         }
-        DisclosureGroup("Third-Party Code", isExpanded: $thirdPartyCodeExpanded) {
+        DisclosureGroup(NSLocalizedString("Third-Party Code", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $thirdPartyCodeExpanded) {
             ForEach(packAPrefPaneData.thirdPartyCode) { ThirdPartyCode in
                 VStack {
                     HStack {

@@ -43,7 +43,7 @@ public struct PackAPrefPane<Content: View>: View {
                         // PrefPaneHelper.rollbackSettings()
                         // Close settings sheet
                         settingsSheetPresented.toggle()
-                    }, label: {Text("Cancel")})
+                    }, label: {Text(NSLocalizedString("Cancel", tableName: "Localizable", bundle: .module, value: "", comment: ""))})
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: {
@@ -54,7 +54,7 @@ public struct PackAPrefPane<Content: View>: View {
                         // PrefPaneHelper.setSomeUserPreferences()
                         // Close settings sheet
                         settingsSheetPresented.toggle()
-                    }, label: {Text("Save")})
+                    }, label: {Text(NSLocalizedString("Save", tableName: "Localizable", bundle: .module, value: "", comment: ""))})
                 }
             }
         }.onAppear(perform: { // Using onAppear modifier for loading user defaults
