@@ -34,27 +34,34 @@ struct AppInfo: View {
                 Spacer()
             }.font(.callout)
         }
-        DisclosureGroup(NSLocalizedString("Third-Party Code", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $thirdPartyCodeExpanded) {
-            ForEach(packAPrefPaneData.thirdPartyCode) { ThirdPartyCode in
-                VStack {
-                    HStack {
-                        Text(ThirdPartyCode.sourceNameText).font(.headline)
+        Section {
+            Image("AppIcon")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+        }
+        Section {
+            DisclosureGroup(NSLocalizedString("Third-Party Code", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $thirdPartyCodeExpanded) {
+                ForEach(packAPrefPaneData.thirdPartyCode) { ThirdPartyCode in
+                    VStack {
+                        HStack {
+                            Text(ThirdPartyCode.sourceNameText).font(.headline)
+                            Spacer()
+                        }
                         Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Link(
-                            ThirdPartyCode.sourceURLText.replacingOccurrences(of: "https://", with: ""),
-                            destination: URL(string: ThirdPartyCode.sourceURLText)!
-                        )
-                            .font(.callout)
-                            .foregroundColor(.accentColor)
+                        HStack {
+                            Link(
+                                ThirdPartyCode.sourceURLText.replacingOccurrences(of: "https://", with: ""),
+                                destination: URL(string: ThirdPartyCode.sourceURLText)!
+                            )
+                                .font(.callout)
+                                .foregroundColor(.accentColor)
+                            Spacer()
+                        }
                         Spacer()
-                    }
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Text(ThirdPartyCode.sourceLicenseText).font(.subheadline)
+                        HStack {
+                            Spacer()
+                            Text(ThirdPartyCode.sourceLicenseText).font(.subheadline)
+                        }
                     }
                 }
             }

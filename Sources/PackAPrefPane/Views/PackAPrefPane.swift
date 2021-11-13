@@ -31,10 +31,10 @@ public struct PackAPrefPane<Content: View>: View {
                 appSettingsView
                 // Help section
                 Help(packAPrefPaneData: packAPrefPaneData)
-                // App information section
-                AppInfo(packAPrefPaneData: packAPrefPaneData)
                 // Legal section
                 Legal(packAPrefPaneData: packAPrefPaneData)
+                // App information section
+                AppInfo(packAPrefPaneData: packAPrefPaneData)
             }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
             .toolbar { // Toolbar with cancel & save buttons
                 ToolbarItem(placement: .cancellationAction) {

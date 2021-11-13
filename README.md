@@ -48,10 +48,12 @@
 #### Legal section
 `showDisclaimer: Bool` // Show or drop disclaimer button  
 `showPrivacyPolicy: Bool` // Show or drop privacy policy button  
-`showSpecialThanks: Bool` // Show or drop special thanks button  
+`showAcknowledgments: Bool` // Show or drop acknowledgments button  
+`showTOS: Bool` // Show or drop terms of service disclosure group 
 `disclaimerText: String`  
 `privacyPolicyText: String`  
-`specialThanksText: String`  
+`acknowledgmentsText: String`  
+`termsOfServiceText: String`  
 
 ### FrequentlyAskedQuestions type
 `id = UUID()` // Identifiable for ForEach  
