@@ -9,58 +9,28 @@ import SwiftUI
 // MARK: - Views
 struct Legal: View {
     // Variables
-    @State private var tosExpanded: Bool = false
     @State private var alertPresented: Bool = false
     @State private var alert: alerts = .disclaimerAlert
     let packAPrefPaneData: PackAPrefPaneData
     enum alerts {
         case disclaimerAlert
         case privacyAlert
-        case specialThanksAlert
+        case acknowledgments
     }
     // UI
     var body: some View {
         Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
             if packAPrefPaneData.showDisclaimer {
-                Button(action: {
-                    alert = alerts.disclaimerAlert
-                    alertPresented.toggle()
-                }, label: {
-                    HStack {
-                        Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                        Spacer()
-                        Image(systemName: "checkmark.shield.fill").imageScale(.large)
-                    }
-                })
+                Disclaimer(alertPresented: $alertPresented, alert: $alert)
             }
             if packAPrefPaneData.showPrivacyPolicy {
-                Button(action: {
-                    alert = alerts.privacyAlert
-                    alertPresented.toggle()
-                }, label: {
-                    HStack {
-                        Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                        Spacer()
-                        Image(systemName: "lock.shield.fill").imageScale(.large)
-                    }
-                })
+                PrivacyPolicy(alertPresented: $alertPresented, alert: $alert)
             }
             if packAPrefPaneData.showAcknowledgments {
-                Button(action: {
-                    alert = alerts.specialThanksAlert
-                    alertPresented.toggle()
-                }, label: {
-                    HStack {
-                        Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                        Spacer()
-                        Image(systemName: "figure.wave").imageScale(.large)
-                    }
-                })
+                Acknowledgments(alertPresented: $alertPresented, alert: $alert)
             }
             if packAPrefPaneData.showTOS {
-                DisclosureGroup(NSLocalizedString("Terms of Service", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $tosExpanded) {
-                    Text(packAPrefPaneData.termsOfServiceText)
-                }
+                TermsOfService(packAPrefPaneData: packAPrefPaneData)
             }
         }
         .alert(isPresented: $alertPresented, content: { // alert switch cases
@@ -80,7 +50,7 @@ struct Legal: View {
                     message: Text(packAPrefPaneData.privacyPolicyText),
                     dismissButton: .default(Text("OK"))
                 )
-            case .specialThanksAlert:
+            case .acknowledgments:
                 return Alert(
                     title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
                     message: Text(packAPrefPaneData.acknowledgmentsText),
@@ -88,6 +58,75 @@ struct Legal: View {
                 )
             }
         })
+    }
+}
+// MARK: - Disclaimer
+struct Disclaimer: View {
+    // Variables
+    @Binding var alertPresented: Bool
+    @Binding var alert: Legal.alerts
+    // UI
+    var body: some View {
+        Button(action: {
+            alert = Legal.alerts.disclaimerAlert
+            alertPresented.toggle()
+        }, label: {
+            HStack {
+                Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                Spacer()
+                Image(systemName: "checkmark.shield.fill").imageScale(.large)
+            }
+        })
+    }
+}
+// MARK: - PrivacyPolicy
+struct PrivacyPolicy: View {
+    // Variables
+    @Binding var alertPresented: Bool
+    @Binding var alert: Legal.alerts
+    // UI
+    var body: some View {
+        Button(action: {
+            alert = Legal.alerts.privacyAlert
+            alertPresented.toggle()
+        }, label: {
+            HStack {
+                Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                Spacer()
+                Image(systemName: "lock.shield.fill").imageScale(.large)
+            }
+        })
+    }
+}
+// MARK: - Acknowledgments
+struct Acknowledgments: View {
+    // Variables
+    @Binding var alertPresented: Bool
+    @Binding var alert: Legal.alerts
+    // UI
+    var body: some View {
+        Button(action: {
+            alert = Legal.alerts.acknowledgments
+            alertPresented.toggle()
+        }, label: {
+            HStack {
+                Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                Spacer()
+                Image(systemName: "figure.wave").imageScale(.large)
+            }
+        })
+    }
+}
+// MARK: - TermsOfService
+struct TermsOfService: View {
+    // Variables
+    @State private var tosExpanded: Bool = false
+    let packAPrefPaneData: PackAPrefPaneData
+    // UI
+    var body: some View {
+        DisclosureGroup(NSLocalizedString("Terms of Service", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $tosExpanded) {
+            Text(packAPrefPaneData.termsOfServiceText)
+        }
     }
 }
 // MARK: - Previews

@@ -6,7 +6,6 @@
 //
 // MARK: - Modules
 import Foundation
-import UIKit
 // MARK: - Structs
 /// Custom type for third party code information
 public struct ThirdPartyCode: Identifiable {

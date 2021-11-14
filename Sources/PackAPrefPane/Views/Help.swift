@@ -9,66 +9,104 @@ import SwiftUI
 // MARK: - Views
 struct Help: View {
     // Variables
-    @State private var faqExpanded: Bool = false
-    @State private var whatsNewExpanded: Bool = false
-    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let packAPrefPaneData: PackAPrefPaneData
     // UI
     var body: some View {
         Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
             if packAPrefPaneData.showFeedbackLink {
-                Link(destination: PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)) {
-                    HStack {
-                        Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                        Spacer()
-                        Image(systemName: "plus.bubble.fill").imageScale(.large)
-                    }
-                }
+                Feedback(packAPrefPaneData: packAPrefPaneData)
             }
             if packAPrefPaneData.showSupportLink {
-                Link(destination: PrefPaneHelper.setSupportEmailURL(
-                        supportEmailAddress: packAPrefPaneData.supportEmailAddress,
-                        supportEmailSubject: packAPrefPaneData.supportEmailSubject,
-                        supportEmailBody: packAPrefPaneData.supportEmailBody
-                    )
-                ) {
-                    HStack {
-                        Text(NSLocalizedString("Support", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                        Spacer()
-                        Image(systemName: "cross.case.fill").imageScale(.large)
-                    }
-                }
+                Support(packAPrefPaneData: packAPrefPaneData)
             }
             if packAPrefPaneData.showWhatsNew {
-                DisclosureGroup(NSLocalizedString("What's New", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $whatsNewExpanded) {
+                WhatsNew(packAPrefPaneData: packAPrefPaneData)
+            }
+            if packAPrefPaneData.showFAQ {
+                FAQ(packAPrefPaneData: packAPrefPaneData)
+            }
+        }
+    }
+}
+// MARK: - Feedback
+struct Feedback: View {
+    // Variables
+    let packAPrefPaneData: PackAPrefPaneData
+    // UI
+    var body: some View {
+        Link(destination: PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)) {
+            HStack {
+                Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                Spacer()
+                Image(systemName: "plus.bubble.fill").imageScale(.large)
+            }
+        }
+    }
+}
+// MARK: - Support
+struct Support: View {
+    // Variables
+    let packAPrefPaneData: PackAPrefPaneData
+    // UI
+    var body: some View {
+        Link(destination: PrefPaneHelper.setSupportEmailURL(
+                supportEmailAddress: packAPrefPaneData.supportEmailAddress,
+                supportEmailSubject: packAPrefPaneData.supportEmailSubject,
+                supportEmailBody: packAPrefPaneData.supportEmailBody
+            )
+        ) {
+            HStack {
+                Text(NSLocalizedString("Support", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                Spacer()
+                Image(systemName: "cross.case.fill").imageScale(.large)
+            }
+        }
+    }
+}
+// MARK: - WhatsNew
+struct WhatsNew: View {
+    // Variables
+    @State private var whatsNewExpanded: Bool = false
+    let packAPrefPaneData: PackAPrefPaneData
+    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    // UI
+    var body: some View {
+        DisclosureGroup(NSLocalizedString("What's New", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $whatsNewExpanded) {
+            VStack {
+                HStack {
+                    Text(NSLocalizedString("Release Notes v\(appVersion)", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                        .font(.headline)
+                        .underline()
+                    Spacer()
+                }
+                Spacer()
+                HStack {
+                    Text(packAPrefPaneData.changelogText)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+// MARK: - FAQ
+struct FAQ: View {
+    // Variables
+    @State private var faqExpanded: Bool = false
+    let packAPrefPaneData: PackAPrefPaneData
+    // UI
+    var body: some View {
+        DisclosureGroup(NSLocalizedString("FAQ", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $faqExpanded) {
+            List {
+                ForEach(packAPrefPaneData.faq) { FrequentlyAskedQuestions in
                     VStack {
                         HStack {
-                            Text(NSLocalizedString("Release Notes v\(appVersion)", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                                .font(.headline)
-                                .underline()
+                            Text(FrequentlyAskedQuestions.question).font(.headline)
                             Spacer()
                         }
                         Spacer()
                         HStack {
-                            Text(packAPrefPaneData.changelogText)
+                            Text(FrequentlyAskedQuestions.answer)
                             Spacer()
-                        }
-                    }
-                }
-            }
-            if packAPrefPaneData.showFAQ {
-                DisclosureGroup(NSLocalizedString("FAQ", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $faqExpanded) {
-                    ForEach(packAPrefPaneData.faq) { FrequentlyAskedQuestions in
-                        VStack {
-                            HStack {
-                                Text(FrequentlyAskedQuestions.question).font(.headline)
-                                Spacer()
-                            }
-                            Spacer()
-                            HStack {
-                                Text(FrequentlyAskedQuestions.answer)
-                                Spacer()
-                            }
                         }
                     }
                 }

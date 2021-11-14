@@ -1,5 +1,5 @@
 //
-//  AppInfo.swift
+//  About.swift
 //  
 //
 //  Created by William Mead on 05/11/2021.
@@ -7,9 +7,18 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+struct About: View {
+    // Variables
+    let packAPrefPaneData: PackAPrefPaneData
+    // UI
+    var body: some View {
+        AppInfo(packAPrefPaneData: packAPrefPaneData)
+        ThirdPartyCodeList(packAPrefPaneData: packAPrefPaneData)
+    }
+}
+// MARK: - AppInfo
 struct AppInfo: View {
     // Variables
-    @State var thirdPartyCodeExpanded: Bool = false
     let packAPrefPaneData: PackAPrefPaneData
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
@@ -34,36 +43,51 @@ struct AppInfo: View {
                 Spacer()
             }.font(.callout)
         }
-        Section {
-            Image("AppIcon")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        }
+    }
+}
+// MARK: - ThirdParyCodeList
+struct ThirdPartyCodeList: View {
+    // Variables
+    @State var thirdPartyCodeExpanded: Bool = false
+    let packAPrefPaneData: PackAPrefPaneData
+    // UI
+    var body: some View {
         Section {
             DisclosureGroup(NSLocalizedString("Third-Party Code", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $thirdPartyCodeExpanded) {
-                ForEach(packAPrefPaneData.thirdPartyCode) { ThirdPartyCode in
-                    VStack {
-                        HStack {
-                            Text(ThirdPartyCode.sourceNameText).font(.headline)
-                            Spacer()
-                        }
-                        Spacer()
-                        HStack {
-                            Link(
-                                ThirdPartyCode.sourceURLText.replacingOccurrences(of: "https://", with: ""),
-                                destination: URL(string: ThirdPartyCode.sourceURLText)!
-                            )
-                                .font(.callout)
-                                .foregroundColor(.accentColor)
-                            Spacer()
-                        }
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            Text(ThirdPartyCode.sourceLicenseText).font(.subheadline)
-                        }
+                List {
+                    ForEach(packAPrefPaneData.thirdPartyCode) { ThirdPartyCode in
+                        ThirdPartyCodeItem(thirdPartyCode: ThirdPartyCode)
                     }
                 }
+            }
+        }
+    }
+}
+// MARK: - ThirdPartyCodeItem
+struct ThirdPartyCodeItem: View {
+    // Variables
+    let thirdPartyCode: ThirdPartyCode
+    // UI
+    var body: some View {
+        VStack {
+            HStack {
+                Text(thirdPartyCode.sourceNameText).font(.headline)
+                Spacer()
+            }
+            Spacer()
+            HStack {
+                Link(
+                    thirdPartyCode.sourceURLText.replacingOccurrences(of: "https://", with: ""),
+                    destination: URL(string: thirdPartyCode.sourceURLText)!
+                )
+                    .font(.callout)
+                    .foregroundColor(.accentColor)
+                Spacer()
+            }
+            Spacer()
+            HStack {
+                Spacer()
+                Text(thirdPartyCode.sourceLicenseText).font(.subheadline)
             }
         }
     }
@@ -72,7 +96,7 @@ struct AppInfo: View {
 struct AppInfo_Previews: PreviewProvider {
     static var previews: some View {
         Form {
-            AppInfo(
+            About(
                 packAPrefPaneData: PackAPrefPaneData(
                     showFeedbackLink: true,
                     showSupportLink: true,

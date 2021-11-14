@@ -31,10 +31,10 @@ public struct PackAPrefPane<Content: View>: View {
                 appSettingsView
                 // Help section
                 Help(packAPrefPaneData: packAPrefPaneData)
+                // App information section
+                About(packAPrefPaneData: packAPrefPaneData)
                 // Legal section
                 Legal(packAPrefPaneData: packAPrefPaneData)
-                // App information section
-                AppInfo(packAPrefPaneData: packAPrefPaneData)
             }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
             .toolbar { // Toolbar with cancel & save buttons
                 ToolbarItem(placement: .cancellationAction) {
@@ -115,12 +115,12 @@ struct PackAPrefPane_Previews: PreviewProvider {
                 termsOfServiceText: "Some terms of service that should be read by users."
             )
         ) {
-            Section(header: Text("🎛 App settings")) {
+            Section(header: Text("🎛 Your nested App settings view")) {
                 Toggle(isOn: .constant(true)) {
-                    Text("Some important app setting")
+                    Text("Your nested app setting")
                 }
                 Toggle(isOn: .constant(false)) {
-                    Text("Some other app setting")
+                    Text("Your other nested setting")
                 }
             }
         }
