@@ -12,16 +12,15 @@ public struct PackAPrefPane<Content: View>: View {
     // Variables
     public init( // public init for public struct
         settingsSheetPresented: Binding<Bool>,
-        packAPrefPaneData: PackAPrefPaneData,
+        prefPaneData: PrefPaneData,
         @ViewBuilder appSettingsView: () -> Content // @ViewBuilder to pass in your app setting view
     ) {
         self._settingsSheetPresented = settingsSheetPresented
-        self.packAPrefPaneData = packAPrefPaneData
+        self.prefPaneData = prefPaneData
         self.appSettingsView = appSettingsView()
     }
-    @Environment(\.managedObjectContext) private var viewContext
     @Binding var settingsSheetPresented: Bool // Bool to control sheet presentation
-    let packAPrefPaneData: PackAPrefPaneData // Your custom data
+    let prefPaneData: PrefPaneData // Your custom data
     let appSettingsView: Content // App settings view from parent view
     // UI
     public var body: some View {
@@ -30,40 +29,21 @@ public struct PackAPrefPane<Content: View>: View {
                 // Your nested app settings view section
                 appSettingsView
                 // Help section
-                Help(packAPrefPaneData: packAPrefPaneData)
+                Help(prefPaneData: prefPaneData)
                 // App information section
-                About(packAPrefPaneData: packAPrefPaneData)
+                About(prefPaneData: prefPaneData)
                 // Legal section
-                Legal(packAPrefPaneData: packAPrefPaneData)
+                Legal(prefPaneData: prefPaneData)
             }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-            .toolbar { // Toolbar with cancel & save buttons
-                ToolbarItem(placement: .cancellationAction) {
+            .toolbar { // Toolbar with close button
+                ToolbarItem(placement: .navigation) {
                     Button(action: {
-                        // Cancel and rollback settings
-                        // PrefPaneHelper.rollbackSettings()
                         // Close settings sheet
                         settingsSheetPresented.toggle()
-                    }, label: {Text(NSLocalizedString("Cancel", tableName: "Localizable", bundle: .module, value: "", comment: ""))})
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button(action: {
-                        // Save Settings
-                        // PrefPaneHelper.saveSomeSettings()
-                        // Set new app settings & user preferences
-                        // PrefPaneHelper.setSomeAppSettings()
-                        // PrefPaneHelper.setSomeUserPreferences()
-                        // Close settings sheet
-                        settingsSheetPresented.toggle()
-                    }, label: {Text(NSLocalizedString("Save", tableName: "Localizable", bundle: .module, value: "", comment: ""))})
+                    }, label: {Text(NSLocalizedString("Close", tableName: "Localizable", bundle: .module, value: "", comment: ""))})
                 }
             }
-        }.onAppear(perform: { // Using onAppear modifier for loading user defaults
-            // Load app settings & user preferences
-            // PrefPaneHelper.loadSomeAppSettings()
-            // PrefPaneHelper.loadSomeUserPreferences()
-            // Check if legal disclaimer accepted else show disclaimer alert
-            // PrefPaneHelper.checkLegalDisclaimer()
-        })
+        }
     }
 }
 // MARK: - Previews
@@ -71,7 +51,7 @@ struct PackAPrefPane_Previews: PreviewProvider {
     static var previews: some View {
         PackAPrefPane(
             settingsSheetPresented: .constant(true),
-            packAPrefPaneData: PackAPrefPaneData(
+            prefPaneData: PrefPaneData(
                 showFeedbackLink: true,
                 showSupportLink: true,
                 showWhatsNew: true,

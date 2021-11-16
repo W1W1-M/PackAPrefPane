@@ -1,5 +1,5 @@
 //
-//  PackAPrefPaneData.swift
+//  prefPaneData.swift
 //  
 //
 //  Created by William Mead on 14/11/2021.
@@ -8,7 +8,7 @@
 import Foundation
 // MARK: - Structs
 /// Custom type to group custom input data
-public struct PackAPrefPaneData {
+public struct PrefPaneData {
     public init( // public init for public struct
         showFeedbackLink: Bool,
         showSupportLink: Bool,

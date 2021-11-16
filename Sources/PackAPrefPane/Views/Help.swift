@@ -9,21 +9,21 @@ import SwiftUI
 // MARK: - Views
 struct Help: View {
     // Variables
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-            if packAPrefPaneData.showFeedbackLink {
-                Feedback(packAPrefPaneData: packAPrefPaneData)
+            if prefPaneData.showFeedbackLink {
+                Feedback(prefPaneData: prefPaneData)
             }
-            if packAPrefPaneData.showSupportLink {
-                Support(packAPrefPaneData: packAPrefPaneData)
+            if prefPaneData.showSupportLink {
+                Support(prefPaneData: prefPaneData)
             }
-            if packAPrefPaneData.showWhatsNew {
-                WhatsNew(packAPrefPaneData: packAPrefPaneData)
+            if prefPaneData.showWhatsNew {
+                WhatsNew(prefPaneData: prefPaneData)
             }
-            if packAPrefPaneData.showFAQ {
-                FAQ(packAPrefPaneData: packAPrefPaneData)
+            if prefPaneData.showFAQ {
+                FAQ(prefPaneData: prefPaneData)
             }
         }
     }
@@ -31,10 +31,10 @@ struct Help: View {
 // MARK: - Feedback
 struct Feedback: View {
     // Variables
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
-        Link(destination: PrefPaneHelper.appFeedback(appID: packAPrefPaneData.appID)) {
+        Link(destination: PrefPaneHelper.appFeedback(appID: prefPaneData.appID)) {
             HStack {
                 Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
@@ -46,13 +46,13 @@ struct Feedback: View {
 // MARK: - Support
 struct Support: View {
     // Variables
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.setSupportEmailURL(
-                supportEmailAddress: packAPrefPaneData.supportEmailAddress,
-                supportEmailSubject: packAPrefPaneData.supportEmailSubject,
-                supportEmailBody: packAPrefPaneData.supportEmailBody
+                supportEmailAddress: prefPaneData.supportEmailAddress,
+                supportEmailSubject: prefPaneData.supportEmailSubject,
+                supportEmailBody: prefPaneData.supportEmailBody
             )
         ) {
             HStack {
@@ -67,7 +67,7 @@ struct Support: View {
 struct WhatsNew: View {
     // Variables
     @State private var whatsNewExpanded: Bool = false
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     // UI
     var body: some View {
@@ -81,7 +81,7 @@ struct WhatsNew: View {
                 }
                 Spacer()
                 HStack {
-                    Text(packAPrefPaneData.changelogText)
+                    Text(prefPaneData.changelogText)
                     Spacer()
                 }
             }
@@ -92,12 +92,12 @@ struct WhatsNew: View {
 struct FAQ: View {
     // Variables
     @State private var faqExpanded: Bool = false
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         DisclosureGroup(NSLocalizedString("FAQ", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $faqExpanded) {
             List {
-                ForEach(packAPrefPaneData.faq) { FrequentlyAskedQuestions in
+                ForEach(prefPaneData.faq) { FrequentlyAskedQuestions in
                     VStack {
                         HStack {
                             Text(FrequentlyAskedQuestions.question).font(.headline)
@@ -120,7 +120,7 @@ struct Help_Previews: PreviewProvider {
     static var previews: some View {
         Form{
             Help(
-                packAPrefPaneData: PackAPrefPaneData(
+                prefPaneData: PrefPaneData(
                     showFeedbackLink: true,
                     showSupportLink: true,
                     showWhatsNew: true,

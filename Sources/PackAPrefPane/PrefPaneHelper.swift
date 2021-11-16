@@ -25,20 +25,4 @@ class PrefPaneHelper {
             return URL(string: "")!
         }
     }
-    /// Function that checks if disclaimer accepted else shows disclaimer
-    static func checkLegalDisclaimer() {
-        
-    }
-    /// Function that checks if disclaimer accepted else shows disclaimer
-    static func acceptLegalDisclaimer() {
-        
-    }
-    /// Function that checks if privacy policy read else shows privacy policy
-    static func checkLegalPrivacyPolicy() {
-        
-    }
-    /// Function that checks if privacy policy read else shows privacy policy
-    static func acceptLegalPrivacyPolicy() {
-        
-    }
 }

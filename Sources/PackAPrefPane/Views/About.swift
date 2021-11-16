@@ -9,17 +9,17 @@ import SwiftUI
 // MARK: - Views
 struct About: View {
     // Variables
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
-        AppInfo(packAPrefPaneData: packAPrefPaneData)
-        ThirdPartyCodeList(packAPrefPaneData: packAPrefPaneData)
+        AppInfo(prefPaneData: prefPaneData)
+        ThirdPartyCodeList(prefPaneData: prefPaneData)
     }
 }
 // MARK: - AppInfo
 struct AppInfo: View {
     // Variables
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     let buildVersion = Bundle.main.infoDictionary!["CFBundleVersion"] as! String
     // UI
@@ -32,14 +32,14 @@ struct AppInfo: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text(packAPrefPaneData.developerInfoText).multilineTextAlignment(.center)
+                    Text(prefPaneData.developerInfoText).multilineTextAlignment(.center)
                     Spacer()
                 }
             }.padding(3)
             .font(.callout)
             HStack {
                 Spacer()
-                Text(packAPrefPaneData.appCopyrightText).multilineTextAlignment(.center)
+                Text(prefPaneData.appCopyrightText).multilineTextAlignment(.center)
                 Spacer()
             }.font(.callout)
         }
@@ -49,13 +49,13 @@ struct AppInfo: View {
 struct ThirdPartyCodeList: View {
     // Variables
     @State var thirdPartyCodeExpanded: Bool = false
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         Section {
             DisclosureGroup(NSLocalizedString("Third-Party Code", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $thirdPartyCodeExpanded) {
                 List {
-                    ForEach(packAPrefPaneData.thirdPartyCode) { ThirdPartyCode in
+                    ForEach(prefPaneData.thirdPartyCode) { ThirdPartyCode in
                         ThirdPartyCodeItem(thirdPartyCode: ThirdPartyCode)
                     }
                 }
@@ -97,7 +97,7 @@ struct AppInfo_Previews: PreviewProvider {
     static var previews: some View {
         Form {
             About(
-                packAPrefPaneData: PackAPrefPaneData(
+                prefPaneData: PrefPaneData(
                     showFeedbackLink: true,
                     showSupportLink: true,
                     showWhatsNew: true,

@@ -11,7 +11,7 @@ struct Legal: View {
     // Variables
     @State private var alertPresented: Bool = false
     @State private var alert: alerts = .disclaimerAlert
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     enum alerts {
         case disclaimerAlert
         case privacyAlert
@@ -20,17 +20,17 @@ struct Legal: View {
     // UI
     var body: some View {
         Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-            if packAPrefPaneData.showDisclaimer {
+            if prefPaneData.showDisclaimer {
                 Disclaimer(alertPresented: $alertPresented, alert: $alert)
             }
-            if packAPrefPaneData.showPrivacyPolicy {
+            if prefPaneData.showPrivacyPolicy {
                 PrivacyPolicy(alertPresented: $alertPresented, alert: $alert)
             }
-            if packAPrefPaneData.showAcknowledgments {
+            if prefPaneData.showAcknowledgments {
                 Acknowledgments(alertPresented: $alertPresented, alert: $alert)
             }
-            if packAPrefPaneData.showTOS {
-                TermsOfService(packAPrefPaneData: packAPrefPaneData)
+            if prefPaneData.showTOS {
+                TermsOfService(prefPaneData: prefPaneData)
             }
         }
         .alert(isPresented: $alertPresented, content: { // alert switch cases
@@ -38,22 +38,19 @@ struct Legal: View {
             case .disclaimerAlert:
                 return Alert(
                     title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                    message: Text(packAPrefPaneData.disclaimerText),
-                    dismissButton: .default(Text("OK")) {
-                        // Legal disclaimer accepted
-                        // PrefPaneHelper.disclaimerAccepted()
-                    }
+                    message: Text(prefPaneData.disclaimerText),
+                    dismissButton: .default(Text("OK"))
                 )
             case .privacyAlert:
                 return Alert(
                     title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                    message: Text(packAPrefPaneData.privacyPolicyText),
+                    message: Text(prefPaneData.privacyPolicyText),
                     dismissButton: .default(Text("OK"))
                 )
             case .acknowledgments:
                 return Alert(
                     title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                    message: Text(packAPrefPaneData.acknowledgmentsText),
+                    message: Text(prefPaneData.acknowledgmentsText),
                     dismissButton: .default(Text("OK"))
                 )
             }
@@ -121,11 +118,11 @@ struct Acknowledgments: View {
 struct TermsOfService: View {
     // Variables
     @State private var tosExpanded: Bool = false
-    let packAPrefPaneData: PackAPrefPaneData
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         DisclosureGroup(NSLocalizedString("Terms of Service", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $tosExpanded) {
-            Text(packAPrefPaneData.termsOfServiceText)
+            Text(prefPaneData.termsOfServiceText)
         }
     }
 }
@@ -134,7 +131,7 @@ struct Legal_Previews: PreviewProvider {
     static var previews: some View {
         Form{
             Legal(
-                packAPrefPaneData: PackAPrefPaneData(
+                prefPaneData: PrefPaneData(
                     showFeedbackLink: true,
                     showSupportLink: true,
                     showWhatsNew: true,

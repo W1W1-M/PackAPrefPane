@@ -19,14 +19,14 @@
 
 ## Usage
 * Import `PackAPrefPane` Swift package
-* Setup a var with `PackAPrefPaneData` type and customize each variable to your needs
+* Setup a var with `PrefPaneData` type and customize each variable to your needs
 * Setup your nested `appSettingsView` within a SwiftUI `Section` view
 * Make sure you have a var for showing sheets `settingsSheetPresented: Bool`
-* Use PackAPrefPane view with the above variables as in this example:  
+* Use `PackAPrefPane` view with the above variables as in this example:  
 ```
 PackAPrefPane(  
     settingsSheetPresented: yourSheetbool,  
-    packAPrefPaneData:  yourPrefPaneData  
+    prefPaneData: yourPrefPaneData  
 ) {  
     Section(header: Text("Your nested app settings view section")) {  
         YourNestedAppSettingsView()  
@@ -34,39 +34,7 @@ PackAPrefPane(
 }  
 ``` 
 
-### PackAPrefPaneData type
-#### Help section
-`showFeedbackLink: Bool` // Show or drop feedback link  
-`showSupportLink: Bool` // Show or drop support link  
-`showWhatsNew: Bool` // Show or drop changelog text  
-`showFAQ: Bool` // Show or drop frequently asked questions disclosure group  
-`appID: String`  
-`changelogText: String`  
-`faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions  
-#### AppInfo section
-`developerInfoText: String`  
-`appCopyrightText: String`  
-`thirdPartyCode: [ThirdPartyCode]` // Array of ThirdPartyCode  
-#### Legal section
-`showDisclaimer: Bool` // Show or drop disclaimer button  
-`showPrivacyPolicy: Bool` // Show or drop privacy policy button  
-`showAcknowledgments: Bool` // Show or drop acknowledgments button  
-`showTOS: Bool` // Show or drop terms of service disclosure group 
-`disclaimerText: String`  
-`privacyPolicyText: String`  
-`acknowledgmentsText: String`  
-`termsOfServiceText: String`  
-
-### FrequentlyAskedQuestions type
-`id = UUID()` // Identifiable for ForEach  
-`question: String`  
-`answer: String`  
-
-### ThirdPartyCode type
-`id = UUID()` // Identifiable for ForEach  
-`sourceNameText: String` // Third party code name and developer  
-`sourceURLText: String` // Full URL to code web page  
-`sourceLicenseText: String` // Source code license name  
+## [Custom TYPES](TYPES.md)
 
 ## Project resources
 * Mind map in MindNode format
