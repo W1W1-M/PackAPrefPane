@@ -8,9 +8,9 @@
 `showWhatsNew: Bool` // Show or drop changelog text  
 `showFAQ: Bool` // Show or drop frequently asked questions disclosure group  
 `appID: String`  
-`supportEmailAddress: String`
-`supportEmailSubject: String`
-`supportEmailBody: String`
+`supportEmailAddress: String`  
+`supportEmailSubject: String`  
+`supportEmailBody: String`  
 `changelogText: String`  
 `faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions  
 ### AppInfo section
