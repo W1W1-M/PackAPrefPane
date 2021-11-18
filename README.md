@@ -3,7 +3,7 @@
 ### *Reusable & customizable SwiftUI settings sheet as a Swift package*
 ### Initial version made at November 2021 SwiftUI Jam https://www.swiftuijam.com
 
-![PackAPrefPane preview](PackAPrefPane Logo.png)
+![PackAPrefPane Logo](PackAPrefPaneLogo.png)
 
 ## Features
 * Swift package
@@ -17,7 +17,7 @@
 * Open source
 * Target: iOS 14 >
 
-![PackAPrefPane preview](Preview.png)
+![PackAPrefPane preview](PackAPrefPanePreview.png)
 
 ## Usage
 * Import `PackAPrefPane` Swift package
