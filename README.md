@@ -3,6 +3,8 @@
 ### *Reusable & customizable SwiftUI settings sheet as a Swift package*
 ### Initial version made at November 2021 SwiftUI Jam https://www.swiftuijam.com
 
+![PackAPrefPane preview](PackAPrefPane Logo.png)
+
 ## Features
 * Swift package
 * 100% Swift
@@ -38,6 +40,7 @@ PackAPrefPane(
 
 ## Project resources
 * Mind map in MindNode format
+* Logo design in AffinityDesigner format
 
 ## License
 PackAPrefPane is designed and coded by W1W1-M and released under MIT license

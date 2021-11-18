@@ -45,6 +45,7 @@ public struct PrefPaneData {
         self.developerInfoText = developerInfoText
         self.appCopyrightText = appCopyrightText
         self.thirdPartyCode = thirdPartyCode
+        self.thirdPartyCode.insert(thirdPartyCodePackAPrefPane, at: 0)
         self.showDisclaimer = showDisclaimer
         self.showPrivacyPolicy = showPrivacyPolicy
         self.showAcknowledgments = showAcknowledgments
@@ -68,7 +69,7 @@ public struct PrefPaneData {
     // AppInfo constants from parent view
     let developerInfoText: String
     let appCopyrightText: String
-    let thirdPartyCode: [ThirdPartyCode]
+    var thirdPartyCode: [ThirdPartyCode]
     // Legal constant from parent view
     let showDisclaimer: Bool
     let showPrivacyPolicy: Bool
@@ -78,6 +79,12 @@ public struct PrefPaneData {
     let privacyPolicyText: String
     let acknowledgmentsText: String
     let termsOfServiceText: String
+    //
+    let thirdPartyCodePackAPrefPane: ThirdPartyCode = ThirdPartyCode(
+        sourceNameText: "PackAPrefPane by W1W1-M",
+        sourceURLText: "https://github.com/W1W1-M/PackAPrefPane",
+        sourceLicenseText: "MIT license"
+    )
 }
 /// Custom type for third party code information
 public struct ThirdPartyCode: Identifiable {

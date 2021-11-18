@@ -155,11 +155,6 @@ struct Legal_Previews: PreviewProvider {
                     appCopyrightText: "Your app Copyright © 2021-2022",
                     thirdPartyCode: [
                         ThirdPartyCode(
-                            sourceNameText: "PackAPrefPane by W1W1-M",
-                            sourceURLText: "https://github.com/W1W1-M/PackAPrefPane",
-                            sourceLicenseText: "MIT license"
-                        ),
-                        ThirdPartyCode(
                             sourceNameText: "Font & Emoji by Apple Inc.",
                             sourceURLText: "https://developer.apple.com/fonts",
                             sourceLicenseText: "Copyright © All rights reserved"
