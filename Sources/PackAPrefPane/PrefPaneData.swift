@@ -10,6 +10,7 @@ import Foundation
 /// Custom type to group custom input data
 public struct PrefPaneData {
     public init( // public init for public struct
+        showHelpSection: Bool,
         showFeedbackLink: Bool,
         showSupportLink: Bool,
         showWhatsNew: Bool,
@@ -23,6 +24,7 @@ public struct PrefPaneData {
         developerInfoText: String,
         appCopyrightText: String,
         thirdPartyCode: [ThirdPartyCode],
+        showLegalSection: Bool,
         showDisclaimer: Bool,
         showPrivacyPolicy: Bool,
         showAcknowledgments: Bool,
@@ -32,6 +34,7 @@ public struct PrefPaneData {
         acknowledgmentsText: String,
         termsOfServiceText: String
     ) {
+        self.showHelpSection = showHelpSection
         self.showFeedbackLink = showFeedbackLink
         self.showSupportLink = showSupportLink
         self.showWhatsNew = showWhatsNew
@@ -46,6 +49,7 @@ public struct PrefPaneData {
         self.appCopyrightText = appCopyrightText
         self.thirdPartyCode = thirdPartyCode
         self.thirdPartyCode.insert(thirdPartyCodePackAPrefPane, at: 0)
+        self.showLegalSection = showLegalSection
         self.showDisclaimer = showDisclaimer
         self.showPrivacyPolicy = showPrivacyPolicy
         self.showAcknowledgments = showAcknowledgments
@@ -56,6 +60,7 @@ public struct PrefPaneData {
         self.termsOfServiceText = termsOfServiceText
     }
     // Help constants from parent view
+    let showHelpSection: Bool
     let showFeedbackLink: Bool
     let showSupportLink: Bool
     let showWhatsNew: Bool
@@ -71,6 +76,7 @@ public struct PrefPaneData {
     let appCopyrightText: String
     var thirdPartyCode: [ThirdPartyCode]
     // Legal constant from parent view
+    let showLegalSection: Bool
     let showDisclaimer: Bool
     let showPrivacyPolicy: Bool
     let showAcknowledgments: Bool

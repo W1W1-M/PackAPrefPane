@@ -19,42 +19,44 @@ struct Legal: View {
     }
     // UI
     var body: some View {
-        Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-            if prefPaneData.showDisclaimer {
-                Disclaimer(alertPresented: $alertPresented, alert: $alert)
+        if prefPaneData.showLegalSection {
+            Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
+                if prefPaneData.showDisclaimer {
+                    Disclaimer(alertPresented: $alertPresented, alert: $alert)
+                }
+                if prefPaneData.showPrivacyPolicy {
+                    PrivacyPolicy(alertPresented: $alertPresented, alert: $alert)
+                }
+                if prefPaneData.showAcknowledgments {
+                    Acknowledgments(alertPresented: $alertPresented, alert: $alert)
+                }
+                if prefPaneData.showTOS {
+                    TermsOfService(prefPaneData: prefPaneData)
+                }
             }
-            if prefPaneData.showPrivacyPolicy {
-                PrivacyPolicy(alertPresented: $alertPresented, alert: $alert)
-            }
-            if prefPaneData.showAcknowledgments {
-                Acknowledgments(alertPresented: $alertPresented, alert: $alert)
-            }
-            if prefPaneData.showTOS {
-                TermsOfService(prefPaneData: prefPaneData)
-            }
-        }
-        .alert(isPresented: $alertPresented, content: { // alert switch cases
-            switch alert {
-            case .disclaimerAlert:
-                return Alert(
-                    title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                    message: Text(prefPaneData.disclaimerText),
-                    dismissButton: .default(Text("OK"))
-                )
-            case .privacyAlert:
-                return Alert(
-                    title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                    message: Text(prefPaneData.privacyPolicyText),
-                    dismissButton: .default(Text("OK"))
-                )
-            case .acknowledgments:
-                return Alert(
-                    title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                    message: Text(prefPaneData.acknowledgmentsText),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
+            .alert(isPresented: $alertPresented, content: { // alert switch cases
+                switch alert {
+                case .disclaimerAlert:
+                    return Alert(
+                        title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                        message: Text(prefPaneData.disclaimerText),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .privacyAlert:
+                    return Alert(
+                        title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                        message: Text(prefPaneData.privacyPolicyText),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .acknowledgments:
+                    return Alert(
+                        title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                        message: Text(prefPaneData.acknowledgmentsText),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
         })
+        }
     }
 }
 // MARK: - Disclaimer
@@ -132,6 +134,7 @@ struct Legal_Previews: PreviewProvider {
         Form{
             Legal(
                 prefPaneData: PrefPaneData(
+                    showHelpSection: true,
                     showFeedbackLink: true,
                     showSupportLink: true,
                     showWhatsNew: true,
@@ -160,6 +163,7 @@ struct Legal_Previews: PreviewProvider {
                             sourceLicenseText: "Copyright © All rights reserved"
                         )
                     ],
+                    showLegalSection: true,
                     showDisclaimer: true,
                     showPrivacyPolicy: true,
                     showAcknowledgments: true,

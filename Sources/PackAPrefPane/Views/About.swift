@@ -98,6 +98,7 @@ struct AppInfo_Previews: PreviewProvider {
         Form {
             About(
                 prefPaneData: PrefPaneData(
+                    showHelpSection: true,
                     showFeedbackLink: true,
                     showSupportLink: true,
                     showWhatsNew: true,
@@ -126,6 +127,7 @@ struct AppInfo_Previews: PreviewProvider {
                             sourceLicenseText: "Copyright © All rights reserved"
                         )
                     ],
+                    showLegalSection: true,
                     showDisclaimer: true,
                     showPrivacyPolicy: true,
                     showAcknowledgments: true,

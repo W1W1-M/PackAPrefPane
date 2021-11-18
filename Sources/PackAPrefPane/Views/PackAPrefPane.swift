@@ -52,6 +52,7 @@ struct PackAPrefPane_Previews: PreviewProvider {
         PackAPrefPane(
             settingsSheetPresented: .constant(true),
             prefPaneData: PrefPaneData(
+                showHelpSection: true,
                 showFeedbackLink: true,
                 showSupportLink: true,
                 showWhatsNew: true,
@@ -80,6 +81,7 @@ struct PackAPrefPane_Previews: PreviewProvider {
                         sourceLicenseText: "Copyright © All rights reserved"
                     )
                 ],
+                showLegalSection: true,
                 showDisclaimer: true,
                 showPrivacyPolicy: true,
                 showAcknowledgments: true,

@@ -2,11 +2,15 @@
 
 ## PrefPaneData type
 ### Help section
+`showHelpSection: Bool` // Show or drop help section  
 `showFeedbackLink: Bool` // Show or drop feedback link  
 `showSupportLink: Bool` // Show or drop support link  
 `showWhatsNew: Bool` // Show or drop changelog text  
 `showFAQ: Bool` // Show or drop frequently asked questions disclosure group  
 `appID: String`  
+`supportEmailAddress: String`
+`supportEmailSubject: String`
+`supportEmailBody: String`
 `changelogText: String`  
 `faq: [FrequentlyAskedQuestions]` // Array of FrequentlyAskedQuestions  
 ### AppInfo section
@@ -14,6 +18,7 @@
 `appCopyrightText: String`  
 `thirdPartyCode: [ThirdPartyCode]` // Array of ThirdPartyCode  
 ### Legal section
+`showLegalSection: Bool` // Show or drop legal section  
 `showDisclaimer: Bool` // Show or drop disclaimer button  
 `showPrivacyPolicy: Bool` // Show or drop privacy policy button  
 `showAcknowledgments: Bool` // Show or drop acknowledgments button  

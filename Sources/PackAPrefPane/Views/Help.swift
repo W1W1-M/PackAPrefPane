@@ -12,18 +12,20 @@ struct Help: View {
     let prefPaneData: PrefPaneData
     // UI
     var body: some View {
-        Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-            if prefPaneData.showFeedbackLink {
-                Feedback(prefPaneData: prefPaneData)
-            }
-            if prefPaneData.showSupportLink {
-                Support(prefPaneData: prefPaneData)
-            }
-            if prefPaneData.showWhatsNew {
-                WhatsNew(prefPaneData: prefPaneData)
-            }
-            if prefPaneData.showFAQ {
-                FAQ(prefPaneData: prefPaneData)
+        if prefPaneData.showHelpSection {
+            Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
+                if prefPaneData.showFeedbackLink {
+                    Feedback(prefPaneData: prefPaneData)
+                }
+                if prefPaneData.showSupportLink {
+                    Support(prefPaneData: prefPaneData)
+                }
+                if prefPaneData.showWhatsNew {
+                    WhatsNew(prefPaneData: prefPaneData)
+                }
+                if prefPaneData.showFAQ {
+                    FAQ(prefPaneData: prefPaneData)
+                }
             }
         }
     }
@@ -121,6 +123,7 @@ struct Help_Previews: PreviewProvider {
         Form{
             Help(
                 prefPaneData: PrefPaneData(
+                    showHelpSection: true,
                     showFeedbackLink: true,
                     showSupportLink: true,
                     showWhatsNew: true,
@@ -149,6 +152,7 @@ struct Help_Previews: PreviewProvider {
                             sourceLicenseText: "Copyright © All rights reserved"
                         )
                     ],
+                    showLegalSection: true,
                     showDisclaimer: true,
                     showPrivacyPolicy: true,
                     showAcknowledgments: true,
