@@ -33,6 +33,19 @@ struct Legal: View {
                 if prefPaneData.showTOS {
                     TermsOfService(prefPaneData: prefPaneData)
                 }
+            }.onAppear{
+                if prefPaneData.disclaimerAcceptedCheck {
+                    if !PrefPaneHelper.checkDisclaimerAccepted(disclaimerAcceptedDefaultsKey: prefPaneData.disclaimerAcceptedDefaultsKey) {
+                        alert = Legal.alerts.disclaimerAlert
+                        alertPresented.toggle()
+                    }
+                }
+                if prefPaneData.privacyPolicyAcceptedCheck {
+                    if !PrefPaneHelper.checkPrivacyPolicyAccepted(privacyPolicyAcceptedDefaultsKey: prefPaneData.privacyPolicyAcceptedDefaultsKey) {
+                        alert = Legal.alerts.privacyAlert
+                        alertPresented.toggle()
+                    }
+                }
             }
             .alert(isPresented: $alertPresented, content: { // alert switch cases
                 switch alert {
@@ -40,13 +53,27 @@ struct Legal: View {
                     return Alert(
                         title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
                         message: Text(prefPaneData.disclaimerText),
-                        dismissButton: .default(Text("OK"))
+                        dismissButton: .default(Text("OK")) {
+                            if prefPaneData.disclaimerAcceptedCheck {
+                                PrefPaneHelper.acceptDisclaimer(
+                                    disclaimerAcceptedDefaultsKey: prefPaneData.disclaimerAcceptedDefaultsKey,
+                                    disclaimerAcceptedDateDefaultsKey: prefPaneData.disclaimerAcceptedDateDefaultsKey
+                                )
+                            }
+                        }
                     )
                 case .privacyAlert:
                     return Alert(
                         title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
                         message: Text(prefPaneData.privacyPolicyText),
-                        dismissButton: .default(Text("OK"))
+                        dismissButton: .default(Text("OK")) {
+                            if prefPaneData.privacyPolicyAcceptedCheck {
+                                PrefPaneHelper.acceptPrivacyPolicy(
+                                    privacyPolicyAcceptedDefaultsKey: prefPaneData.privacyPolicyAcceptedDefaultsKey,
+                                    privacyPolicyAcceptedDateDefaultsKey: prefPaneData.privacyPolicyAcceptedDateDefaultsKey
+                                )
+                            }
+                        }
                     )
                 case .acknowledgments:
                     return Alert(
@@ -171,7 +198,13 @@ struct Legal_Previews: PreviewProvider {
                     disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
                     privacyPolicyText: "We don't store your data.",
                     acknowledgmentsText: "Thanks to SwiftUI Jam",
-                    termsOfServiceText: "Some terms of service that should be read by users."
+                    termsOfServiceText: "Some terms of service that should be read by users.",
+                    disclaimerAcceptedCheck: true,
+                    privacyPolicyAcceptedCheck: true,
+                    disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
+                    disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
+                    privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
+                    privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
                 )
             )
         }.previewLayout(.sizeThatFits)

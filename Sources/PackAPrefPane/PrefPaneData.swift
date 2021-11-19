@@ -32,7 +32,13 @@ public struct PrefPaneData {
         disclaimerText: String,
         privacyPolicyText: String,
         acknowledgmentsText: String,
-        termsOfServiceText: String
+        termsOfServiceText: String,
+        disclaimerAcceptedCheck: Bool,
+        privacyPolicyAcceptedCheck: Bool,
+        disclaimerAcceptedDefaultsKey: String,
+        disclaimerAcceptedDateDefaultsKey: String,
+        privacyPolicyAcceptedDefaultsKey: String,
+        privacyPolicyAcceptedDateDefaultsKey: String
     ) {
         self.showHelpSection = showHelpSection
         self.showFeedbackLink = showFeedbackLink
@@ -58,6 +64,12 @@ public struct PrefPaneData {
         self.privacyPolicyText = privacyPolicyText
         self.acknowledgmentsText = acknowledgmentsText
         self.termsOfServiceText = termsOfServiceText
+        self.disclaimerAcceptedCheck = disclaimerAcceptedCheck
+        self.privacyPolicyAcceptedCheck = privacyPolicyAcceptedCheck
+        self.disclaimerAcceptedDefaultsKey = disclaimerAcceptedDefaultsKey
+        self.disclaimerAcceptedDateDefaultsKey = disclaimerAcceptedDateDefaultsKey
+        self.privacyPolicyAcceptedDefaultsKey = privacyPolicyAcceptedDefaultsKey
+        self.privacyPolicyAcceptedDateDefaultsKey = privacyPolicyAcceptedDateDefaultsKey
     }
     // Help constants from parent view
     let showHelpSection: Bool
@@ -85,6 +97,12 @@ public struct PrefPaneData {
     let privacyPolicyText: String
     let acknowledgmentsText: String
     let termsOfServiceText: String
+    let disclaimerAcceptedCheck: Bool
+    let privacyPolicyAcceptedCheck: Bool
+    let disclaimerAcceptedDefaultsKey: String
+    let disclaimerAcceptedDateDefaultsKey: String
+    let privacyPolicyAcceptedDefaultsKey: String
+    let privacyPolicyAcceptedDateDefaultsKey: String
     //
     let thirdPartyCodePackAPrefPane: ThirdPartyCode = ThirdPartyCode(
         sourceNameText: "PackAPrefPane by W1W1-M",

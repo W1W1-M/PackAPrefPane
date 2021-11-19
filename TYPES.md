@@ -27,6 +27,12 @@
 `privacyPolicyText: String`  
 `acknowledgmentsText: String`  
 `termsOfServiceText: String`  
+`disclaimerAcceptedCheck: Bool`  
+`privacyPolicyAcceptedCheck: Bool`  
+`disclaimerAcceptedDefaultsKey: String`  
+`disclaimerAcceptedDateDefaultsKey: String`  
+`privacyPolicyAcceptedDefaultsKey: String`  
+`privacyPolicyAcceptedDateDefaultsKey: String`  
 
 ## FrequentlyAskedQuestions type
 `id = UUID()` // Identifiable for List ForEach  
