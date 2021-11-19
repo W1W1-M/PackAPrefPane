@@ -83,7 +83,7 @@ struct WhatsNew: View {
                 }
                 Spacer()
                 HStack {
-                    Text(prefPaneData.changelogText)
+                    Text(NSLocalizedString(prefPaneData.changelogText, tableName: "Localizable", bundle: .main, value: "", comment: ""))
                     Spacer()
                 }
             }
@@ -102,12 +102,12 @@ struct FAQ: View {
                 ForEach(prefPaneData.faq) { FrequentlyAskedQuestions in
                     VStack {
                         HStack {
-                            Text(FrequentlyAskedQuestions.question).font(.headline)
+                            Text(NSLocalizedString(FrequentlyAskedQuestions.question, tableName: "Localizable", bundle: .main, value: "", comment: "")).font(.headline)
                             Spacer()
                         }
                         Spacer()
                         HStack {
-                            Text(FrequentlyAskedQuestions.answer)
+                            Text(NSLocalizedString(FrequentlyAskedQuestions.answer, tableName: "Localizable", bundle: .main, value: "", comment: ""))
                             Spacer()
                         }
                     }

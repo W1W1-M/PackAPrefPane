@@ -32,14 +32,14 @@ struct AppInfo: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text(prefPaneData.developerInfoText).multilineTextAlignment(.center)
+                    Text(NSLocalizedString(prefPaneData.developerInfoText, tableName: "Localizable", bundle: .main, value: "", comment: "")).multilineTextAlignment(.center)
                     Spacer()
                 }
             }.padding(3)
             .font(.callout)
             HStack {
                 Spacer()
-                Text(prefPaneData.appCopyrightText).multilineTextAlignment(.center)
+                Text(NSLocalizedString(prefPaneData.appCopyrightText, tableName: "Localizable", bundle: .main, value: "", comment: "")).multilineTextAlignment(.center)
                 Spacer()
             }.font(.callout)
         }
@@ -71,7 +71,7 @@ struct ThirdPartyCodeItem: View {
     var body: some View {
         VStack {
             HStack {
-                Text(thirdPartyCode.sourceNameText).font(.headline)
+                Text(NSLocalizedString(thirdPartyCode.sourceNameText, tableName: "Localizable", bundle: .main, value: "", comment: "")).font(.headline)
                 Spacer()
             }
             Spacer()
@@ -87,7 +87,7 @@ struct ThirdPartyCodeItem: View {
             Spacer()
             HStack {
                 Spacer()
-                Text(thirdPartyCode.sourceLicenseText).font(.subheadline)
+                Text(NSLocalizedString(thirdPartyCode.sourceLicenseText, tableName: "Localizable", bundle: .main, value: "", comment: "")).font(.subheadline)
             }
         }
     }

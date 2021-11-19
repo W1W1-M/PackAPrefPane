@@ -12,7 +12,7 @@
 * Simple design
 * Lightweight
 * Customizable
-* Localized for EN & FR
+* Localizable
 * Nothing exotic
 * Open source
 * Target: iOS 14 >

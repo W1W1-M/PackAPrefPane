@@ -52,7 +52,7 @@ struct Legal: View {
                 case .disclaimerAlert:
                     return Alert(
                         title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(prefPaneData.disclaimerText),
+                        message: Text(NSLocalizedString(prefPaneData.disclaimerText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
                         dismissButton: .default(Text("OK")) {
                             if prefPaneData.disclaimerAcceptedCheck {
                                 PrefPaneHelper.acceptDisclaimer(
@@ -65,7 +65,7 @@ struct Legal: View {
                 case .privacyAlert:
                     return Alert(
                         title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(prefPaneData.privacyPolicyText),
+                        message: Text(NSLocalizedString(prefPaneData.privacyPolicyText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
                         dismissButton: .default(Text("OK")) {
                             if prefPaneData.privacyPolicyAcceptedCheck {
                                 PrefPaneHelper.acceptPrivacyPolicy(
@@ -78,7 +78,7 @@ struct Legal: View {
                 case .acknowledgments:
                     return Alert(
                         title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(prefPaneData.acknowledgmentsText),
+                        message: Text(NSLocalizedString(prefPaneData.acknowledgmentsText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
                         dismissButton: .default(Text("OK"))
                     )
                 }
