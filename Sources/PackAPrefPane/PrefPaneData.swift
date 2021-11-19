@@ -87,7 +87,7 @@ public struct PrefPaneData {
     let developerInfoText: String
     let appCopyrightText: String
     var thirdPartyCode: [ThirdPartyCode]
-    // Legal constant from parent view
+    // Legal constants from parent view
     let showLegalSection: Bool
     let showDisclaimer: Bool
     let showPrivacyPolicy: Bool
