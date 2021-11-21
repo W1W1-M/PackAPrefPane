@@ -41,21 +41,7 @@ struct Legal: View {
                 if prefPaneData.showTOS {
                     TermsOfService(prefPaneData: prefPaneData)
                 }
-            }.onAppear{
-                if prefPaneData.disclaimerAcceptedCheck { // If disclaimer check activated run disclaimer accepted check
-                    if !PrefPaneHelper.checkDisclaimerAccepted(disclaimerAcceptedDefaultsKey: prefPaneData.disclaimerAcceptedDefaultsKey) {
-                        alert = Legal.alerts.disclaimerAlert
-                        alertPresented.toggle()
-                    }
-                }
-                if prefPaneData.privacyPolicyAcceptedCheck { // If privacy policy check activated run privacy policy accepted check
-                    if !PrefPaneHelper.checkPrivacyPolicyAccepted(privacyPolicyAcceptedDefaultsKey: prefPaneData.privacyPolicyAcceptedDefaultsKey) {
-                        alert = Legal.alerts.privacyAlert
-                        alertPresented.toggle()
-                    }
-                }
-            }
-            .alert(isPresented: $alertPresented, content: { // alert switch cases
+            }.alert(isPresented: $alertPresented, content: { // alert switch cases
                 switch alert {
                 case .disclaimerAlert:
                     return Alert(
