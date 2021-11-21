@@ -17,7 +17,7 @@
 "What's New" = "Nouveautés";
 
 /* No comment provided by engineer. */
-"Release Notes v%@" = "Notes de version v%@";
+"Release Notes" = "Notes de version";
 
 /* No comment provided by engineer. */
 "FAQ" = "FAQ";
@@ -39,3 +39,9 @@
 
 /* No comment provided by engineer. */
 "Terms of Service" = "Conditions d'utilisation";
+
+/* No comment provided by engineer. */
+"PackAPrefPane by W1W1-M" = "PackAPrefPane par W1W1-M"
+
+/* No comment provided by engineer. */
+"MIT license" = "Licence MIT"

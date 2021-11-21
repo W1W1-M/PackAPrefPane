@@ -76,11 +76,11 @@ struct WhatsNew: View {
         DisclosureGroup(NSLocalizedString("What's New", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $whatsNewExpanded) {
             VStack {
                 HStack {
-                    Text(NSLocalizedString("Release Notes v\(appVersion)", tableName: "Localizable", bundle: .module, value: "", comment: ""))
-                        .font(.headline)
-                        .underline()
                     Spacer()
-                }
+                    Text(NSLocalizedString("Release Notes", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                    Text("v\(appVersion)")
+                    Spacer()
+                }.font(.headline)
                 Spacer()
                 HStack {
                     Text(NSLocalizedString(prefPaneData.changelogText, tableName: "Localizable", bundle: .main, value: "", comment: ""))
