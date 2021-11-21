@@ -22,10 +22,18 @@ struct Legal: View {
         if prefPaneData.showLegalSection {
             Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
                 if prefPaneData.showDisclaimer {
-                    Disclaimer(alertPresented: $alertPresented, alert: $alert)
+                    Disclaimer(
+                        alertPresented: $alertPresented,
+                        alert: $alert,
+                        prefPaneData: prefPaneData
+                    )
                 }
                 if prefPaneData.showPrivacyPolicy {
-                    PrivacyPolicy(alertPresented: $alertPresented, alert: $alert)
+                    PrivacyPolicy(
+                        alertPresented: $alertPresented,
+                        alert: $alert,
+                        prefPaneData: prefPaneData
+                    )
                 }
                 if prefPaneData.showAcknowledgments {
                     Acknowledgments(alertPresented: $alertPresented, alert: $alert)
@@ -34,13 +42,13 @@ struct Legal: View {
                     TermsOfService(prefPaneData: prefPaneData)
                 }
             }.onAppear{
-                if prefPaneData.disclaimerAcceptedCheck {
+                if prefPaneData.disclaimerAcceptedCheck { // If disclaimer check activated run disclaimer accepted check
                     if !PrefPaneHelper.checkDisclaimerAccepted(disclaimerAcceptedDefaultsKey: prefPaneData.disclaimerAcceptedDefaultsKey) {
                         alert = Legal.alerts.disclaimerAlert
                         alertPresented.toggle()
                     }
                 }
-                if prefPaneData.privacyPolicyAcceptedCheck {
+                if prefPaneData.privacyPolicyAcceptedCheck { // If privacy policy check activated run privacy policy accepted check
                     if !PrefPaneHelper.checkPrivacyPolicyAccepted(privacyPolicyAcceptedDefaultsKey: prefPaneData.privacyPolicyAcceptedDefaultsKey) {
                         alert = Legal.alerts.privacyAlert
                         alertPresented.toggle()
@@ -91,6 +99,7 @@ struct Disclaimer: View {
     // Variables
     @Binding var alertPresented: Bool
     @Binding var alert: Legal.alerts
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         Button(action: {
@@ -100,7 +109,15 @@ struct Disclaimer: View {
             HStack {
                 Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
-                Image(systemName: "checkmark.shield.fill").imageScale(.large)
+                if prefPaneData.disclaimerAcceptedCheck {
+                    if UserDefaults.standard.bool(forKey: prefPaneData.disclaimerAcceptedDefaultsKey) {
+                        Image(systemName: "checkmark.shield.fill").imageScale(.large)
+                    } else {
+                        Image(systemName: "checkmark.shield").imageScale(.large)
+                    }
+                } else {
+                    Image(systemName: "checkmark.shield").imageScale(.large)
+                }
             }
         })
     }
@@ -110,6 +127,7 @@ struct PrivacyPolicy: View {
     // Variables
     @Binding var alertPresented: Bool
     @Binding var alert: Legal.alerts
+    let prefPaneData: PrefPaneData
     // UI
     var body: some View {
         Button(action: {
@@ -119,7 +137,16 @@ struct PrivacyPolicy: View {
             HStack {
                 Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
-                Image(systemName: "lock.shield.fill").imageScale(.large)
+                if prefPaneData.privacyPolicyAcceptedCheck {
+                    if UserDefaults.standard.bool(forKey: prefPaneData.privacyPolicyAcceptedDefaultsKey) {
+                        Image(systemName: "lock.shield.fill").imageScale(.large)
+                    } else {
+                        Image(systemName: "lock.shield").imageScale(.large)
+                    }
+                } else {
+                    Image(systemName: "lock.shield").imageScale(.large)
+                }
+                
             }
         })
     }

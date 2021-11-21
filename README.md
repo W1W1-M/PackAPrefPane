@@ -13,7 +13,6 @@
 * Lightweight
 * Customizable
 * Localizable
-* Nothing exotic
 * Open source
 * Target: iOS 14 >
 

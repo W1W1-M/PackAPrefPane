@@ -1,4 +1,4 @@
-## [Go to README](README.md)
+## [README](README.md)
 
 ## PrefPaneData type
 ### Help section
