@@ -7,7 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
-@available(iOS 14, *)
+@available(macOS 11.0, iOS 14, *)
 public struct PackAPrefPane<Content: View>: View {
     // Variables
     public init( // public init for public struct
@@ -47,6 +47,7 @@ public struct PackAPrefPane<Content: View>: View {
     }
 }
 // MARK: - Previews
+@available(macOS 11.0, iOS 14, *)
 struct PackAPrefPane_Previews: PreviewProvider {
     static var previews: some View {
         PackAPrefPane(

@@ -7,6 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+@available(macOS 11.0, iOS 14, *)
 struct About: View {
     // Variables
     let prefPaneData: PrefPaneData
@@ -17,6 +18,7 @@ struct About: View {
     }
 }
 // MARK: - AppInfo
+@available(macOS 11.0, iOS 14, *)
 struct AppInfo: View {
     // Variables
     let prefPaneData: PrefPaneData
@@ -46,6 +48,7 @@ struct AppInfo: View {
     }
 }
 // MARK: - ThirdParyCodeList
+@available(macOS 11.0, iOS 14, *)
 struct ThirdPartyCodeList: View {
     // Variables
     @State var thirdPartyCodeExpanded: Bool = false
@@ -64,6 +67,7 @@ struct ThirdPartyCodeList: View {
     }
 }
 // MARK: - ThirdPartyCodeItem
+@available(macOS 11.0, iOS 14, *)
 struct ThirdPartyCodeItem: View {
     // Variables
     let thirdPartyCode: ThirdPartyCode
@@ -93,7 +97,8 @@ struct ThirdPartyCodeItem: View {
     }
 }
 // MARK: - Previews
-struct AppInfo_Previews: PreviewProvider {
+@available(macOS 11.0, iOS 14, *)
+struct About_Previews: PreviewProvider {
     static var previews: some View {
         Form {
             About(

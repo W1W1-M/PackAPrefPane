@@ -7,6 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+@available(macOS 11.0, iOS 14, *)
 struct Help: View {
     // Variables
     let prefPaneData: PrefPaneData
@@ -31,6 +32,7 @@ struct Help: View {
     }
 }
 // MARK: - Feedback
+@available(macOS 11.0, iOS 14, *)
 struct Feedback: View {
     // Variables
     let prefPaneData: PrefPaneData
@@ -46,6 +48,7 @@ struct Feedback: View {
     }
 }
 // MARK: - Support
+@available(macOS 11.0, iOS 14, *)
 struct Support: View {
     // Variables
     let prefPaneData: PrefPaneData
@@ -66,6 +69,7 @@ struct Support: View {
     }
 }
 // MARK: - WhatsNew
+@available(macOS 11.0, iOS 14, *)
 struct WhatsNew: View {
     // Variables
     @State private var whatsNewExpanded: Bool = false
@@ -91,6 +95,7 @@ struct WhatsNew: View {
     }
 }
 // MARK: - FAQ
+@available(macOS 11.0, iOS 14, *)
 struct FAQ: View {
     // Variables
     @State private var faqExpanded: Bool = false
@@ -117,6 +122,7 @@ struct FAQ: View {
     }
 }
 // MARK: - Previews
+@available(macOS 11.0, iOS 14, *)
 struct Help_Previews: PreviewProvider {
     @State var alertPresented: Bool = false
     static var previews: some View {

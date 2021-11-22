@@ -7,6 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+@available(macOS 11.0, iOS 14, *)
 struct Legal: View {
     // Variables
     @State private var alertPresented: Bool = false
@@ -81,6 +82,7 @@ struct Legal: View {
     }
 }
 // MARK: - Disclaimer
+@available(macOS 11.0, iOS 14, *)
 struct Disclaimer: View {
     // Variables
     @Binding var alertPresented: Bool
@@ -109,6 +111,7 @@ struct Disclaimer: View {
     }
 }
 // MARK: - PrivacyPolicy
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
 struct PrivacyPolicy: View {
     // Variables
     @Binding var alertPresented: Bool
@@ -138,6 +141,7 @@ struct PrivacyPolicy: View {
     }
 }
 // MARK: - Acknowledgments
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
 struct Acknowledgments: View {
     // Variables
     @Binding var alertPresented: Bool
@@ -157,6 +161,7 @@ struct Acknowledgments: View {
     }
 }
 // MARK: - TermsOfService
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
 struct TermsOfService: View {
     // Variables
     @State private var tosExpanded: Bool = false
@@ -169,6 +174,7 @@ struct TermsOfService: View {
     }
 }
 // MARK: - Previews
+@available(macOS 11.0, iOS 14, tvOS 14, watchOS 7, *)
 struct Legal_Previews: PreviewProvider {
     static var previews: some View {
         Form{
