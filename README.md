@@ -1,4 +1,4 @@
-![license](https://img.shields.io/github/license/:W1W1-M/:PackAPrefPane)
+![license](https://img.shields.io/github/license/W1W1-M/PackAPrefPane)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FW1W1-M%2FPackAPrefPane%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/W1W1-M/PackAPrefPane)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FW1W1-M%2FPackAPrefPane%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/W1W1-M/PackAPrefPane)
 
