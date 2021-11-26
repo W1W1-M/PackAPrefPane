@@ -9,7 +9,11 @@ import Foundation
 // MARK: - Classes
 class PrefPaneHelper {
     // MARK: - Functions
-    /// Function that returns App store review page URL using your apps App store ID XXXXXXXXXX
+    /// Function that returns App store review page URL
+    ///# Notes: #
+    /// test
+    /// - Parameter appID: A **String** of your apps App store ID XXXXXXXXXX
+    /// - Returns: Returns a *https:* **URL** to your apps App store page
     static func appFeedbackURL(appID: String) -> URL {
         if let appStoreURL = URL(string: "https://apps.apple.com/app/id\(appID)?action=write-review".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             return appStoreURL
@@ -18,6 +22,11 @@ class PrefPaneHelper {
         }
     }
     /// Function to setup support email URL
+    /// - Parameters:
+    ///   - supportEmailAddress: A **String** of the your support email address
+    ///   - supportEmailSubject: A **String** of the your support email subject
+    ///   - supportEmailBody: A **String** of the your support email body
+    /// - Returns: Returns a *mailto:* **URL** thats includes email address, subject & body
     static func setSupportEmailURL(supportEmailAddress: String, supportEmailSubject: String, supportEmailBody: String) -> URL {
         if let supportEmailURL = URL(string: "mailto:\(supportEmailAddress)?subject=\(supportEmailSubject)&body=\(supportEmailBody)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             return supportEmailURL
