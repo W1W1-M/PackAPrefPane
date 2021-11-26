@@ -112,6 +112,11 @@ public struct PrefPaneData {
 }
 /// Custom type for third party code information
 public struct ThirdPartyCode: Identifiable {
+    /// **ThirdParyCode** public initializer for swift package usage
+    /// - Parameters:
+    ///   - sourceNameText: A **String** to describe the third party code
+    ///   - sourceURLText: A **String** to the third party code website
+    ///   - sourceLicenseText: A **String** of third party code license
     public init( // public init for public struct
         sourceNameText: String,
         sourceURLText: String,
