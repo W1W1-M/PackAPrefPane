@@ -55,9 +55,9 @@ struct Support: View {
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.setSupportEmailURL(
-                supportEmailAddress: prefPaneData.supportEmailAddress,
-                supportEmailSubject: prefPaneData.supportEmailSubject,
-                supportEmailBody: prefPaneData.supportEmailBody
+                address: prefPaneData.supportEmailAddress,
+                subject: prefPaneData.supportEmailSubject,
+                body: prefPaneData.supportEmailBody
             )
         ) {
             HStack {
