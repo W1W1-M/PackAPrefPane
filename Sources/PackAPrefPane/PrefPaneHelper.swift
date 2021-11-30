@@ -13,7 +13,7 @@ public class PrefPaneHelper {
     /// Function that returns your app's App store review page URL
     /// - Parameter appID: Your app's App store ID. Example: *1564978634*
     /// - Returns: A *https* **URL** to your app's App store page
-    public static func appFeedbackURL(appID: String) -> URL {
+    public static func appFeedbackURL(for appID: String) -> URL {
         if let appStoreURL = URL(string: "https://apps.apple.com/app/id\(appID)?action=write-review".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             return appStoreURL
         } else {
@@ -27,11 +27,11 @@ public class PrefPaneHelper {
     ///   - supportEmailBody: Text to prefill email body
     /// - Returns: A *mailto* **URL** thats includes email address, subject & body
     public static func setSupportEmailURL(
-        address: String,
-        subject: String,
-        body: String
+        to emailAddress: String,
+        subject emailSubject: String,
+        message emailBody: String
     ) -> URL {
-        if let supportEmailURL = URL(string: "mailto:\(address)?subject=\(subject)&body=\(body)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+        if let supportEmailURL = URL(string: "mailto:\(emailAddress)?subject=\(emailSubject)&body=\(emailBody)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
             return supportEmailURL
         } else {
             return URL(string: "")!

@@ -38,7 +38,7 @@ struct Feedback: View {
     let prefPaneData: PrefPaneData
     // UI
     var body: some View {
-        Link(destination: PrefPaneHelper.appFeedbackURL(appID: prefPaneData.appID)) {
+        Link(destination: PrefPaneHelper.appFeedbackURL(for: prefPaneData.appID)) {
             HStack {
                 Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
@@ -55,9 +55,9 @@ struct Support: View {
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.setSupportEmailURL(
-                address: prefPaneData.supportEmailAddress,
+                to: prefPaneData.supportEmailAddress,
                 subject: prefPaneData.supportEmailSubject,
-                body: prefPaneData.supportEmailBody
+                message: prefPaneData.supportEmailBody
             )
         ) {
             HStack {

@@ -103,35 +103,35 @@ public struct PrefPaneData {
         self.privacyPolicyAcceptedDefaultsKey = privacyPolicyAcceptedDefaultsKey
         self.privacyPolicyAcceptedDateDefaultsKey = privacyPolicyAcceptedDateDefaultsKey
     }
-    let showHelpSection: Bool
-    let showFeedbackLink: Bool
-    let showSupportLink: Bool
-    let showWhatsNew: Bool
-    let showFAQ: Bool
-    let appID: String
-    let supportEmailAddress: String
-    let supportEmailSubject: String
-    let supportEmailBody: String
-    let changelogText: String
-    let faq: [FrequentlyAskedQuestions]
-    let developerInfoText: String
-    let appCopyrightText: String
-    var thirdPartyCode: [ThirdPartyCode]
-    let showLegalSection: Bool
-    let showDisclaimer: Bool
-    let showPrivacyPolicy: Bool
-    let showAcknowledgments: Bool
-    let showTOS: Bool
-    let disclaimerText: String
-    let privacyPolicyText: String
-    let acknowledgmentsText: String
-    let termsOfServiceText: String
-    let disclaimerAcceptedCheck: Bool
-    let privacyPolicyAcceptedCheck: Bool
-    let disclaimerAcceptedDefaultsKey: String
-    let disclaimerAcceptedDateDefaultsKey: String
-    let privacyPolicyAcceptedDefaultsKey: String
-    let privacyPolicyAcceptedDateDefaultsKey: String
+    public let showHelpSection: Bool
+    public let showFeedbackLink: Bool
+    public let showSupportLink: Bool
+    public let showWhatsNew: Bool
+    public let showFAQ: Bool
+    public let appID: String
+    public let supportEmailAddress: String
+    public let supportEmailSubject: String
+    public let supportEmailBody: String
+    public let changelogText: String
+    public let faq: [FrequentlyAskedQuestions]
+    public let developerInfoText: String
+    public let appCopyrightText: String
+    public var thirdPartyCode: [ThirdPartyCode]
+    public let showLegalSection: Bool
+    public let showDisclaimer: Bool
+    public let showPrivacyPolicy: Bool
+    public let showAcknowledgments: Bool
+    public let showTOS: Bool
+    public let disclaimerText: String
+    public let privacyPolicyText: String
+    public let acknowledgmentsText: String
+    public let termsOfServiceText: String
+    public let disclaimerAcceptedCheck: Bool
+    public let privacyPolicyAcceptedCheck: Bool
+    public let disclaimerAcceptedDefaultsKey: String
+    public let disclaimerAcceptedDateDefaultsKey: String
+    public let privacyPolicyAcceptedDefaultsKey: String
+    public let privacyPolicyAcceptedDateDefaultsKey: String
     let thirdPartyCodePackAPrefPane: ThirdPartyCode = ThirdPartyCode(
         sourceNameText: "PackAPrefPane by W1W1-M",
         sourceURLText: "https://github.com/W1W1-M/PackAPrefPane",
@@ -157,10 +157,11 @@ public struct ThirdPartyCode: Identifiable {
         self.sourceURLText = sourceURLText
         self.sourceLicenseText = sourceLicenseText
     }
+    /// id is used for SwiftUI ForEach iterations in About View
     public let id = UUID()
-    let sourceNameText: String
-    let sourceURLText: String
-    let sourceLicenseText: String
+    public let sourceNameText: String
+    public let sourceURLText: String
+    public let sourceLicenseText: String
 }
 /// Custom type for FAQ information
 ///
@@ -178,7 +179,8 @@ public struct FrequentlyAskedQuestions: Identifiable {
         self.question = question
         self.answer = answer
     }
+    /// id is used for SwiftUI ForEach iterations in Help View
     public let id = UUID()
-    let question: String
-    let answer: String
+    public let question: String
+    public let answer: String
 }
