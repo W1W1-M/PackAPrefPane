@@ -4,10 +4,8 @@ Reusable & customizable SwiftUI settings sheet as a Swift package
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+PackAPrefPane lets developers quickly implement a settings sheet for their apps. A standard set of customizable elements are available as well as the possibility to include a custom nested view for dedicated app settings.
 
 ## Topics
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
-
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+- ``Symbol``

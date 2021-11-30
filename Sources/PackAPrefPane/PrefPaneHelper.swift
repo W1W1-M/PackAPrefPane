@@ -10,8 +10,6 @@ import Foundation
 class PrefPaneHelper {
     // MARK: - Functions
     /// Function that returns App store review page URL
-    ///# Notes: #
-    /// test
     /// - Parameter appID: A **String** of your apps App store ID XXXXXXXXXX
     /// - Returns: Returns a *https:* **URL** to your apps App store page
     static func appFeedbackURL(appID: String) -> URL {

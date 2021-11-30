@@ -20,6 +20,7 @@
 * Customizable
 * Localizable
 * Open source
+* Documentation in DocC 
 * Target: iOS 14 >
 
 ![PackAPrefPane preview](PackAPrefPanePreview.png)

@@ -7,10 +7,16 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+/// Main PackAPrefPane View
 @available(macOS 11.0, iOS 14, *)
 public struct PackAPrefPane<Content: View>: View {
     // Variables
-    public init( // public init for public struct
+    /// **PackPrefPane** public initializer for swift package usage
+    /// - Parameters:
+    ///   - settingsSheetPresented: Boolean passed in from parent to control settings sheet presentation
+    ///   - prefPaneData: Your customized **PrefPaneData**
+    ///   - appSettingsView: Your custom nested view for dedicated app settings
+    public init(
         settingsSheetPresented: Binding<Bool>,
         prefPaneData: PrefPaneData,
         @ViewBuilder appSettingsView: () -> Content // @ViewBuilder to pass in your app setting view
@@ -19,9 +25,9 @@ public struct PackAPrefPane<Content: View>: View {
         self.prefPaneData = prefPaneData
         self.appSettingsView = appSettingsView()
     }
-    @Binding var settingsSheetPresented: Bool // Bool to control sheet presentation
-    let prefPaneData: PrefPaneData // Your custom data
-    let appSettingsView: Content // App settings view from parent view
+    @Binding var settingsSheetPresented: Bool
+    let prefPaneData: PrefPaneData
+    let appSettingsView: Content
     // UI
     public var body: some View {
         NavigationView {
