@@ -12,36 +12,36 @@ public struct PrefPaneData {
     /// **PrefPaneData** public initializer for swift package usage
     /// 
     /// - Parameters:
-    ///   - showHelpSection: Boolean to show or drop help section
-    ///   - showFeedbackLink: Boolean to show or drop feedback link
-    ///   - showSupportLink: Boolean to show or drop support link
-    ///   - showWhatsNew: Boolean to show or drop release notes disclosure group
-    ///   - showFAQ: Boolean show or drop frequently asked questions disclosure group 
-    ///   - appID: Your app's App store ID. Example: *1564978634*
-    ///   - supportEmailAddress: Full email address for user support
-    ///   - supportEmailSubject: Text to prefill email subject
-    ///   - supportEmailBody: Text to prefill email body
-    ///   - changelogText: Your app's current release notes
-    ///   - faq: An array of [FrequentlyAskedQuestions]
-    ///   - developerInfoText: Your developer information text. Example: *Designed & Developped by you*
-    ///   - appCopyrightText: Your app's copyright text. Example: *Copyright 2021-2022*
-    ///   - thirdPartyCode: An array of [ThirdPartyCode]
-    ///   - showLegalSection: Boolean to show or drop legal section
-    ///   - showDisclaimer: Boolean to show or drop disclaimer button
-    ///   - showPrivacyPolicy: Boolean to show or drop privacy policy button
-    ///   - showAcknowledgments: Boolean to show or drop acknowledgments button
-    ///   - showTOS: Boolean to show or drop terms of service disclosure group
-    ///   - disclaimerText: Your legal disclaimer text 
-    ///   - privacyPolicyText: Your privacy policy text
-    ///   - acknowledgmentsText: Your special thanks text 
-    ///   - termsOfServiceText: Your service terms text 
-    ///   - disclaimerAcceptedCheck: Boolean to activate user accepted disclaimer check 
-    ///   - privacyPolicyAcceptedCheck: Boolean to activate user accepted privacy policy check
-    ///   - disclaimerAcceptedDefaultsKey: Disclaimer accepted user defaults key String 
-    ///   - disclaimerAcceptedDateDefaultsKey: Disclaimer accepted date user defaults key String 
-    ///   - privacyPolicyAcceptedDefaultsKey: Privacy policy accepted user defaults key String 
-    ///   - privacyPolicyAcceptedDateDefaultsKey: Privacy polcy date accepted user defaults key String  
-    public init( // public init for public struct
+    ///   - showHelpSection: ``PrefPaneData/showHelpSection``
+    ///   - showFeedbackLink: ``PrefPaneData/showFeedbackLink``
+    ///   - showSupportLink: ``PrefPaneData/showSupportLink``
+    ///   - showWhatsNew: ``PrefPaneData/showWhatsNew``
+    ///   - showFAQ: ``PrefPaneData/showFAQ``
+    ///   - appID: ``PrefPaneData/appID``
+    ///   - supportEmailAddress: ``PrefPaneData/supportEmailAddress``
+    ///   - supportEmailSubject: ``PrefPaneData/supportEmailSubject``
+    ///   - supportEmailBody: ``PrefPaneData/supportEmailBody``
+    ///   - changelogText: ``PrefPaneData/changelogText``
+    ///   - faq: ``PrefPaneData/faq``
+    ///   - developerInfoText: ``PrefPaneData/developerInfoText``
+    ///   - appCopyrightText: ``PrefPaneData/appCopyrightText``
+    ///   - thirdPartyCode: ``PrefPaneData/thirdPartyCode``
+    ///   - showLegalSection: ``PrefPaneData/showLegalSection``
+    ///   - showDisclaimer: ``PrefPaneData/showDisclaimer``
+    ///   - showPrivacyPolicy: ``PrefPaneData/showPrivacyPolicy``
+    ///   - showAcknowledgments: ``PrefPaneData/showAcknowledgments``
+    ///   - showTOS: ``PrefPaneData/showTOS``
+    ///   - disclaimerText: ``PrefPaneData/disclaimerText``
+    ///   - privacyPolicyText: ``PrefPaneData/privacyPolicyText``
+    ///   - acknowledgmentsText: ``PrefPaneData/acknowledgmentsText``
+    ///   - termsOfServiceText: ``PrefPaneData/termsOfServiceText``
+    ///   - disclaimerAcceptedCheck: ``PrefPaneData/disclaimerAcceptedCheck``
+    ///   - privacyPolicyAcceptedCheck: ``PrefPaneData/privacyPolicyAcceptedCheck``
+    ///   - disclaimerAcceptedDefaultsKey: ``PrefPaneData/disclaimerAcceptedDefaultsKey``
+    ///   - disclaimerAcceptedDateDefaultsKey: ``PrefPaneData/disclaimerAcceptedDateDefaultsKey``
+    ///   - privacyPolicyAcceptedDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDefaultsKey``
+    ///   - privacyPolicyAcceptedDateDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDateDefaultsKey``
+    public init(
         showHelpSection: Bool,
         showFeedbackLink: Bool,
         showSupportLink: Bool,
@@ -103,34 +103,63 @@ public struct PrefPaneData {
         self.privacyPolicyAcceptedDefaultsKey = privacyPolicyAcceptedDefaultsKey
         self.privacyPolicyAcceptedDateDefaultsKey = privacyPolicyAcceptedDateDefaultsKey
     }
+    /// Boolean to show or drop help section
     public let showHelpSection: Bool
+    /// Boolean to show or drop feedback link
     public let showFeedbackLink: Bool
+    /// Boolean to show or drop support link
     public let showSupportLink: Bool
+    /// Boolean to show or drop release notes disclosure group
     public let showWhatsNew: Bool
+    /// Boolean show or drop frequently asked questions disclosure group
     public let showFAQ: Bool
+    /// Your app's App store ID. Example: *1564978634*
     public let appID: String
+    /// Full email address for user support
     public let supportEmailAddress: String
+    /// Text to prefill email subject
     public let supportEmailSubject: String
+    /// Text to prefill email body
     public let supportEmailBody: String
+    /// Your app's current release notes
     public let changelogText: String
+    /// An array of [FrequentlyAskedQuestions]
     public let faq: [FrequentlyAskedQuestions]
+    /// Your developer information text. Example: *Designed & Developped by you*
     public let developerInfoText: String
+    /// Your app's copyright text. Example: *Copyright 2021-2022*
     public let appCopyrightText: String
+    /// An array of [ThirdPartyCode]
     public var thirdPartyCode: [ThirdPartyCode]
+    /// Boolean to show or drop legal section
     public let showLegalSection: Bool
+    /// Boolean to show or drop disclaimer button
     public let showDisclaimer: Bool
+    /// Boolean to show or drop privacy policy button
     public let showPrivacyPolicy: Bool
+    /// Boolean to show or drop acknowledgments button
     public let showAcknowledgments: Bool
+    /// Boolean to show or drop terms of service disclosure group
     public let showTOS: Bool
+    /// Your legal disclaimer text
     public let disclaimerText: String
+    /// Your privacy policy text
     public let privacyPolicyText: String
+    /// Your special thanks text
     public let acknowledgmentsText: String
+    /// Your service terms text
     public let termsOfServiceText: String
+    /// Boolean to activate user accepted disclaimer check
     public let disclaimerAcceptedCheck: Bool
+    /// Boolean to activate user accepted privacy policy check
     public let privacyPolicyAcceptedCheck: Bool
+    /// Disclaimer accepted user defaults key String
     public let disclaimerAcceptedDefaultsKey: String
+    /// Disclaimer accepted date user defaults key String
     public let disclaimerAcceptedDateDefaultsKey: String
+    /// Privacy policy accepted user defaults key String
     public let privacyPolicyAcceptedDefaultsKey: String
+    /// Privacy polcy date accepted user defaults key String
     public let privacyPolicyAcceptedDateDefaultsKey: String
     let thirdPartyCodePackAPrefPane: ThirdPartyCode = ThirdPartyCode(
         sourceNameText: "PackAPrefPane by W1W1-M",
@@ -145,9 +174,9 @@ public struct ThirdPartyCode: Identifiable {
     /// **ThirdParyCode** public initializer for swift package usage
     ///
     /// - Parameters:
-    ///   - sourceNameText: Text description of third party code name & author. Example: *PackAPrefPane by W1W1-M*
-    ///   - sourceURLText: Full Text URL to the third party code website. Example: *https:\//github.com/W1W1-M/PackAPrefPane*
-    ///   - sourceLicenseText: Text description of source code license. Example: *MIT license*
+    ///   - sourceNameText: ``ThirdPartyCode/sourceNameText``
+    ///   - sourceURLText: ``ThirdPartyCode/sourceURLText``
+    ///   - sourceLicenseText: ``ThirdPartyCode/sourceLicenseText``
     public init(
         sourceNameText: String,
         sourceURLText: String,
@@ -159,8 +188,11 @@ public struct ThirdPartyCode: Identifiable {
     }
     /// id is used for SwiftUI ForEach iterations in About View
     public let id = UUID()
+    /// Text description of third party code name & author. Example: *PackAPrefPane by W1W1-M*
     public let sourceNameText: String
+    /// Full Text URL to the third party code website. Example: *https:\//github.com/W1W1-M/PackAPrefPane*
     public let sourceURLText: String
+    /// Text description of source code license. Example: *MIT license*
     public let sourceLicenseText: String
 }
 /// Custom type for FAQ information
@@ -170,8 +202,8 @@ public struct FrequentlyAskedQuestions: Identifiable {
     /// **FrequentlyAskedQuestions** public initializer for swift package usage
     ///
     /// - Parameters:
-    ///   - question: Text description of  FAQ question. Example: *Q.1: How is this example calculated ?*
-    ///   - answer: Text description of  FAQ answer. Example: *A.1: The example is calculated X-Y+Z*
+    ///   - question: ``FrequentlyAskedQuestions/question``
+    ///   - answer: ``FrequentlyAskedQuestions/answer``
     public init(
         question: String,
         answer: String
@@ -181,6 +213,8 @@ public struct FrequentlyAskedQuestions: Identifiable {
     }
     /// id is used for SwiftUI ForEach iterations in Help View
     public let id = UUID()
+    /// Text description of  FAQ question. Example: *Q.1: How is this example calculated ?*
     public let question: String
+    /// Text description of  FAQ answer. Example: *A.1: The example is calculated X-Y+Z*
     public let answer: String
 }
