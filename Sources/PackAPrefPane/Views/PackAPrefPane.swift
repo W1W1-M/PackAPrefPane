@@ -8,6 +8,12 @@
 import SwiftUI
 // MARK: - Views
 /// Main PackAPrefPane View
+///
+/// View composed of:
+/// - Your nested app settings section view
+/// - A ``PackAPrefPane/Help`` section
+/// - An ``PackAPrefPane/About`` section
+/// - A ``PackAPrefPane/Legal`` section 
 @available(macOS 11.0, iOS 14, *)
 public struct PackAPrefPane<Content: View>: View {
     // Variables
@@ -32,13 +38,9 @@ public struct PackAPrefPane<Content: View>: View {
     public var body: some View {
         NavigationView {
             Form {
-                // Your nested app settings view section
                 appSettingsView
-                // Help section
                 Help(prefPaneData: prefPaneData)
-                // App information section
                 About(prefPaneData: prefPaneData)
-                // Legal section
                 Legal(prefPaneData: prefPaneData)
             }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
             .toolbar { // Toolbar with close button

@@ -7,12 +7,13 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+/// About section View
 @available(macOS 11.0, iOS 14, *)
-struct About: View {
+public struct About: View {
     // Variables
     let prefPaneData: PrefPaneData
     // UI
-    var body: some View {
+    public var body: some View {
         AppInfo(prefPaneData: prefPaneData)
         ThirdPartyCodeList(prefPaneData: prefPaneData)
     }

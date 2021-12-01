@@ -23,10 +23,10 @@ public class PrefPaneHelper {
     /// Function to setup support email URL
     /// - Parameters:
     ///   - emailAddress: ``PrefPaneData/supportEmailAddress``
-    ///   - emailSubject: ``PrefPaneData/supportEmailSubject
+    ///   - emailSubject: ``PrefPaneData/supportEmailSubject``
     ///   - emailBody: ``PrefPaneData/supportEmailBody``
     /// - Returns: A *mailto* **URL** thats includes email address, subject & body
-    public static func setSupportEmailURL(
+    public static func supportEmailURL(
         to emailAddress: String,
         subject emailSubject: String,
         message emailBody: String

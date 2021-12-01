@@ -7,7 +7,7 @@
 // MARK: - Modules
 import Foundation
 // MARK: - Structs
-/// Custom type to group custom input data
+/// Type to group custom input data
 public struct PrefPaneData {
     /// **PrefPaneData** public initializer for swift package usage
     /// 
@@ -113,7 +113,9 @@ public struct PrefPaneData {
     public let showWhatsNew: Bool
     /// Boolean show or drop frequently asked questions disclosure group
     public let showFAQ: Bool
-    /// Your app's App store ID. Example: *1564978634*
+    /// Your app's App store ID.
+    ///
+    /// Example: *1564978634*
     public let appID: String
     /// Full email address for user support
     public let supportEmailAddress: String
@@ -125,9 +127,13 @@ public struct PrefPaneData {
     public let changelogText: String
     /// An array of [FrequentlyAskedQuestions]
     public let faq: [FrequentlyAskedQuestions]
-    /// Your developer information text. Example: *Designed & Developped by you*
+    /// Your developer information text.
+    ///
+    /// Example: *Designed & Developped by you*
     public let developerInfoText: String
-    /// Your app's copyright text. Example: *Copyright 2021-2022*
+    /// Your app's copyright text.
+    ///
+    /// Example: *Copyright 2021-2022*
     public let appCopyrightText: String
     /// An array of [ThirdPartyCode]
     public var thirdPartyCode: [ThirdPartyCode]
@@ -167,7 +173,7 @@ public struct PrefPaneData {
         sourceLicenseText: "MIT license"
     )
 }
-/// Custom type for third party code information
+/// Type for third party code information
 ///
 /// Reference third party code to acknowledge other developers and respect their work.
 public struct ThirdPartyCode: Identifiable {
@@ -188,14 +194,20 @@ public struct ThirdPartyCode: Identifiable {
     }
     /// id is used for SwiftUI ForEach iterations in About View
     public let id = UUID()
-    /// Text description of third party code name & author. Example: *PackAPrefPane by W1W1-M*
+    /// Text description of third party code name & author.
+    ///
+    /// Example: *PackAPrefPane by W1W1-M*
     public let sourceNameText: String
-    /// Full Text URL to the third party code website. Example: *https:\//github.com/W1W1-M/PackAPrefPane*
+    /// Full Text URL to the third party code website.
+    ///
+    /// Example: *https:\//github.com/W1W1-M/PackAPrefPane*
     public let sourceURLText: String
-    /// Text description of source code license. Example: *MIT license*
+    /// Text description of source code license.
+    ///
+    /// Example: *MIT license*
     public let sourceLicenseText: String
 }
-/// Custom type for FAQ information
+/// Type for FAQ information
 ///
 /// An instance of FrequentlyAskedQuestions is composed of one question & one answer. Use an array in order to make up a complet FAQ.
 public struct FrequentlyAskedQuestions: Identifiable {
@@ -213,8 +225,12 @@ public struct FrequentlyAskedQuestions: Identifiable {
     }
     /// id is used for SwiftUI ForEach iterations in Help View
     public let id = UUID()
-    /// Text description of  FAQ question. Example: *Q.1: How is this example calculated ?*
+    /// Text description of  FAQ question.
+    ///
+    /// Example: *Q.1: How is this example calculated ?*
     public let question: String
-    /// Text description of  FAQ answer. Example: *A.1: The example is calculated X-Y+Z*
+    /// Text description of  FAQ answer.
+    ///
+    /// Example: *A.1: The example is calculated X-Y+Z*
     public let answer: String
 }

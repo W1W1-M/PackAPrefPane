@@ -7,8 +7,9 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+/// Legal section View
 @available(macOS 11.0, iOS 14, *)
-struct Legal: View {
+public struct Legal: View {
     // Variables
     @State private var alertPresented: Bool = false
     @State private var alert: alerts = .disclaimerAlert
@@ -19,7 +20,7 @@ struct Legal: View {
         case acknowledgments
     }
     // UI
-    var body: some View {
+    public var body: some View {
         if prefPaneData.showLegalSection {
             Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
                 if prefPaneData.showDisclaimer {

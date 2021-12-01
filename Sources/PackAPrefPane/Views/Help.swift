@@ -7,12 +7,13 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
+/// Help section View
 @available(macOS 11.0, iOS 14, *)
-struct Help: View {
+public struct Help: View {
     // Variables
     let prefPaneData: PrefPaneData
     // UI
-    var body: some View {
+    public var body: some View {
         if prefPaneData.showHelpSection {
             Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
                 if prefPaneData.showFeedbackLink {
@@ -54,7 +55,7 @@ struct Support: View {
     let prefPaneData: PrefPaneData
     // UI
     var body: some View {
-        Link(destination: PrefPaneHelper.setSupportEmailURL(
+        Link(destination: PrefPaneHelper.supportEmailURL(
                 to: prefPaneData.supportEmailAddress,
                 subject: prefPaneData.supportEmailSubject,
                 message: prefPaneData.supportEmailBody
