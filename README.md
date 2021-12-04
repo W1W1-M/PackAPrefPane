@@ -44,7 +44,7 @@ PackAPrefPane(
 
 ## Documentation
 
-Classes, Structs, Methods & Properties are documented using DocC and can be found within Xcode developer documentaiton
+Classes, Structs, Methods & Properties are documented using DocC and can be found through Xcode developer documentaiton
 
 ## Project assets in releases
 * Mind map in MindNode format
