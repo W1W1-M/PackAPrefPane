@@ -7,7 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
-/// Main PackAPrefPane View
+/// Main PackAPrefPane View using ``PrefPaneData``
 ///
 /// View composed of:
 /// - Your nested app settings section view
@@ -39,10 +39,14 @@ public struct PackAPrefPane<Content: View>: View {
         NavigationView {
             Form {
                 appSettingsView
-                Help(helpSectionData: prefPaneData.helpSectionData)
+                if prefPaneData.helpSectionData.showHelpSection {
+                    Help(helpSectionData: prefPaneData.helpSectionData)
+                }
                 About(aboutSectionData: prefPaneData.aboutSectionData)
-                Legal(legalSectionData: prefPaneData.legalSectionData)
-            }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
+                if prefPaneData.legalSectionData.showLegalSection {
+                    Legal(legalSectionData: prefPaneData.legalSectionData)
+                }
+            }.navigationTitle(NSLocalizedString(prefPaneData.prefPaneTitle, tableName: "Localizable", bundle: .module, value: "", comment: ""))
             .toolbar { // Toolbar with close button
                 ToolbarItem(placement: .navigation) {
                     Button(action: {
@@ -61,6 +65,7 @@ struct PackAPrefPane_Previews: PreviewProvider {
         PackAPrefPane(
             settingsSheetPresented: .constant(true),
             prefPaneData: PrefPaneData(
+                prefPaneTitle: "Settings ⚙️",
                 helpSectionData: HelpSectionData(
                     showHelpSection: true,
                     showFeedbackLink: true,

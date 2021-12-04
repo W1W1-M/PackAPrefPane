@@ -21,65 +21,63 @@ public struct Legal: View {
     }
     // UI
     public var body: some View {
-        if legalSectionData.showLegalSection {
-            Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-                if legalSectionData.showDisclaimer {
-                    Disclaimer(
-                        alertPresented: $alertPresented,
-                        alert: $alert,
-                        legalSectionData: legalSectionData
-                    )
-                }
-                if legalSectionData.showPrivacyPolicy {
-                    PrivacyPolicy(
-                        alertPresented: $alertPresented,
-                        alert: $alert,
-                        legalSectionData: legalSectionData
-                    )
-                }
-                if legalSectionData.showAcknowledgments {
-                    Acknowledgments(alertPresented: $alertPresented, alert: $alert)
-                }
-                if legalSectionData.showTOS {
-                    TermsOfService(legalSectionData: legalSectionData)
-                }
-            }.alert(isPresented: $alertPresented, content: { // alert switch cases
-                switch alert {
-                case .disclaimerAlert:
-                    return Alert(
-                        title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(NSLocalizedString(legalSectionData.disclaimerText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
-                        dismissButton: .default(Text("OK")) {
-                            if legalSectionData.disclaimerAcceptedCheck {
-                                PrefPaneHelper.acceptDisclaimer(
-                                    disclaimerAcceptedDefaultsKey: legalSectionData.disclaimerAcceptedDefaultsKey,
-                                    disclaimerAcceptedDateDefaultsKey: legalSectionData.disclaimerAcceptedDateDefaultsKey
-                                )
-                            }
+        Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
+            if legalSectionData.showDisclaimer {
+                Disclaimer(
+                    alertPresented: $alertPresented,
+                    alert: $alert,
+                    legalSectionData: legalSectionData
+                )
+            }
+            if legalSectionData.showPrivacyPolicy {
+                PrivacyPolicy(
+                    alertPresented: $alertPresented,
+                    alert: $alert,
+                    legalSectionData: legalSectionData
+                )
+            }
+            if legalSectionData.showAcknowledgments {
+                Acknowledgments(alertPresented: $alertPresented, alert: $alert)
+            }
+            if legalSectionData.showTOS {
+                TermsOfService(legalSectionData: legalSectionData)
+            }
+        }.alert(isPresented: $alertPresented, content: { // alert switch cases
+            switch alert {
+            case .disclaimerAlert:
+                return Alert(
+                    title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                    message: Text(NSLocalizedString(legalSectionData.disclaimerText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
+                    dismissButton: .default(Text("OK")) {
+                        if legalSectionData.disclaimerAcceptedCheck {
+                            PrefPaneHelper.acceptDisclaimer(
+                                disclaimerAcceptedDefaultsKey: legalSectionData.disclaimerAcceptedDefaultsKey,
+                                disclaimerAcceptedDateDefaultsKey: legalSectionData.disclaimerAcceptedDateDefaultsKey
+                            )
                         }
-                    )
-                case .privacyAlert:
-                    return Alert(
-                        title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(NSLocalizedString(legalSectionData.privacyPolicyText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
-                        dismissButton: .default(Text("OK")) {
-                            if legalSectionData.privacyPolicyAcceptedCheck {
-                                PrefPaneHelper.acceptPrivacyPolicy(
-                                    privacyPolicyAcceptedDefaultsKey: legalSectionData.privacyPolicyAcceptedDefaultsKey,
-                                    privacyPolicyAcceptedDateDefaultsKey: legalSectionData.privacyPolicyAcceptedDateDefaultsKey
-                                )
-                            }
+                    }
+                )
+            case .privacyAlert:
+                return Alert(
+                    title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                    message: Text(NSLocalizedString(legalSectionData.privacyPolicyText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
+                    dismissButton: .default(Text("OK")) {
+                        if legalSectionData.privacyPolicyAcceptedCheck {
+                            PrefPaneHelper.acceptPrivacyPolicy(
+                                privacyPolicyAcceptedDefaultsKey: legalSectionData.privacyPolicyAcceptedDefaultsKey,
+                                privacyPolicyAcceptedDateDefaultsKey: legalSectionData.privacyPolicyAcceptedDateDefaultsKey
+                            )
                         }
-                    )
-                case .acknowledgments:
-                    return Alert(
-                        title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(NSLocalizedString(legalSectionData.acknowledgmentsText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
-                        dismissButton: .default(Text("OK"))
-                    )
-                }
+                    }
+                )
+            case .acknowledgments:
+                return Alert(
+                    title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
+                    message: Text(NSLocalizedString(legalSectionData.acknowledgmentsText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         })
-        }
     }
 }
 // MARK: - Disclaimer

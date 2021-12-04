@@ -11,18 +11,23 @@ import Foundation
 public struct PrefPaneData {
     /// ``PrefPaneData`` public initializer for swift package usage
     /// - Parameters:
+    ///   - prefPaneTitle: ``prefPaneTitle``
     ///   - helpSectionData: ``HelpSectionData``
     ///   - aboutSectionData: ``AboutSectionData``
     ///   - legalSectionData: ``LegalSectionData``
     public init(
+        prefPaneTitle: String,
         helpSectionData: HelpSectionData,
         aboutSectionData: AboutSectionData,
         legalSectionData: LegalSectionData
     ) {
+        self.prefPaneTitle = prefPaneTitle
         self.helpSectionData = helpSectionData
         self.aboutSectionData = aboutSectionData
         self.legalSectionData = legalSectionData
     }
+    /// PackAPrefPane navigation title
+    public let prefPaneTitle: String
     /// ``HelpSectionData``
     public let helpSectionData: HelpSectionData
     /// ``AboutSectionData``

@@ -14,20 +14,18 @@ public struct Help: View {
     let helpSectionData: HelpSectionData
     // UI
     public var body: some View {
-        if helpSectionData.showHelpSection {
-            Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-                if helpSectionData.showFeedbackLink {
-                    Feedback(helpSectionData: helpSectionData)
-                }
-                if helpSectionData.showSupportLink {
-                    Support(helpSectionData: helpSectionData)
-                }
-                if helpSectionData.showWhatsNew {
-                    WhatsNew(helpSectionData: helpSectionData)
-                }
-                if helpSectionData.showFAQ {
-                    FAQ(faq: helpSectionData.faq)
-                }
+        Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
+            if helpSectionData.showFeedbackLink {
+                Feedback(helpSectionData: helpSectionData)
+            }
+            if helpSectionData.showSupportLink {
+                Support(helpSectionData: helpSectionData)
+            }
+            if helpSectionData.showWhatsNew {
+                WhatsNew(helpSectionData: helpSectionData)
+            }
+            if helpSectionData.showFAQ {
+                FAQ(faq: helpSectionData.faq)
             }
         }
     }
