@@ -39,9 +39,9 @@ public struct PackAPrefPane<Content: View>: View {
         NavigationView {
             Form {
                 appSettingsView
-                Help(prefPaneData: prefPaneData)
-                About(prefPaneData: prefPaneData)
-                Legal(prefPaneData: prefPaneData)
+                Help(helpSectionData: prefPaneData.helpSectionData)
+                About(aboutSectionData: prefPaneData.aboutSectionData)
+                Legal(legalSectionData: prefPaneData.legalSectionData)
             }.navigationTitle(NSLocalizedString("Settings ⚙️", tableName: "Localizable", bundle: .module, value: "", comment: ""))
             .toolbar { // Toolbar with close button
                 ToolbarItem(placement: .navigation) {

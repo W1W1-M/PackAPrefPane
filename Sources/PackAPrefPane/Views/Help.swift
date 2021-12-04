@@ -11,22 +11,22 @@ import SwiftUI
 @available(macOS 11.0, iOS 14, *)
 public struct Help: View {
     // Variables
-    let prefPaneData: PrefPaneData
+    let helpSectionData: HelpSectionData
     // UI
     public var body: some View {
-        if prefPaneData.helpSectionData.showHelpSection {
+        if helpSectionData.showHelpSection {
             Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-                if prefPaneData.helpSectionData.showFeedbackLink {
-                    Feedback(prefPaneData: prefPaneData)
+                if helpSectionData.showFeedbackLink {
+                    Feedback(helpSectionData: helpSectionData)
                 }
-                if prefPaneData.helpSectionData.showSupportLink {
-                    Support(prefPaneData: prefPaneData)
+                if helpSectionData.showSupportLink {
+                    Support(helpSectionData: helpSectionData)
                 }
-                if prefPaneData.helpSectionData.showWhatsNew {
-                    WhatsNew(prefPaneData: prefPaneData)
+                if helpSectionData.showWhatsNew {
+                    WhatsNew(helpSectionData: helpSectionData)
                 }
-                if prefPaneData.helpSectionData.showFAQ {
-                    FAQ(prefPaneData: prefPaneData)
+                if helpSectionData.showFAQ {
+                    FAQ(faq: helpSectionData.faq)
                 }
             }
         }
@@ -36,10 +36,10 @@ public struct Help: View {
 @available(macOS 11.0, iOS 14, *)
 struct Feedback: View {
     // Variables
-    let prefPaneData: PrefPaneData
+    let helpSectionData: HelpSectionData
     // UI
     var body: some View {
-        Link(destination: PrefPaneHelper.appFeedbackURL(for: prefPaneData.helpSectionData.appID)) {
+        Link(destination: PrefPaneHelper.appFeedbackURL(for: helpSectionData.appID)) {
             HStack {
                 Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
@@ -52,13 +52,13 @@ struct Feedback: View {
 @available(macOS 11.0, iOS 14, *)
 struct Support: View {
     // Variables
-    let prefPaneData: PrefPaneData
+    let helpSectionData: HelpSectionData
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.supportEmailURL(
-                to: prefPaneData.helpSectionData.supportEmailAddress,
-                subject: prefPaneData.helpSectionData.supportEmailSubject,
-                message: prefPaneData.helpSectionData.supportEmailBody
+                to: helpSectionData.supportEmailAddress,
+                subject: helpSectionData.supportEmailSubject,
+                message: helpSectionData.supportEmailBody
             )
         ) {
             HStack {
@@ -74,7 +74,7 @@ struct Support: View {
 struct WhatsNew: View {
     // Variables
     @State private var whatsNewExpanded: Bool = false
-    let prefPaneData: PrefPaneData
+    let helpSectionData: HelpSectionData
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     // UI
     var body: some View {
@@ -88,7 +88,7 @@ struct WhatsNew: View {
                 }.font(.headline)
                 Spacer()
                 HStack {
-                    Text(NSLocalizedString(prefPaneData.helpSectionData.changelogText, tableName: "Localizable", bundle: .main, value: "", comment: ""))
+                    Text(NSLocalizedString(helpSectionData.changelogText, tableName: "Localizable", bundle: .main, value: "", comment: ""))
                     Spacer()
                 }
             }
@@ -100,12 +100,12 @@ struct WhatsNew: View {
 struct FAQ: View {
     // Variables
     @State private var faqExpanded: Bool = false
-    let prefPaneData: PrefPaneData
+    let faq: [FrequentlyAskedQuestions]
     // UI
     var body: some View {
         DisclosureGroup(NSLocalizedString("FAQ", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $faqExpanded) {
             List {
-                ForEach(prefPaneData.helpSectionData.faq) { FrequentlyAskedQuestions in
+                ForEach(faq) { FrequentlyAskedQuestions in
                     VStack {
                         HStack {
                             Text(NSLocalizedString(FrequentlyAskedQuestions.question, tableName: "Localizable", bundle: .main, value: "", comment: "")).font(.headline)
@@ -128,58 +128,27 @@ struct Help_Previews: PreviewProvider {
     @State var alertPresented: Bool = false
     static var previews: some View {
         Form{
-            Help(
-                prefPaneData: PrefPaneData(
-                    helpSectionData: HelpSectionData(
-                        showHelpSection: true,
-                        showFeedbackLink: true,
-                        showSupportLink: true,
-                        showWhatsNew: true,
-                        showFAQ: true,
-                        appID: "1564978634",
-                        supportEmailAddress: "support@super85.fr",
-                        supportEmailSubject: "PackAPrefPane Test",
-                        supportEmailBody: "Testing PackAPrefPane",
-                        changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
-                        faq: [
-                            FrequentlyAskedQuestions(
-                                question: "Q.1: How is this example calculated ?",
-                                answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
-                            ),
-                            FrequentlyAskedQuestions(
-                                question: "Q.2: What % of this can I use ?",
-                                answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
-                            )
-                        ]
-                    ),
-                    aboutSectionData: AboutSectionData(
-                        developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
-                        appCopyrightText: "Your app Copyright © 2021-2022",
-                        thirdPartyCode: [
-                            ThirdPartyCode(
-                                sourceNameText: "Font & Emoji by Apple Inc.",
-                                sourceURLText: "https://developer.apple.com/fonts",
-                                sourceLicenseText: "Copyright © All rights reserved"
-                            )
-                        ]
-                    ),
-                    legalSectionData: LegalSectionData(
-                        showLegalSection: true,
-                        showDisclaimer: true,
-                        showPrivacyPolicy: true,
-                        showAcknowledgments: true,
-                        showTOS: true,
-                        disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
-                        privacyPolicyText: "We don't store your data.",
-                        acknowledgmentsText: "Thanks to SwiftUI Jam",
-                        termsOfServiceText: "Some terms of service that should be read by users.",
-                        disclaimerAcceptedCheck: true,
-                        privacyPolicyAcceptedCheck: true,
-                        disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
-                        disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
-                        privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
-                        privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
-                    )
+            Help(helpSectionData: HelpSectionData(
+                    showHelpSection: true,
+                    showFeedbackLink: true,
+                    showSupportLink: true,
+                    showWhatsNew: true,
+                    showFAQ: true,
+                    appID: "1564978634",
+                    supportEmailAddress: "support@super85.fr",
+                    supportEmailSubject: "PackAPrefPane Test",
+                    supportEmailBody: "Testing PackAPrefPane",
+                    changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
+                    faq: [
+                        FrequentlyAskedQuestions(
+                            question: "Q.1: How is this example calculated ?",
+                            answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
+                        ),
+                        FrequentlyAskedQuestions(
+                            question: "Q.2: What % of this can I use ?",
+                            answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
+                        )
+                    ]
                 )
             )
         }.previewLayout(.sizeThatFits)

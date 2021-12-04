@@ -13,7 +13,7 @@ public struct Legal: View {
     // Variables
     @State private var alertPresented: Bool = false
     @State private var alert: alerts = .disclaimerAlert
-    let prefPaneData: PrefPaneData
+    let legalSectionData: LegalSectionData
     enum alerts {
         case disclaimerAlert
         case privacyAlert
@@ -21,39 +21,39 @@ public struct Legal: View {
     }
     // UI
     public var body: some View {
-        if prefPaneData.legalSectionData.showLegalSection {
+        if legalSectionData.showLegalSection {
             Section(header: Text(NSLocalizedString("❗️ Legal", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-                if prefPaneData.legalSectionData.showDisclaimer {
+                if legalSectionData.showDisclaimer {
                     Disclaimer(
                         alertPresented: $alertPresented,
                         alert: $alert,
-                        prefPaneData: prefPaneData
+                        legalSectionData: legalSectionData
                     )
                 }
-                if prefPaneData.legalSectionData.showPrivacyPolicy {
+                if legalSectionData.showPrivacyPolicy {
                     PrivacyPolicy(
                         alertPresented: $alertPresented,
                         alert: $alert,
-                        prefPaneData: prefPaneData
+                        legalSectionData: legalSectionData
                     )
                 }
-                if prefPaneData.legalSectionData.showAcknowledgments {
+                if legalSectionData.showAcknowledgments {
                     Acknowledgments(alertPresented: $alertPresented, alert: $alert)
                 }
-                if prefPaneData.legalSectionData.showTOS {
-                    TermsOfService(prefPaneData: prefPaneData)
+                if legalSectionData.showTOS {
+                    TermsOfService(legalSectionData: legalSectionData)
                 }
             }.alert(isPresented: $alertPresented, content: { // alert switch cases
                 switch alert {
                 case .disclaimerAlert:
                     return Alert(
                         title: Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(NSLocalizedString(prefPaneData.legalSectionData.disclaimerText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
+                        message: Text(NSLocalizedString(legalSectionData.disclaimerText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
                         dismissButton: .default(Text("OK")) {
-                            if prefPaneData.legalSectionData.disclaimerAcceptedCheck {
+                            if legalSectionData.disclaimerAcceptedCheck {
                                 PrefPaneHelper.acceptDisclaimer(
-                                    disclaimerAcceptedDefaultsKey: prefPaneData.legalSectionData.disclaimerAcceptedDefaultsKey,
-                                    disclaimerAcceptedDateDefaultsKey: prefPaneData.legalSectionData.disclaimerAcceptedDateDefaultsKey
+                                    disclaimerAcceptedDefaultsKey: legalSectionData.disclaimerAcceptedDefaultsKey,
+                                    disclaimerAcceptedDateDefaultsKey: legalSectionData.disclaimerAcceptedDateDefaultsKey
                                 )
                             }
                         }
@@ -61,12 +61,12 @@ public struct Legal: View {
                 case .privacyAlert:
                     return Alert(
                         title: Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(NSLocalizedString(prefPaneData.legalSectionData.privacyPolicyText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
+                        message: Text(NSLocalizedString(legalSectionData.privacyPolicyText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
                         dismissButton: .default(Text("OK")) {
-                            if prefPaneData.legalSectionData.privacyPolicyAcceptedCheck {
+                            if legalSectionData.privacyPolicyAcceptedCheck {
                                 PrefPaneHelper.acceptPrivacyPolicy(
-                                    privacyPolicyAcceptedDefaultsKey: prefPaneData.legalSectionData.privacyPolicyAcceptedDefaultsKey,
-                                    privacyPolicyAcceptedDateDefaultsKey: prefPaneData.legalSectionData.privacyPolicyAcceptedDateDefaultsKey
+                                    privacyPolicyAcceptedDefaultsKey: legalSectionData.privacyPolicyAcceptedDefaultsKey,
+                                    privacyPolicyAcceptedDateDefaultsKey: legalSectionData.privacyPolicyAcceptedDateDefaultsKey
                                 )
                             }
                         }
@@ -74,7 +74,7 @@ public struct Legal: View {
                 case .acknowledgments:
                     return Alert(
                         title: Text(NSLocalizedString("Acknowledgments", tableName: "Localizable", bundle: .module, value: "", comment: "")),
-                        message: Text(NSLocalizedString(prefPaneData.legalSectionData.acknowledgmentsText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
+                        message: Text(NSLocalizedString(legalSectionData.acknowledgmentsText, tableName: "Localizable", bundle: .main, value: "", comment: "")),
                         dismissButton: .default(Text("OK"))
                     )
                 }
@@ -88,7 +88,7 @@ struct Disclaimer: View {
     // Variables
     @Binding var alertPresented: Bool
     @Binding var alert: Legal.alerts
-    let prefPaneData: PrefPaneData
+    let legalSectionData: LegalSectionData
     // UI
     var body: some View {
         Button(action: {
@@ -98,8 +98,8 @@ struct Disclaimer: View {
             HStack {
                 Text(NSLocalizedString("Legal disclaimer", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
-                if prefPaneData.legalSectionData.disclaimerAcceptedCheck {
-                    if UserDefaults.standard.bool(forKey: prefPaneData.legalSectionData.disclaimerAcceptedDefaultsKey) {
+                if legalSectionData.disclaimerAcceptedCheck {
+                    if UserDefaults.standard.bool(forKey: legalSectionData.disclaimerAcceptedDefaultsKey) {
                         Image(systemName: "checkmark.shield.fill").imageScale(.large)
                     } else {
                         Image(systemName: "checkmark.shield").imageScale(.large)
@@ -117,7 +117,7 @@ struct PrivacyPolicy: View {
     // Variables
     @Binding var alertPresented: Bool
     @Binding var alert: Legal.alerts
-    let prefPaneData: PrefPaneData
+    let legalSectionData: LegalSectionData
     // UI
     var body: some View {
         Button(action: {
@@ -127,8 +127,8 @@ struct PrivacyPolicy: View {
             HStack {
                 Text(NSLocalizedString("Privacy policy", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
-                if prefPaneData.legalSectionData.privacyPolicyAcceptedCheck {
-                    if UserDefaults.standard.bool(forKey: prefPaneData.legalSectionData.privacyPolicyAcceptedDefaultsKey) {
+                if legalSectionData.privacyPolicyAcceptedCheck {
+                    if UserDefaults.standard.bool(forKey: legalSectionData.privacyPolicyAcceptedDefaultsKey) {
                         Image(systemName: "lock.shield.fill").imageScale(.large)
                     } else {
                         Image(systemName: "lock.shield").imageScale(.large)
@@ -166,11 +166,11 @@ struct Acknowledgments: View {
 struct TermsOfService: View {
     // Variables
     @State private var tosExpanded: Bool = false
-    let prefPaneData: PrefPaneData
+    let legalSectionData: LegalSectionData
     // UI
     var body: some View {
         DisclosureGroup(NSLocalizedString("Terms of Service", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $tosExpanded) {
-            Text(prefPaneData.legalSectionData.termsOfServiceText)
+            Text(legalSectionData.termsOfServiceText)
         }
     }
 }
@@ -179,58 +179,22 @@ struct TermsOfService: View {
 struct Legal_Previews: PreviewProvider {
     static var previews: some View {
         Form{
-            Legal(
-                prefPaneData: PrefPaneData(
-                    helpSectionData: HelpSectionData(
-                        showHelpSection: true,
-                        showFeedbackLink: true,
-                        showSupportLink: true,
-                        showWhatsNew: true,
-                        showFAQ: true,
-                        appID: "1564978634",
-                        supportEmailAddress: "support@super85.fr",
-                        supportEmailSubject: "PackAPrefPane Test",
-                        supportEmailBody: "Testing PackAPrefPane",
-                        changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
-                        faq: [
-                            FrequentlyAskedQuestions(
-                                question: "Q.1: How is this example calculated ?",
-                                answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
-                            ),
-                            FrequentlyAskedQuestions(
-                                question: "Q.2: What % of this can I use ?",
-                                answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
-                            )
-                        ]
-                    ),
-                    aboutSectionData: AboutSectionData(
-                        developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
-                        appCopyrightText: "Your app Copyright © 2021-2022",
-                        thirdPartyCode: [
-                            ThirdPartyCode(
-                                sourceNameText: "Font & Emoji by Apple Inc.",
-                                sourceURLText: "https://developer.apple.com/fonts",
-                                sourceLicenseText: "Copyright © All rights reserved"
-                            )
-                        ]
-                    ),
-                    legalSectionData: LegalSectionData(
-                        showLegalSection: true,
-                        showDisclaimer: true,
-                        showPrivacyPolicy: true,
-                        showAcknowledgments: true,
-                        showTOS: true,
-                        disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
-                        privacyPolicyText: "We don't store your data.",
-                        acknowledgmentsText: "Thanks to SwiftUI Jam",
-                        termsOfServiceText: "Some terms of service that should be read by users.",
-                        disclaimerAcceptedCheck: true,
-                        privacyPolicyAcceptedCheck: true,
-                        disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
-                        disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
-                        privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
-                        privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
-                    )
+            Legal(legalSectionData: LegalSectionData(
+                    showLegalSection: true,
+                    showDisclaimer: true,
+                    showPrivacyPolicy: true,
+                    showAcknowledgments: true,
+                    showTOS: true,
+                    disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
+                    privacyPolicyText: "We don't store your data.",
+                    acknowledgmentsText: "Thanks to SwiftUI Jam",
+                    termsOfServiceText: "Some terms of service that should be read by users.",
+                    disclaimerAcceptedCheck: true,
+                    privacyPolicyAcceptedCheck: true,
+                    disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
+                    disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
+                    privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
+                    privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
                 )
             )
         }.previewLayout(.sizeThatFits)
