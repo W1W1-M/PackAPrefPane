@@ -83,30 +83,34 @@ struct PackAPrefPane_Previews: PreviewProvider {
                         )
                     ]
                 ),
-                developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
-                appCopyrightText: "Your app Copyright © 2021-2022",
-                thirdPartyCode: [
-                    ThirdPartyCode(
-                        sourceNameText: "Font & Emoji by Apple Inc.",
-                        sourceURLText: "https://developer.apple.com/fonts",
-                        sourceLicenseText: "Copyright © All rights reserved"
-                    )
-                ],
-                showLegalSection: true,
-                showDisclaimer: true,
-                showPrivacyPolicy: true,
-                showAcknowledgments: true,
-                showTOS: true,
-                disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
-                privacyPolicyText: "We don't store your data.",
-                acknowledgmentsText: "Thanks to SwiftUI Jam",
-                termsOfServiceText: "Some terms of service that should be read by users.",
-                disclaimerAcceptedCheck: true,
-                privacyPolicyAcceptedCheck: true,
-                disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
-                disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
-                privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
-                privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
+                aboutSectionData: AboutSectionData(
+                    developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
+                    appCopyrightText: "Your app Copyright © 2021-2022",
+                    thirdPartyCode: [
+                        ThirdPartyCode(
+                            sourceNameText: "Font & Emoji by Apple Inc.",
+                            sourceURLText: "https://developer.apple.com/fonts",
+                            sourceLicenseText: "Copyright © All rights reserved"
+                        )
+                    ]
+                ),
+                legalSectionData: LegalSectionData(
+                    showLegalSection: true,
+                    showDisclaimer: true,
+                    showPrivacyPolicy: true,
+                    showAcknowledgments: true,
+                    showTOS: true,
+                    disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
+                    privacyPolicyText: "We don't store your data.",
+                    acknowledgmentsText: "Thanks to SwiftUI Jam",
+                    termsOfServiceText: "Some terms of service that should be read by users.",
+                    disclaimerAcceptedCheck: true,
+                    privacyPolicyAcceptedCheck: true,
+                    disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
+                    disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
+                    privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
+                    privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
+                )
             )
         ) {
             Section(header: Text("🎛 Your nested App settings view")) {

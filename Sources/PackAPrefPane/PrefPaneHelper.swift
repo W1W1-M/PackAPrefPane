@@ -11,7 +11,7 @@ import Foundation
 public class PrefPaneHelper {
     // MARK: - Functions
     /// Function that returns your app's App store review page URL
-    /// - Parameter appID: ``PrefPaneData/appID``
+    /// - Parameter appID: ``HelpSectionData/appID``
     /// - Returns: A *https* **URL** to your app's App store page
     public static func appFeedbackURL(for appID: String) -> URL {
         if let appStoreURL = URL(string: "https://apps.apple.com/app/id\(appID)?action=write-review".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
@@ -22,9 +22,9 @@ public class PrefPaneHelper {
     }
     /// Function to setup support email URL
     /// - Parameters:
-    ///   - emailAddress: ``PrefPaneData/supportEmailAddress``
-    ///   - emailSubject: ``PrefPaneData/supportEmailSubject``
-    ///   - emailBody: ``PrefPaneData/supportEmailBody``
+    ///   - emailAddress: ``HelpSectionData/supportEmailAddress``
+    ///   - emailSubject: ``HelpSectionData/supportEmailSubject``
+    ///   - emailBody: ``HelpSectionData/supportEmailBody``
     /// - Returns: A *mailto* **URL** thats includes email address, subject & body
     public static func supportEmailURL(
         to emailAddress: String,
@@ -38,7 +38,7 @@ public class PrefPaneHelper {
         }
     }
     /// Function to check if legal disclaimer accepted
-    /// - Parameter disclaimerAcceptedDefaultsKey: ``PrefPaneData/disclaimerAcceptedDefaultsKey``
+    /// - Parameter disclaimerAcceptedDefaultsKey: ``LegalSectionData/disclaimerAcceptedDefaultsKey``
     /// - Returns: true or false
     public static func checkDisclaimerAccepted(disclaimerAcceptedDefaultsKey: String) -> Bool {
         if UserDefaults.standard.bool(forKey: disclaimerAcceptedDefaultsKey) {
@@ -49,8 +49,8 @@ public class PrefPaneHelper {
     }
     /// Function to set & date legal disclaimer user consent
     /// - Parameters:
-    ///   - disclaimerAcceptedDefaultsKey: ``PrefPaneData/disclaimerAcceptedDefaultsKey``
-    ///   - disclaimerAcceptedDateDefaultsKey: ``PrefPaneData/disclaimerAcceptedDateDefaultsKey``
+    ///   - disclaimerAcceptedDefaultsKey: ``LegalSectionData/disclaimerAcceptedDefaultsKey``
+    ///   - disclaimerAcceptedDateDefaultsKey: ``LegalSectionData/disclaimerAcceptedDateDefaultsKey``
     public static func acceptDisclaimer(
         disclaimerAcceptedDefaultsKey: String,
         disclaimerAcceptedDateDefaultsKey: String
@@ -59,7 +59,7 @@ public class PrefPaneHelper {
         UserDefaults.standard.set(Date(), forKey: disclaimerAcceptedDateDefaultsKey)
     }
     /// Function to check if privacy policy accepted
-    /// - Parameter privacyPolicyAcceptedDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDefaultsKey``
+    /// - Parameter privacyPolicyAcceptedDefaultsKey: ``LegalSectionData/privacyPolicyAcceptedDefaultsKey``
     /// - Returns: true or false
     public static func checkPrivacyPolicyAccepted(privacyPolicyAcceptedDefaultsKey: String) -> Bool {
         if UserDefaults.standard.bool(forKey: privacyPolicyAcceptedDefaultsKey) {
@@ -70,8 +70,8 @@ public class PrefPaneHelper {
     }
     /// Function to set & date privacy policy user consent
     /// - Parameters:
-    ///   - privacyPolicyAcceptedDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDefaultsKey``
-    ///   - privacyPolicyAcceptedDateDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDateDefaultsKey``
+    ///   - privacyPolicyAcceptedDefaultsKey: ``LegalSectionData/privacyPolicyAcceptedDefaultsKey``
+    ///   - privacyPolicyAcceptedDateDefaultsKey: ``LegalSectionData/privacyPolicyAcceptedDateDefaultsKey``
     public static func acceptPrivacyPolicy(
         privacyPolicyAcceptedDefaultsKey: String,
         privacyPolicyAcceptedDateDefaultsKey: String

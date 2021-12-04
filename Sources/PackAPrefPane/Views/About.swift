@@ -7,7 +7,7 @@
 // MARK: - Modules
 import SwiftUI
 // MARK: - Views
-/// About section View
+/// About section View using ``AboutSectionData``
 @available(macOS 11.0, iOS 14, *)
 public struct About: View {
     // Variables
@@ -35,14 +35,14 @@ struct AppInfo: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text(NSLocalizedString(prefPaneData.developerInfoText, tableName: "Localizable", bundle: .main, value: "", comment: "")).multilineTextAlignment(.center)
+                    Text(NSLocalizedString(prefPaneData.aboutSectionData.developerInfoText, tableName: "Localizable", bundle: .main, value: "", comment: "")).multilineTextAlignment(.center)
                     Spacer()
                 }
             }.padding(3)
             .font(.callout)
             HStack {
                 Spacer()
-                Text(NSLocalizedString(prefPaneData.appCopyrightText, tableName: "Localizable", bundle: .main, value: "", comment: "")).multilineTextAlignment(.center)
+                Text(NSLocalizedString(prefPaneData.aboutSectionData.appCopyrightText, tableName: "Localizable", bundle: .main, value: "", comment: "")).multilineTextAlignment(.center)
                 Spacer()
             }.font(.callout)
         }
@@ -59,7 +59,7 @@ struct ThirdPartyCodeList: View {
         Section {
             DisclosureGroup(NSLocalizedString("Third-Party Code", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $thirdPartyCodeExpanded) {
                 List {
-                    ForEach(prefPaneData.thirdPartyCode) { ThirdPartyCode in
+                    ForEach(prefPaneData.aboutSectionData.thirdPartyCode) { ThirdPartyCode in
                         ThirdPartyCodeItem(thirdPartyCode: ThirdPartyCode)
                     }
                 }
@@ -126,30 +126,34 @@ struct About_Previews: PreviewProvider {
                             )
                         ]
                     ),
-                    developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
-                    appCopyrightText: "Your app Copyright © 2021-2022",
-                    thirdPartyCode: [
-                        ThirdPartyCode(
-                            sourceNameText: "Font & Emoji by Apple Inc.",
-                            sourceURLText: "https://developer.apple.com/fonts",
-                            sourceLicenseText: "Copyright © All rights reserved"
-                        )
-                    ],
-                    showLegalSection: true,
-                    showDisclaimer: true,
-                    showPrivacyPolicy: true,
-                    showAcknowledgments: true,
-                    showTOS: true,
-                    disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
-                    privacyPolicyText: "We don't store your data.",
-                    acknowledgmentsText: "Thanks to SwiftUI Jam",
-                    termsOfServiceText: "Some terms of service that should be read by users.",
-                    disclaimerAcceptedCheck: true,
-                    privacyPolicyAcceptedCheck: true,
-                    disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
-                    disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
-                    privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
-                    privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
+                    aboutSectionData: AboutSectionData(
+                        developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
+                        appCopyrightText: "Your app Copyright © 2021-2022",
+                        thirdPartyCode: [
+                            ThirdPartyCode(
+                                sourceNameText: "Font & Emoji by Apple Inc.",
+                                sourceURLText: "https://developer.apple.com/fonts",
+                                sourceLicenseText: "Copyright © All rights reserved"
+                            )
+                        ]
+                    ),
+                    legalSectionData: LegalSectionData(
+                        showLegalSection: true,
+                        showDisclaimer: true,
+                        showPrivacyPolicy: true,
+                        showAcknowledgments: true,
+                        showTOS: true,
+                        disclaimerText: "Use of this app is for informational purposes only. You alone are responsable for the usages you make of this app and you use it at your own risk. We accept no responsability for any damage to users or to their belongings as a result of using this app.",
+                        privacyPolicyText: "We don't store your data.",
+                        acknowledgmentsText: "Thanks to SwiftUI Jam",
+                        termsOfServiceText: "Some terms of service that should be read by users.",
+                        disclaimerAcceptedCheck: true,
+                        privacyPolicyAcceptedCheck: true,
+                        disclaimerAcceptedDefaultsKey: "disclaimerAccepted",
+                        disclaimerAcceptedDateDefaultsKey: "disclaimerAcceptedDate",
+                        privacyPolicyAcceptedDefaultsKey: "privacyPolicyAccepted",
+                        privacyPolicyAcceptedDateDefaultsKey: "privacyPolicyAcceptedDate"
+                    )
                 )
             )
         }.previewLayout(.sizeThatFits)
