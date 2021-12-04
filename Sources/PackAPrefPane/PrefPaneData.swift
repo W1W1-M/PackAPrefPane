@@ -9,20 +9,10 @@ import Foundation
 // MARK: - Structs
 /// Type to group custom input data
 public struct PrefPaneData {
-    /// **PrefPaneData** public initializer for swift package usage
-    /// 
+    /// ``PrefPaneData`` public initializer for swift package usage
+    ///
     /// - Parameters:
-    ///   - showHelpSection: ``PrefPaneData/showHelpSection``
-    ///   - showFeedbackLink: ``PrefPaneData/showFeedbackLink``
-    ///   - showSupportLink: ``PrefPaneData/showSupportLink``
-    ///   - showWhatsNew: ``PrefPaneData/showWhatsNew``
-    ///   - showFAQ: ``PrefPaneData/showFAQ``
-    ///   - appID: ``PrefPaneData/appID``
-    ///   - supportEmailAddress: ``PrefPaneData/supportEmailAddress``
-    ///   - supportEmailSubject: ``PrefPaneData/supportEmailSubject``
-    ///   - supportEmailBody: ``PrefPaneData/supportEmailBody``
-    ///   - changelogText: ``PrefPaneData/changelogText``
-    ///   - faq: ``PrefPaneData/faq``
+    ///   - helpSectionData: ``HelpSectionData``
     ///   - developerInfoText: ``PrefPaneData/developerInfoText``
     ///   - appCopyrightText: ``PrefPaneData/appCopyrightText``
     ///   - thirdPartyCode: ``PrefPaneData/thirdPartyCode``
@@ -42,17 +32,7 @@ public struct PrefPaneData {
     ///   - privacyPolicyAcceptedDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDefaultsKey``
     ///   - privacyPolicyAcceptedDateDefaultsKey: ``PrefPaneData/privacyPolicyAcceptedDateDefaultsKey``
     public init(
-        showHelpSection: Bool,
-        showFeedbackLink: Bool,
-        showSupportLink: Bool,
-        showWhatsNew: Bool,
-        showFAQ: Bool,
-        appID: String,
-        supportEmailAddress: String,
-        supportEmailSubject: String,
-        supportEmailBody: String,
-        changelogText: String,
-        faq: [FrequentlyAskedQuestions],
+        helpSectionData: HelpSectionData,
         developerInfoText: String,
         appCopyrightText: String,
         thirdPartyCode: [ThirdPartyCode],
@@ -72,17 +52,7 @@ public struct PrefPaneData {
         privacyPolicyAcceptedDefaultsKey: String,
         privacyPolicyAcceptedDateDefaultsKey: String
     ) {
-        self.showHelpSection = showHelpSection
-        self.showFeedbackLink = showFeedbackLink
-        self.showSupportLink = showSupportLink
-        self.showWhatsNew = showWhatsNew
-        self.showFAQ = showFAQ
-        self.appID = appID
-        self.supportEmailAddress = supportEmailAddress
-        self.supportEmailSubject = supportEmailSubject
-        self.supportEmailBody = supportEmailBody
-        self.changelogText = changelogText
-        self.faq = faq
+        self.helpSectionData = helpSectionData
         self.developerInfoText = developerInfoText
         self.appCopyrightText = appCopyrightText
         self.thirdPartyCode = thirdPartyCode
@@ -103,30 +73,8 @@ public struct PrefPaneData {
         self.privacyPolicyAcceptedDefaultsKey = privacyPolicyAcceptedDefaultsKey
         self.privacyPolicyAcceptedDateDefaultsKey = privacyPolicyAcceptedDateDefaultsKey
     }
-    /// Boolean to show or drop help section
-    public let showHelpSection: Bool
-    /// Boolean to show or drop feedback link
-    public let showFeedbackLink: Bool
-    /// Boolean to show or drop support link
-    public let showSupportLink: Bool
-    /// Boolean to show or drop release notes disclosure group
-    public let showWhatsNew: Bool
-    /// Boolean show or drop frequently asked questions disclosure group
-    public let showFAQ: Bool
-    /// Your app's App store ID.
-    ///
-    /// Example: *1564978634*
-    public let appID: String
-    /// Full email address for user support
-    public let supportEmailAddress: String
-    /// Text to prefill email subject
-    public let supportEmailSubject: String
-    /// Text to prefill email body
-    public let supportEmailBody: String
-    /// Your app's current release notes
-    public let changelogText: String
-    /// An array of [FrequentlyAskedQuestions]
-    public let faq: [FrequentlyAskedQuestions]
+    /// ``HelpSectionData``
+    public let helpSectionData: HelpSectionData
     /// Your developer information text.
     ///
     /// Example: *Designed & Developped by you*
@@ -173,6 +121,72 @@ public struct PrefPaneData {
         sourceLicenseText: "MIT license"
     )
 }
+/// Type to group help section data
+public struct HelpSectionData {
+    /// ``HelpSectionData`` public initializer for swift package usage
+    /// - Parameters:
+    ///   - showHelpSection: ``HelpSectionData/showHelpSection``
+    ///   - showFeedbackLink: ``HelpSectionData/showFeedbackLink``
+    ///   - showSupportLink: ``HelpSectionData/showSupportLink``
+    ///   - showWhatsNew: ``HelpSectionData/showWhatsNew``
+    ///   - showFAQ: ``HelpSectionData/showFAQ``
+    ///   - appID: ``HelpSectionData/appID``
+    ///   - supportEmailAddress: ``HelpSectionData/supportEmailAddress``
+    ///   - supportEmailSubject: ``HelpSectionData/supportEmailSubject``
+    ///   - supportEmailBody: ``HelpSectionData/supportEmailBody``
+    ///   - changelogText: ``HelpSectionData/changelogText``
+    ///   - faq: ``HelpSectionData/faq``
+    public init(
+        showHelpSection: Bool,
+        showFeedbackLink: Bool,
+        showSupportLink: Bool,
+        showWhatsNew: Bool,
+        showFAQ: Bool,
+        appID: String,
+        supportEmailAddress: String,
+        supportEmailSubject: String,
+        supportEmailBody: String,
+        changelogText: String,
+        faq: [FrequentlyAskedQuestions]
+    ) {
+        self.showHelpSection = showHelpSection
+        self.showFeedbackLink = showFeedbackLink
+        self.showSupportLink = showSupportLink
+        self.showWhatsNew = showWhatsNew
+        self.showFAQ = showFAQ
+        self.appID = appID
+        self.supportEmailAddress = supportEmailAddress
+        self.supportEmailSubject = supportEmailSubject
+        self.supportEmailBody = supportEmailBody
+        self.changelogText = changelogText
+        self.faq = faq
+    }
+    /// Boolean to show or drop help section
+    public let showHelpSection: Bool
+    /// Boolean to show or drop feedback link
+    public let showFeedbackLink: Bool
+    /// Boolean to show or drop support link
+    public let showSupportLink: Bool
+    /// Boolean to show or drop release notes disclosure group
+    public let showWhatsNew: Bool
+    /// Boolean show or drop frequently asked questions disclosure group
+    public let showFAQ: Bool
+    /// Your app's App store ID.
+    ///
+    /// Example: *1564978634*
+    public let appID: String
+    /// Full email address for user support
+    public let supportEmailAddress: String
+    /// Text to prefill email subject
+    public let supportEmailSubject: String
+    /// Text to prefill email body
+    public let supportEmailBody: String
+    /// Your app's current release notes
+    public let changelogText: String
+    /// An array of [FrequentlyAskedQuestions]
+    public let faq: [FrequentlyAskedQuestions]
+}
+
 /// Type for third party code information
 ///
 /// Reference third party code to acknowledge other developers and respect their work.

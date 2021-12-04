@@ -14,18 +14,18 @@ public struct Help: View {
     let prefPaneData: PrefPaneData
     // UI
     public var body: some View {
-        if prefPaneData.showHelpSection {
+        if prefPaneData.helpSectionData.showHelpSection {
             Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
-                if prefPaneData.showFeedbackLink {
+                if prefPaneData.helpSectionData.showFeedbackLink {
                     Feedback(prefPaneData: prefPaneData)
                 }
-                if prefPaneData.showSupportLink {
+                if prefPaneData.helpSectionData.showSupportLink {
                     Support(prefPaneData: prefPaneData)
                 }
-                if prefPaneData.showWhatsNew {
+                if prefPaneData.helpSectionData.showWhatsNew {
                     WhatsNew(prefPaneData: prefPaneData)
                 }
-                if prefPaneData.showFAQ {
+                if prefPaneData.helpSectionData.showFAQ {
                     FAQ(prefPaneData: prefPaneData)
                 }
             }
@@ -39,7 +39,7 @@ struct Feedback: View {
     let prefPaneData: PrefPaneData
     // UI
     var body: some View {
-        Link(destination: PrefPaneHelper.appFeedbackURL(for: prefPaneData.appID)) {
+        Link(destination: PrefPaneHelper.appFeedbackURL(for: prefPaneData.helpSectionData.appID)) {
             HStack {
                 Text(NSLocalizedString("Feedback", tableName: "Localizable", bundle: .module, value: "", comment: ""))
                 Spacer()
@@ -56,9 +56,9 @@ struct Support: View {
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.supportEmailURL(
-                to: prefPaneData.supportEmailAddress,
-                subject: prefPaneData.supportEmailSubject,
-                message: prefPaneData.supportEmailBody
+                to: prefPaneData.helpSectionData.supportEmailAddress,
+                subject: prefPaneData.helpSectionData.supportEmailSubject,
+                message: prefPaneData.helpSectionData.supportEmailBody
             )
         ) {
             HStack {
@@ -88,7 +88,7 @@ struct WhatsNew: View {
                 }.font(.headline)
                 Spacer()
                 HStack {
-                    Text(NSLocalizedString(prefPaneData.changelogText, tableName: "Localizable", bundle: .main, value: "", comment: ""))
+                    Text(NSLocalizedString(prefPaneData.helpSectionData.changelogText, tableName: "Localizable", bundle: .main, value: "", comment: ""))
                     Spacer()
                 }
             }
@@ -105,7 +105,7 @@ struct FAQ: View {
     var body: some View {
         DisclosureGroup(NSLocalizedString("FAQ", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $faqExpanded) {
             List {
-                ForEach(prefPaneData.faq) { FrequentlyAskedQuestions in
+                ForEach(prefPaneData.helpSectionData.faq) { FrequentlyAskedQuestions in
                     VStack {
                         HStack {
                             Text(NSLocalizedString(FrequentlyAskedQuestions.question, tableName: "Localizable", bundle: .main, value: "", comment: "")).font(.headline)
@@ -130,26 +130,28 @@ struct Help_Previews: PreviewProvider {
         Form{
             Help(
                 prefPaneData: PrefPaneData(
-                    showHelpSection: true,
-                    showFeedbackLink: true,
-                    showSupportLink: true,
-                    showWhatsNew: true,
-                    showFAQ: true,
-                    appID: "1564978634",
-                    supportEmailAddress: "support@super85.fr",
-                    supportEmailSubject: "PackAPrefPane Test",
-                    supportEmailBody: "Testing PackAPrefPane",
-                    changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
-                    faq: [
-                        FrequentlyAskedQuestions(
-                            question: "Q.1: How is this example calculated ?",
-                            answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
-                        ),
-                        FrequentlyAskedQuestions(
-                            question: "Q.2: What % of this can I use ?",
-                            answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
-                        )
-                    ],
+                    helpSectionData: HelpSectionData(
+                        showHelpSection: true,
+                        showFeedbackLink: true,
+                        showSupportLink: true,
+                        showWhatsNew: true,
+                        showFAQ: true,
+                        appID: "1564978634",
+                        supportEmailAddress: "support@super85.fr",
+                        supportEmailSubject: "PackAPrefPane Test",
+                        supportEmailBody: "Testing PackAPrefPane",
+                        changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
+                        faq: [
+                            FrequentlyAskedQuestions(
+                                question: "Q.1: How is this example calculated ?",
+                                answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
+                            ),
+                            FrequentlyAskedQuestions(
+                                question: "Q.2: What % of this can I use ?",
+                                answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
+                            )
+                        ]
+                    ),
                     developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
                     appCopyrightText: "Your app Copyright © 2021-2022",
                     thirdPartyCode: [

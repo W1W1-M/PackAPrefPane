@@ -104,26 +104,28 @@ struct About_Previews: PreviewProvider {
         Form {
             About(
                 prefPaneData: PrefPaneData(
-                    showHelpSection: true,
-                    showFeedbackLink: true,
-                    showSupportLink: true,
-                    showWhatsNew: true,
-                    showFAQ: true,
-                    appID: "1564978634",
-                    supportEmailAddress: "support@super85.fr",
-                    supportEmailSubject: "PackAPrefPane Test",
-                    supportEmailBody: "Testing PackAPrefPane",
-                    changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
-                    faq: [
-                        FrequentlyAskedQuestions(
-                            question: "Q.1: How is this example calculated ?",
-                            answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
-                        ),
-                        FrequentlyAskedQuestions(
-                            question: "Q.2: What % of this can I use ?",
-                            answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
-                        )
-                    ],
+                    helpSectionData: HelpSectionData(
+                        showHelpSection: true,
+                        showFeedbackLink: true,
+                        showSupportLink: true,
+                        showWhatsNew: true,
+                        showFAQ: true,
+                        appID: "1564978634",
+                        supportEmailAddress: "support@super85.fr",
+                        supportEmailSubject: "PackAPrefPane Test",
+                        supportEmailBody: "Testing PackAPrefPane",
+                        changelogText: "- New Feature \n- Upgraded feature \n- Bug fixed",
+                        faq: [
+                            FrequentlyAskedQuestions(
+                                question: "Q.1: How is this example calculated ?",
+                                answer: "A.1: The example's percentage is calculated by dividing the combined amount of this from each of that by the total quantity of those."
+                            ),
+                            FrequentlyAskedQuestions(
+                                question: "Q.2: What % of this can I use ?",
+                                answer: "A.2: Those can tolerate a small percentage of that in the these. Please enquire by your own means beforehand."
+                            )
+                        ]
+                    ),
                     developerInfoText: "Designed & Developped in 🏴‍☠️ \n by a super dev",
                     appCopyrightText: "Your app Copyright © 2021-2022",
                     thirdPartyCode: [
