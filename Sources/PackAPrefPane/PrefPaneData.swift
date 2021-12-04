@@ -27,6 +27,8 @@ public struct PrefPaneData {
         self.legalSectionData = legalSectionData
     }
     /// PackAPrefPane navigation title
+    ///
+    /// Example: Settings ⚙️
     public let prefPaneTitle: String
     /// ``HelpSectionData``
     public let helpSectionData: HelpSectionData
