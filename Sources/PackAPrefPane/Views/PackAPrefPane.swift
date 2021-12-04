@@ -17,10 +17,10 @@ import SwiftUI
 @available(macOS 11.0, iOS 14, *)
 public struct PackAPrefPane<Content: View>: View {
     // Variables
-    /// **PackPrefPane** public initializer for swift package usage
+    /// ``PackAPrefPane/PackAPrefPane`` public initializer for swift package usage
     /// - Parameters:
     ///   - settingsSheetPresented: Boolean passed in from parent to control settings sheet presentation
-    ///   - prefPaneData: Your customized **PrefPaneData**
+    ///   - prefPaneData: Your customized ``PrefPaneData``
     ///   - appSettingsView: Your custom nested view for dedicated app settings
     public init(
         settingsSheetPresented: Binding<Bool>,

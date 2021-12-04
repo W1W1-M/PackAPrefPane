@@ -10,7 +10,6 @@ import Foundation
 /// Type to group custom input data
 public struct PrefPaneData {
     /// ``PrefPaneData`` public initializer for swift package usage
-    ///
     /// - Parameters:
     ///   - helpSectionData: ``HelpSectionData``
     ///   - aboutSectionData: ``AboutSectionData``
@@ -34,7 +33,6 @@ public struct PrefPaneData {
 /// Type to group help section data
 public struct HelpSectionData {
     /// ``HelpSectionData`` public initializer for swift package usage
-    ///
     /// - Parameters:
     ///   - showHelpSection: ``HelpSectionData/showHelpSection``
     ///   - showFeedbackLink: ``HelpSectionData/showFeedbackLink``
@@ -102,7 +100,6 @@ public struct HelpSectionData {
 /// An instance of FrequentlyAskedQuestions is composed of one question & one answer. Use an array in order to make up a complet FAQ.
 public struct FrequentlyAskedQuestions: Identifiable {
     /// ``FrequentlyAskedQuestions`` public initializer for swift package usage
-    ///
     /// - Parameters:
     ///   - question: ``FrequentlyAskedQuestions/question``
     ///   - answer: ``FrequentlyAskedQuestions/answer``
@@ -127,7 +124,6 @@ public struct FrequentlyAskedQuestions: Identifiable {
 /// Type to group about section data
 public struct AboutSectionData {
     /// ``AboutSectionData`` public initializer for swift package usage
-    ///
     /// - Parameters:
     ///   - developerInfoText: ``AboutSectionData/developerInfoText``
     ///   - appCopyrightText: ``AboutSectionData/appCopyrightText``
@@ -164,7 +160,6 @@ public struct AboutSectionData {
 /// Reference third party code to acknowledge other developers and respect their work.
 public struct ThirdPartyCode: Identifiable {
     /// ``ThirdPartyCode`` public initializer for swift package usage
-    ///
     /// - Parameters:
     ///   - sourceNameText: ``ThirdPartyCode/sourceNameText``
     ///   - sourceURLText: ``ThirdPartyCode/sourceURLText``
@@ -196,7 +191,6 @@ public struct ThirdPartyCode: Identifiable {
 /// Type to group legal section data
 public struct LegalSectionData {
     /// ``LegalSectionData``  public initializer for swift package usage
-    ///
     /// - Parameters:
     ///   - showLegalSection: ``LegalSectionData/showLegalSection``
     ///   - showDisclaimer: ``LegalSectionData/showDisclaimer``
