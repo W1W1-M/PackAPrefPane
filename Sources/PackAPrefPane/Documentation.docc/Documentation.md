@@ -12,4 +12,28 @@ PackAPrefPane lets developers quickly implement a settings sheet for their apps.
 
 ## Topics
 
-- ``Symbol``
+### Essentials
+
+- ``PackAPrefPane/PackAPrefPane``
+- ``PrefPaneData``
+
+### Help Section
+
+- ``Help``
+- ``HelpSectionData``
+- ``FrequentlyAskedQuestions``
+
+### About Section
+
+- ``About``
+- ``AboutSectionData``
+- ``ThirdPartyCode``
+
+### Legal Section
+
+- ``Legal``
+- ``LegalSectionData``
+
+### Helper class
+
+- ``PrefPaneHelper``
