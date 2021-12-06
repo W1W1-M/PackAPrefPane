@@ -46,7 +46,7 @@ public struct PackAPrefPane<Content: View>: View {
                 if prefPaneData.legalSectionData.showLegalSection {
                     Legal(legalSectionData: prefPaneData.legalSectionData)
                 }
-            }.navigationTitle(NSLocalizedString(prefPaneData.prefPaneTitle, tableName: "Localizable", bundle: .module, value: "", comment: ""))
+            }.navigationTitle(NSLocalizedString(prefPaneData.prefPaneTitle, tableName: "Localizable", bundle: .main, value: "", comment: ""))
             .toolbar { // Toolbar with close button
                 ToolbarItem(placement: .navigation) {
                     Button(action: {

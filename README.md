@@ -27,18 +27,16 @@
 
 ## Usage
 * Import `PackAPrefPane` Swift package
-* Setup a var with `PrefPaneData` type and customize each variable to your needs
+* Setup a `PrefPaneData` typed var and customize it to your needs
 * Setup your nested `appSettingsView` within a SwiftUI `Section` view
-* Make sure you have a var for showing sheets `settingsSheetPresented: Bool`
-* Use `PackAPrefPane` view with the above variables as in this example:  
+* Make sure you have a @State var for showing sheets `settingsSheetPresented: Bool`
+* Use `PackAPrefPane` view as in the following example:  
 ```
 PackAPrefPane(  
-    settingsSheetPresented: yourSheetbool,  
+    settingsSheetPresented: $yourSheetBool,  
     prefPaneData: yourPrefPaneData  
 ) {  
-    Section(header: Text("Your nested app settings view section")) {  
-        YourNestedAppSettingsView()  
-    }  
+    YourNestedAppSettingsSectionView() 
 }  
 ``` 
 
