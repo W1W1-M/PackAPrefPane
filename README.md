@@ -7,7 +7,7 @@
 # **PackAPrefPane**
 
 ### *Reusable & customizable SwiftUI settings sheet as a Swift package*
-### Initial version made at November 2021 SwiftUI Jam https://www.swiftuijam.com
+### Initially made @November 2021 SwiftUIJam(https://www.swiftuijam.com/awards-nov-2021.html) and rewarded with **Swift Package Master** achievement
 
 ![PackAPrefPane Logo](/Sources/PackAPrefPane/Documentation.docc/Resources/PackAPrefPaneLogo.png)
 
@@ -41,12 +41,18 @@ PackAPrefPane(
 ``` 
 
 ## Documentation
-
 Classes, Structs, Methods & Properties are documented using DocC and can be found through Xcode developer documentaiton
 
 ## Project assets in releases
 * Mind map in MindNode format
 * Logo design in AffinityDesigner format
+
+## Apps using PackAPrefPane
+* Super85(https://apps.apple.com/app/super-85/id1564978634)
+If you use PackAPrefPane in your app I would really like to know. Please get in touch or make a PR to update the above list.
+
+## Contributing
+If you would like to contribute I'm open, let's chat !
 
 ## License
 PackAPrefPane is designed and coded by W1W1-M and released under MIT license
