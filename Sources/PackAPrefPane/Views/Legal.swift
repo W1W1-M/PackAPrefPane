@@ -25,24 +25,26 @@ public struct Legal: View {
             if legalSectionData.showDisclaimer {
                 Disclaimer(
                     alertPresented: $alertPresented,
-                    alert: $alert,
-                    legalSectionData: legalSectionData
+                    alert: $alert
                 )
             }
             if legalSectionData.showPrivacyPolicy {
                 PrivacyPolicy(
                     alertPresented: $alertPresented,
-                    alert: $alert,
-                    legalSectionData: legalSectionData
+                    alert: $alert
                 )
             }
             if legalSectionData.showAcknowledgments {
-                Acknowledgments(alertPresented: $alertPresented, alert: $alert)
+                Acknowledgments(
+                    alertPresented: $alertPresented,
+                    alert: $alert
+                )
             }
             if legalSectionData.showTOS {
-                TermsOfService(legalSectionData: legalSectionData)
+                TermsOfService()
             }
-        }.alert(isPresented: $alertPresented, content: { // alert switch cases
+        }.environmentObject(legalSectionData)
+        .alert(isPresented: $alertPresented, content: { // alert switch cases
             switch alert {
             case .disclaimerAlert:
                 return Alert(
@@ -86,7 +88,7 @@ struct Disclaimer: View {
     // Variables
     @Binding var alertPresented: Bool
     @Binding var alert: Legal.alerts
-    let legalSectionData: LegalSectionData
+    @EnvironmentObject var legalSectionData: LegalSectionData
     // UI
     var body: some View {
         Button(action: {
@@ -115,7 +117,7 @@ struct PrivacyPolicy: View {
     // Variables
     @Binding var alertPresented: Bool
     @Binding var alert: Legal.alerts
-    let legalSectionData: LegalSectionData
+    @EnvironmentObject var legalSectionData: LegalSectionData
     // UI
     var body: some View {
         Button(action: {
@@ -164,7 +166,7 @@ struct Acknowledgments: View {
 struct TermsOfService: View {
     // Variables
     @State private var tosExpanded: Bool = false
-    let legalSectionData: LegalSectionData
+    @EnvironmentObject var legalSectionData: LegalSectionData
     // UI
     var body: some View {
         DisclosureGroup(NSLocalizedString("Terms of Service", tableName: "Localizable", bundle: .module, value: "", comment: ""), isExpanded: $tosExpanded) {

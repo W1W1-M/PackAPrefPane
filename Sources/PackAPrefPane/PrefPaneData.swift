@@ -38,7 +38,7 @@ public struct PrefPaneData {
     public let legalSectionData: LegalSectionData
 }
 /// Type to group help section data
-public struct HelpSectionData {
+public class HelpSectionData: ObservableObject {
     /// ``HelpSectionData`` public initializer for swift package usage
     /// - Parameters:
     ///   - showHelpSection: ``HelpSectionData/showHelpSection``
@@ -129,7 +129,7 @@ public struct FrequentlyAskedQuestions: Identifiable {
     public let answer: String
 }
 /// Type to group about section data
-public struct AboutSectionData {
+public class AboutSectionData: ObservableObject {
     /// ``AboutSectionData`` public initializer for swift package usage
     /// - Parameters:
     ///   - developerInfoText: ``AboutSectionData/developerInfoText``
@@ -196,7 +196,7 @@ public struct ThirdPartyCode: Identifiable {
     public let sourceLicenseText: String
 }
 /// Type to group legal section data
-public struct LegalSectionData {
+public class LegalSectionData: ObservableObject {
     /// ``LegalSectionData``  public initializer for swift package usage
     /// - Parameters:
     ///   - showLegalSection: ``LegalSectionData/showLegalSection``

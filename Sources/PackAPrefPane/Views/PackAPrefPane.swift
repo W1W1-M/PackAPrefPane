@@ -38,11 +38,15 @@ public struct PackAPrefPane<Content: View>: View {
     public var body: some View {
         NavigationView {
             Form {
+                // Your app settings section view
                 appSettingsView
+                // Optionnal Help section view
                 if prefPaneData.helpSectionData.showHelpSection {
                     Help(helpSectionData: prefPaneData.helpSectionData)
                 }
+                // Mandatory About section view
                 About(aboutSectionData: prefPaneData.aboutSectionData)
+                // Optionnal Legal section view
                 if prefPaneData.legalSectionData.showLegalSection {
                     Legal(legalSectionData: prefPaneData.legalSectionData)
                 }

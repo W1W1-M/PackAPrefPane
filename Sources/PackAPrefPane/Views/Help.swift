@@ -16,25 +16,25 @@ public struct Help: View {
     public var body: some View {
         Section(header: Text(NSLocalizedString("🆘 Help", tableName: "Localizable", bundle: .module, value: "", comment: ""))) {
             if helpSectionData.showFeedbackLink {
-                Feedback(helpSectionData: helpSectionData)
+                Feedback()
             }
             if helpSectionData.showSupportLink {
-                Support(helpSectionData: helpSectionData)
+                Support()
             }
             if helpSectionData.showWhatsNew {
-                WhatsNew(helpSectionData: helpSectionData)
+                WhatsNew()
             }
             if helpSectionData.showFAQ {
                 FAQ(faq: helpSectionData.faq)
             }
-        }
+        }.environmentObject(helpSectionData)
     }
 }
 // MARK: - Feedback
 @available(macOS 11.0, iOS 14, *)
 struct Feedback: View {
     // Variables
-    let helpSectionData: HelpSectionData
+    @EnvironmentObject var helpSectionData: HelpSectionData
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.appFeedbackURL(for: helpSectionData.appID)) {
@@ -50,7 +50,7 @@ struct Feedback: View {
 @available(macOS 11.0, iOS 14, *)
 struct Support: View {
     // Variables
-    let helpSectionData: HelpSectionData
+    @EnvironmentObject var helpSectionData: HelpSectionData
     // UI
     var body: some View {
         Link(destination: PrefPaneHelper.supportEmailURL(
@@ -72,7 +72,7 @@ struct Support: View {
 struct WhatsNew: View {
     // Variables
     @State private var whatsNewExpanded: Bool = false
-    let helpSectionData: HelpSectionData
+    @EnvironmentObject var helpSectionData: HelpSectionData
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     // UI
     var body: some View {
