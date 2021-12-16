@@ -49,6 +49,7 @@ Classes, Structs, Methods & Properties are documented using DocC and can be foun
 
 ## Apps using PackAPrefPane
 * [Super85](https://apps.apple.com/app/super-85/id1564978634)
+
 If you use PackAPrefPane in your app I would really like to know. Please get in touch and make a PR to update the above list.
 
 ## Contributing
